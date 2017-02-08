@@ -57,13 +57,13 @@ gulp.task('browser-sync', ['sass', 'script','copy-resources','copy-html'],
     //监听
     gulp.watch("css/**/*.scss", ['sass']);
     gulp.watch("js/**/*.js", ['script']);
-    gulp.watch("resources/**/*.*", ['copy-resources']);
+    gulp.watch("resources/**/*", ['copy-resources']);
     gulp.watch("index.html", ['copy-html']);
   })
 
 //拷贝js
 gulp.task('copy-resources',function(){
-  return gulp.src('resources/**/*.*')
+  return gulp.src('resources/**/*')
   // .pipe(assetRev())
   .pipe(gulp.dest('dist/resources/'))
   .pipe(browserSync.stream());;

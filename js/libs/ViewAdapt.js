@@ -4,6 +4,7 @@ let ratio = initW/initH;
 let needRatio = 284/427;
 let arr = [];//["对象",比例]
 
+//需要缩放的容器，需要缩放的最小比例
 exports.push = function(str,needRatio){
   arr.push([str,needRatio])
   resize();

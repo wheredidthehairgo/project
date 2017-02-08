@@ -52,8 +52,33 @@
 	global.ViewAdapt = __webpack_require__(4);
 	global.Config = __webpack_require__(5);
 	
+	global.View = {};
+	global.Popup = {};
+	global.Data = {};
+	
 	var Loading = __webpack_require__(6);
+	
 	var TipManager = __webpack_require__(7);
+	
+	var HomeTest = __webpack_require__(8);
+	var PopupTest = __webpack_require__(9);
+	
+	function initUI() {
+	  View.loading = new Loading();
+	  View.home = new HomeTest('.home');
+	  Popup.popup = new PopupTest('.popup');
+	
+	  console.log('initUI');
+	  initData();
+	}
+	
+	function initData() {
+	  console.log('initData');
+	  $('.main').show();
+	  View.home.show();
+	}
+	
+	initUI();
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
@@ -103,8 +128,6 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -123,13 +146,11 @@
 	  _createClass(BasePopupClass, [{
 	    key: "show",
 	    value: function show() {
-	      _get(BasePopupClass.prototype.__proto__ || Object.getPrototypeOf(BasePopupClass.prototype), "show", this).call(this);
 	      this.$dom.fadeInUp();
 	    }
 	  }, {
 	    key: "hide",
 	    value: function hide() {
-	      _get(BasePopupClass.prototype.__proto__ || Object.getPrototypeOf(BasePopupClass.prototype), "hide", this).call(this);
 	      this.$dom.fadeOutDown();
 	    }
 	  }]);
@@ -265,7 +286,6 @@
 	var ratio = initW / initH;
 	var needRatio = 284 / 427;
 	var arr = [];
-	
 	exports.push = function (str, needRatio) {
 	  arr.push([str, needRatio]);
 	  resize();
@@ -445,6 +465,88 @@
 	}();
 	
 	module.exports = TipManager;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var HomeTest = function (_BaseClass) {
+	  _inherits(HomeTest, _BaseClass);
+	
+	  function HomeTest(str) {
+	    _classCallCheck(this, HomeTest);
+	
+	    return _possibleConstructorReturn(this, (HomeTest.__proto__ || Object.getPrototypeOf(HomeTest)).call(this, str));
+	  }
+	
+	  _createClass(HomeTest, [{
+	    key: 'init',
+	    value: function init() {
+	      _get(HomeTest.prototype.__proto__ || Object.getPrototypeOf(HomeTest.prototype), 'init', this).call(this);
+	      this.$dom.find('.sure-btn').on('tap', function () {
+	        Popup.popup.show();
+	      });
+	    }
+	  }]);
+	
+	  return HomeTest;
+	}(BaseClass);
+	
+	module.exports = HomeTest;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PopupTest = function (_BasePopupClass) {
+	  _inherits(PopupTest, _BasePopupClass);
+	
+	  function PopupTest(str) {
+	    _classCallCheck(this, PopupTest);
+	
+	    return _possibleConstructorReturn(this, (PopupTest.__proto__ || Object.getPrototypeOf(PopupTest)).call(this, str));
+	  }
+	
+	  _createClass(PopupTest, [{
+	    key: 'init',
+	    value: function init() {
+	      var _this2 = this;
+	
+	      _get(PopupTest.prototype.__proto__ || Object.getPrototypeOf(PopupTest.prototype), 'init', this).call(this);
+	      this.$dom.find('.box').on('tap', function () {
+	        _this2.hide();
+	      });
+	    }
+	  }]);
+	
+	  return PopupTest;
+	}(BasePopupClass);
+	
+	module.exports = PopupTest;
 
 /***/ }
 /******/ ]);
