@@ -51,14 +51,13 @@
 	global.Util = __webpack_require__(3);
 	global.ViewAdapt = __webpack_require__(4);
 	global.Config = __webpack_require__(5);
-	
+	global.TipManager = __webpack_require__(6);
 	global.View = {};
 	global.Popup = {};
 	global.Data = {};
 	
-	var Loading = __webpack_require__(6);
+	var Loading = __webpack_require__(7);
 	
-	var TipManager = __webpack_require__(7);
 	
 	var HomeTest = __webpack_require__(8);
 	var PopupTest = __webpack_require__(9);
@@ -67,7 +66,6 @@
 	  View.loading = new Loading();
 	  View.home = new HomeTest('.home');
 	  Popup.popup = new PopupTest('.popup');
-	
 	  console.log('initUI');
 	  initData();
 	}
@@ -342,63 +340,6 @@
 /* 6 */
 /***/ function(module, exports) {
 
-	"use strict";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Loading = function (_BaseClass) {
-	  _inherits(Loading, _BaseClass);
-	
-	  function Loading(str) {
-	    _classCallCheck(this, Loading);
-	
-	    return _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).call(this, str));
-	  }
-	
-	  _createClass(Loading, [{
-	    key: "preload",
-	    value: function preload(cb) {
-	      var $img = $("img");
-	      var loaded = 0;
-	      var total = $img.length;
-	      $img.each(function (i) {
-	        if (this.complete) {
-	          loaded++;
-	          cb(loaded, total);
-	        } else {
-	          this.onload = function () {
-	            loaded++;
-	            cb(loaded, total);
-	            this.onload = null;
-	          };
-	        }
-	      });
-	      if (!total) {
-	        cb(loaded, total);
-	      }
-	    }
-	  }, {
-	    key: "hide",
-	    value: function hide() {
-	      this.$dom.fadeOut();
-	    }
-	  }]);
-	
-	  return Loading;
-	}(BaseClass);
-	
-	module.exports = Loading;
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -467,6 +408,63 @@
 	module.exports = TipManager;
 
 /***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Loading = function (_BaseClass) {
+	  _inherits(Loading, _BaseClass);
+	
+	  function Loading(str) {
+	    _classCallCheck(this, Loading);
+	
+	    return _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).call(this, str));
+	  }
+	
+	  _createClass(Loading, [{
+	    key: "preload",
+	    value: function preload(cb) {
+	      var $img = $("img");
+	      var loaded = 0;
+	      var total = $img.length;
+	      $img.each(function (i) {
+	        if (this.complete) {
+	          loaded++;
+	          cb(loaded, total);
+	        } else {
+	          this.onload = function () {
+	            loaded++;
+	            cb(loaded, total);
+	            this.onload = null;
+	          };
+	        }
+	      });
+	      if (!total) {
+	        cb(loaded, total);
+	      }
+	    }
+	  }, {
+	    key: "hide",
+	    value: function hide() {
+	      this.$dom.fadeOut();
+	    }
+	  }]);
+	
+	  return Loading;
+	}(BaseClass);
+	
+	module.exports = Loading;
+
+/***/ },
 /* 8 */
 /***/ function(module, exports) {
 
@@ -498,6 +496,12 @@
 	      this.$dom.find('.sure-btn').on('tap', function () {
 	        Popup.popup.show();
 	      });
+	
+	      this.$dom.find('.sure2-btn').on('tap', function () {
+	        TipManager.show("hhhh");
+	      });
+	
+	      this.$dom.find('.sure3-btn').on('tap', function () {});
 	    }
 	  }]);
 	

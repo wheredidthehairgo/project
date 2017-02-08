@@ -2727,6 +2727,15 @@ textarea {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
+.page .sure-btn {
+  top: 0%; }
+
+.page .sure2-btn {
+  top: 10%; }
+
+.page .sure3-btn {
+  top: 30%; }
+
 .page {
   background-color: #fff;
   position: absolute;
@@ -2745,8 +2754,7 @@ textarea {
   .page .btn {
     position: absolute;
     margin-left: -25%;
-    width: 50%;
-    top: 0; }
+    width: 50%; }
   .page .container {
     position: absolute;
     width: 100%;

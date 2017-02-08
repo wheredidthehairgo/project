@@ -3,14 +3,14 @@ global.BasePopupClass = require('./libs/BasePopupClass');
 global.Util = require('./libs/Util');
 global.ViewAdapt = require('./libs/ViewAdapt');
 global.Config = require('./Config');
-
+global.TipManager = require('./libs/TipManager');
 global.View = {};
 global.Popup = {};
 global.Data = {};
 
 const Loading = require('./libs/Loading');
 //示例对象
-const TipManager = require('./libs/TipManager');
+
 
 const HomeTest = require('./View/HomeTest');
 const PopupTest = require('./Popup/PopupTest');
@@ -21,7 +21,6 @@ function initUI(){
   View.loading = new Loading();
   View.home = new HomeTest('.home');
   Popup.popup = new PopupTest('.popup');
-
   console.log('initUI')
   initData();
 }

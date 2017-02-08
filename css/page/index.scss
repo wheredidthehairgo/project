@@ -1,3 +1,4 @@
+@import "PopupTest";
 .page {
   background-color: #fff;
   position: absolute;
@@ -20,7 +21,7 @@
     position: absolute;
     margin-left: -25%;
     width: 50%;
-    top: 0;
+    // top: 0;
 
   }
   .container{
