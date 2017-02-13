@@ -10,8 +10,8 @@ class BasePopupClass extends BaseClass{
 
   hide(){
     // super.hide()
-    this.$dom.fadeOutDown();
-    // this.$dom.hide();
+//  this.$dom.fadeOutDown();
+         this.$dom.hide();
   }
 }
 module.exports = BasePopupClass;

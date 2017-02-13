@@ -28,12 +28,14 @@ class Loading extends BaseClass{
   }
 
   hide() {
-    this.$dom.fadeOut();
+//  this.$dom.fadeOut();
+this.$dom.hide();
   }
-  //
-  // show(){
-  //   this.$dom.fadeIn();
-  // }
+    
+	 show(){
+//	   this.$dom.fadeIn();
+this.$dom.show();
+	 }
 
 }
 

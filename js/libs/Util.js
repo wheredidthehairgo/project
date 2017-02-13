@@ -102,7 +102,7 @@ $(function(){
 
 
   $.fn.showInfo = function () {
-    this.show().animateCss('fadeInDown');
+    this.show().animateCss('fadeInUp');
   };
 
   $.fn.hideInfo = function () {

@@ -2,6 +2,7 @@
 @import "./libs/mixin";
 @import "./libs/animate";
 @import "./page/index.scss";
+@import "./page/last_page.scss";
 @import "./popup/index.scss";
 
 
@@ -16,6 +17,7 @@ html, body, .main, .page {
   height: 100%;
   // height: auto;
   position: relative;
+
 }
 
 img {
@@ -25,6 +27,9 @@ img {
 .main {
   text-align: center;
   display: none;
+  background: #05B0EB; 
+  transition: background 2s;
+  overflow: hidden;
 }
 
 
@@ -117,47 +122,47 @@ img {
   box-shadow: 0px 0px 13px #333333;
 }
 .loading {
-  display: none;
-  background-color: white;
+//display: none;
+  background-color: #05B0EB;
   position: absolute;
   left: 0%;
   top: 0%;
   width: 100vw;
   height: 100vh;
-  .logo {
-    position: absolute;
-    left: 50%;
-    width: 30%;
-    margin-left: -15%;
-    top: 30%;
-  }
-
-  .loading-wrap {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    width: 60%;
-    margin-left: -30%;
-    height: .5rem;
-    background-color: #d6e1e8;
-    border-radius: 1rem;
-    //overflow: hidden;
-    .bar {
-      height: 100%;
-      width: 0%;
-      background-color: #05b0eb;
-      border-radius: 1rem;
-    }
-    .text {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      left: 0%;
-      font-size: .7rem;
-      bottom: -300%;
-      color: #05b0eb;
-    }
-  }
+//.logo {
+//  position: absolute;
+//  left: 50%;
+//  width: 30%;
+//  margin-left: -15%;
+//  top: 30%;
+//}
+//
+//.loading-wrap {
+//  position: absolute;
+//  left: 50%;
+//  top: 40%;
+//  width: 60%;
+//  margin-left: -30%;
+//  height: .5rem;
+//  background-color: #d6e1e8;
+//  border-radius: 1rem;
+//  //overflow: hidden;
+//  .bar {
+//    height: 100%;
+//    width: 0%;
+//    background-color: #05b0eb;
+//    border-radius: 1rem;
+//  }
+//  .text {
+//    position: absolute;
+//    width: 100%;
+//    text-align: center;
+//    left: 0%;
+//    font-size: .7rem;
+//    bottom: -300%;
+//    color: #05b0eb;
+//  }
+//}
 
 }
 
@@ -191,5 +196,123 @@ img {
     transform: scale3d(1, 1, 1);
   }
 }
+.ball-grid-pulse {
+    width: 57px;
+    margin:45% auto 0;
+}
 
+.ball-grid-pulse> div:nth-child(1) {
+    -webkit-animation-delay: -0.06s;
+    animation-delay: -0.06s;
+    -webkit-animation-duration: 0.72s;
+    animation-duration: 0.72s;
+}
+
+.ball-grid-pulse> div:nth-child(2) {
+    -webkit-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+    -webkit-animation-duration: 1.02s;
+    animation-duration: 1.02s;
+}
+
+.ball-grid-pulse> div:nth-child(3) {
+    -webkit-animation-delay: -0.17s;
+    animation-delay: -0.17s;
+    -webkit-animation-duration: 1.28s;
+    animation-duration: 1.28s;
+}
+
+.ball-grid-pulse> div:nth-child(4) {
+    -webkit-animation-delay: 0.48s;
+    animation-delay: 0.48s;
+    -webkit-animation-duration: 1.42s;
+    animation-duration: 1.42s;
+}
+
+.ball-grid-pulse> div:nth-child(5) {
+    -webkit-animation-delay: 0.31s;
+    animation-delay: 0.31s;
+    -webkit-animation-duration: 1.45s;
+    animation-duration: 1.45s;
+}
+
+.ball-grid-pulse> div:nth-child(6) {
+    -webkit-animation-delay: 0.03s;
+    animation-delay: 0.03s;
+    -webkit-animation-duration: 1.18s;
+    animation-duration: 1.18s;
+}
+
+.ball-grid-pulse> div:nth-child(7) {
+    -webkit-animation-delay: 0.46s;
+    animation-delay: 0.46s;
+    -webkit-animation-duration: 0.87s;
+    animation-duration: 0.87s;
+}
+
+.ball-grid-pulse> div:nth-child(8) {
+    -webkit-animation-delay: 0.78s;
+    animation-delay: 0.78s;
+    -webkit-animation-duration: 1.45s;
+    animation-duration: 1.45s;
+}
+
+.ball-grid-pulse> div:nth-child(9) {
+    -webkit-animation-delay: 0.45s;
+    animation-delay: 0.45s;
+    -webkit-animation-duration: 1.06s;
+    animation-duration: 1.06s;
+}
+
+.ball-grid-pulse> div {
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    display: inline-block;
+    float: left;
+    -webkit-animation-name: ball-grid-pulse;
+    animation-name: ball-grid-pulse;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-delay: 0;
+    animation-delay: 0;
+}
+
+@-webkit-keyframes ball-grid-pulse {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        opacity: 0.7;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes ball-grid-pulse {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        opacity: 0.7;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}     
 @import "./libs/font";

@@ -60,22 +60,42 @@
 	
 	
 	var HomeTest = __webpack_require__(8);
-	var PopupTest = __webpack_require__(9);
+	var lastPage = __webpack_require__(9);
+	var Warning = __webpack_require__(10);
+	var PopupTest = __webpack_require__(11);
 	
 	function initUI() {
-	  View.loading = new Loading();
-	  View.home = new HomeTest('.home');
-	  Popup.popup = new PopupTest('.popup');
+	  View.loading = new Loading('.loading');
+	  View.home = new HomeTest('.start');
+	  View.lastPage = new lastPage('.last_page');
+	  View.warning = new Warning('.warning');
+	  Popup.popup = new PopupTest('.question');
 	  console.log('initUI');
 	  initData();
+	  changecolor();
 	}
 	
 	function initData() {
 	  console.log('initData');
-	  $('.main').show();
-	  View.home.show();
-	}
+	  View.loading.preload(function (loaded, total) {
+	    if (loaded == total) {
+	      View.loading.hide();
+	      $('.main').show();
+	      View.home.show();
+	    } else {
+	      View.loading.show();
+	    }
+	  });
 	
+	  global.data = [{ title: 1, describe: '1包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：', qa: '交通中心东直门，全年外来人口穿梭不断', qb: '交通中心东直门，全年外来人口穿梭不断', qc: '交通中心东直门，全年外来人口穿梭不断' }, { title: 2, describe: '2包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：', qa: '交通中心东直门，全年外来人口穿梭不断', qb: '交通中心东直门，全年外来人口穿梭不断', qc: '交通中心东直门，全年外来人口穿梭不断' }, { title: 3, describe: '3包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：', qa: '交通中心东直门，全年外来人口穿梭不断', qb: '交通中心东直门，全年外来人口穿梭不断', qc: '交通中心东直门，全年外来人口穿梭不断' }];
+	  global.num = 0;
+	}
+	function changecolor() {
+	  setInterval(function () {
+	    var color = parseInt(Math.random() * 4095).toString(16);
+	    $('.main').css("background-color", '#' + color);
+	  }, 5000);
+	}
 	initUI();
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
@@ -149,7 +169,7 @@
 	  }, {
 	    key: "hide",
 	    value: function hide() {
-	      this.$dom.fadeOutDown();
+	      this.$dom.hide();
 	    }
 	  }]);
 	
@@ -260,7 +280,7 @@
 	  };
 	
 	  $.fn.showInfo = function () {
-	    this.show().animateCss('fadeInDown');
+	    this.show().animateCss('fadeInUp');
 	  };
 	
 	  $.fn.hideInfo = function () {
@@ -455,7 +475,12 @@
 	  }, {
 	    key: "hide",
 	    value: function hide() {
-	      this.$dom.fadeOut();
+	      this.$dom.hide();
+	    }
+	  }, {
+	    key: "show",
+	    value: function show() {
+	      this.$dom.show();
 	    }
 	  }]);
 	
@@ -493,15 +518,11 @@
 	    key: 'init',
 	    value: function init() {
 	      _get(HomeTest.prototype.__proto__ || Object.getPrototypeOf(HomeTest.prototype), 'init', this).call(this);
-	      this.$dom.find('.sure-btn').on('tap', function () {
+	      var self = this;
+	      this.$dom.find('.start_btn').on('tap', function () {
 	        Popup.popup.show();
+	        self.hide();
 	      });
-	
-	      this.$dom.find('.sure2-btn').on('tap', function () {
-	        TipManager.show("hhhh");
-	      });
-	
-	      this.$dom.find('.sure3-btn').on('tap', function () {});
 	    }
 	  }]);
 	
@@ -526,24 +547,164 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var lastPage = function (_BaseClass) {
+	  _inherits(lastPage, _BaseClass);
+	
+	  function lastPage(str) {
+	    _classCallCheck(this, lastPage);
+	
+	    return _possibleConstructorReturn(this, (lastPage.__proto__ || Object.getPrototypeOf(lastPage)).call(this, str));
+	  }
+	
+	  _createClass(lastPage, [{
+	    key: 'init',
+	    value: function init() {
+	      _get(lastPage.prototype.__proto__ || Object.getPrototypeOf(lastPage.prototype), 'init', this).call(this);
+	      var self = this;
+	      this.$dom.find('.restart_btn').on('tap', function () {
+	        View.home.show();
+	        self.hide();
+	      });
+	
+	      this.$dom.find('.buy_btn').on('tap', function () {
+	        View.warning.show();
+	        self.hide();
+	      });
+	    }
+	  }]);
+	
+	  return lastPage;
+	}(BaseClass);
+	
+	module.exports = lastPage;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var lastPage = function (_BaseClass) {
+	  _inherits(lastPage, _BaseClass);
+	
+	  function lastPage(str) {
+	    _classCallCheck(this, lastPage);
+	
+	    return _possibleConstructorReturn(this, (lastPage.__proto__ || Object.getPrototypeOf(lastPage)).call(this, str));
+	  }
+	
+	  _createClass(lastPage, [{
+	    key: 'init',
+	    value: function init() {
+	      _get(lastPage.prototype.__proto__ || Object.getPrototypeOf(lastPage.prototype), 'init', this).call(this);
+	      var self = this;
+	      this.$dom.find('.describe').on('tap', function () {
+	        View.home.show();
+	        self.hide();
+	      });
+	    }
+	  }]);
+	
+	  return lastPage;
+	}(BaseClass);
+	
+	module.exports = lastPage;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
 	var PopupTest = function (_BasePopupClass) {
 	  _inherits(PopupTest, _BasePopupClass);
 	
 	  function PopupTest(str) {
 	    _classCallCheck(this, PopupTest);
 	
-	    return _possibleConstructorReturn(this, (PopupTest.__proto__ || Object.getPrototypeOf(PopupTest)).call(this, str));
+	    var _this = _possibleConstructorReturn(this, (PopupTest.__proto__ || Object.getPrototypeOf(PopupTest)).call(this, str));
+	
+	    _this.$dom.find('.describe').on('click', function () {
+	      num = parseInt(_this.$dom.attr("number"));
+	      var text = 1200;
+	      _this.show_money('+' + text);
+	      var total = _this.$dom.find('.total').html();
+	      console.log(total);
+	      _this.$dom.find('.total').html(parseInt(total) + parseInt(text));
+	      if (num < 3) {
+	        num++;
+	
+	        _this.question(num);
+	        return;
+	      }
+	      return;
+	    });
+	    return _this;
 	  }
 	
 	  _createClass(PopupTest, [{
-	    key: 'init',
-	    value: function init() {
+	    key: 'last_choose',
+	    value: function last_choose() {
 	      var _this2 = this;
 	
-	      _get(PopupTest.prototype.__proto__ || Object.getPrototypeOf(PopupTest.prototype), 'init', this).call(this);
-	      this.$dom.find('.box').on('tap', function () {
+	      this.$dom.find(".q_last").on('click', function () {
+	
 	        _this2.hide();
+	        View.lastPage.show();
 	      });
+	    }
+	  }, {
+	    key: 'show_money',
+	    value: function show_money(text) {
+	      var $dom = $('<div class="add_money">' + text + '</div>');
+	      this.$dom.append($dom);
+	      $dom.showInfo();
+	      setTimeout(function () {
+	        $dom.hideInfo();
+	      }, 1000);
+	    }
+	  }, {
+	    key: 'question',
+	    value: function question(title) {
+	      if (title == 3) {
+	        this.$dom.find('.describe').attr("class", "q_last");
+	        this.last_choose();
+	      }
+	      this.hide();
+	      var message = '${message}' + '<p>第' + '${title}' + '题</p>';
+	      var temp = message.replace('${message}', data[title - 1].describe).replace('${title}', data[title - 1].title);
+	      this.$dom.find('.message').html(temp);
+	      this.$dom.find('.choose_text_a').html(data[title - 1].qa);
+	      this.$dom.find('.choose_text_b').html(data[title - 1].qb);
+	      this.$dom.find('.choose_text_c').html(data[title - 1].qc);
+	
+	      this.$dom.attr("number", num);
+	      this.show();
+	    }
+	  }, {
+	    key: 'init',
+	    value: function init() {
+	      _get(PopupTest.prototype.__proto__ || Object.getPrototypeOf(PopupTest.prototype), 'init', this).call(this);
 	    }
 	  }]);
 	
