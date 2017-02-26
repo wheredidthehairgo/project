@@ -5,6 +5,7 @@ global.ViewAdapt = require('./libs/ViewAdapt');
 global.Config = require('./Config');
 global.TipManager = require('./libs/TipManager');
 global.Tab = require('./libs/Tab');
+global.$ = require('jQuery');
 global.shareApi = require('./libs/ShareApi');
 global.View = {};
 global.Popup = {};

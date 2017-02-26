@@ -13,10 +13,10 @@ const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync')
   .create();
 const fs = require('fs');
-const assetRev = require('gulp-asset-rev');
+// const assetRev = require('gulp-asset-rev');
 const proxyMiddleware = require('http-proxy-middleware');
 const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 //配置请求的地址
 const proxyTable = {
   	'/god_goddess': {
@@ -128,7 +128,7 @@ gulp.task('script', function() {
    ))
     // .pipe(babel())
     .pipe(sourcemaps.write('.'))
-    .pipe(assetRev())
+    // .pipe(assetRev())
     .pipe(gulp.dest('./dist/js'))
 });
 
