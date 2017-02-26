@@ -1,41 +1,57 @@
-// const $ = require('jquery');
-
-class Loading extends BaseClass{
-
-  constructor(str) {
-    super(str);
-    this.show();
+class Loading {
+  constructor() {
+    this.init();
   }
 
-  preload(cb) {
-    var $img = $("img");
-    var loaded = 0;
-    var total = $img.length;
-    $img.each(function (i) {
-      if (this.complete) {
-        loaded++;
-        cb(loaded, total);
-      } else {
-        this.onload = function () {
-          loaded++;
-          cb(loaded, total);
-          this.onload = null;
-        }
+  init(){
+    $('.pre-loading-js').show();
+    $('.loading-img').hide();
+    $('.loading-net').hide();
+
+  }
+
+  /**
+   * 预加载js或者图片
+   */
+  preLoadingJS(cb){
+    let onload = false,loadImg = false;
+    window.onload = function(){
+        onload = true;
+        callBack();
+    };
+    Util.loadImg([],()=>{
+      loadImg = true;
+      callBack();
+    },null,null);
+    function callBack(){
+      if(onload && loadImg){
+          $('.pre-loading-js').hide();
+        cb();
       }
-    })
-    if (!total) {
-      cb(loaded, total);
     }
   }
-
-  hide() {
-    super.hide();
-    // this.$dom.fadeOut();
+  //加载完成
+  /**
+   * 第二次加载，主要加载资源
+   */
+  preload(cb) {
+    $('.loading-img').show();
+    Util.loadImg($('img'),null,cb(),null)
   }
-  //
-  // show(){
-  //   this.$dom.fadeIn();
-  // }
+
+  hide(){
+    $('.loading-img').hide();
+  }
+
+
+  //网络加载页面
+  netLoadingShow(){
+    $('.loading-net').show();
+  }
+  netLoadingHide(){
+    $('.loading-net').hide();
+  }
+
 
 }
 

@@ -3,6 +3,8 @@
 <head>
   <!-- <base href="http://weijie.91iot.net/libai/ticketCard5/"> -->
   <meta charset="UTF-8">
+  <!-- 关闭识别为手机号码 -->
+  <meta name="format-detection" content="telephone=no" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>Demo</title>
   <link rel="stylesheet" href="css/main.css">
@@ -25,13 +27,41 @@
     </div>
   </div>
 </div>
-<div class="loading">
-  <!-- <img src="resources/img/logo.png" alt="" class="logo"> -->
-  <!--<div class="loading-wrap">
-    <div class="bar"></div>
-    <div class="text">loading</div>
-  </div>-->
-  <div class="ball-grid-pulse">
+
+<!-- 预加载  加载js的时候和加载初始化 -->
+
+<div class="pre-loading-js loading">
+  <div class="ball-spin-fade-loader">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+<!-- 加载图片 主加载页 -->
+<div class="loading-img loading">
+  <div class="ball-spin-fade-loader">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+<!-- 网络请求的加载页 -->
+<div class="loading-net loading">
+  <div class="ball-spin-fade-loader">
 		<div></div>
 		<div></div>
 		<div></div>
@@ -45,8 +75,8 @@
 </div>
 <!-- <script src="app/js/vconsole.min.js" charset="utf-8"></script> -->
 <script src="resources/js/jquery-3.1.1.min.js" charset="utf-8"></script>
-<script id="fiboDataSDK" type="text/javascript"
-        src="http://sdk.fibodata.com/data/datasdk.min.js?pfid=zb_eunvjzrex&appid=M2FvEBuaQ"></script>
+<!-- <script id="fiboDataSDK" type="text/javascript"
+        src="http://sdk.fibodata.com/data/datasdk.min.js?pfid=zb_eunvjzrex&appid=M2FvEBuaQ"></script> -->
 <script src="resources/js/jweixin-1.0.0.js"></script>
 <script src="http://100jc.net/open-service/public/libs/wechat.js"></script>
 

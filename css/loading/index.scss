@@ -1,0 +1,55 @@
+@import "preLoadingJS";
+@import "preLoading";
+@import "netLoading";
+.loading {
+  display: none;
+  background-color: white;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100vw;
+  height: 100vh;
+  .logo {
+    position: relative;
+    left: 50%;
+    width: 30%;
+    margin-left: -15%;
+    // top: 30%;
+    margin-top: 37%;
+  }
+  .brand{
+    position: absolute;
+    bottom: 8%;
+    width: 20%;
+    left: 40%;
+  }
+
+  .loading-wrap {
+    position: relative;
+    left: 50%;
+    top: 3%;
+    width: 60%;
+    // margin-top: 37%;
+    margin-left: -30%;
+    height: .5rem;
+    background-color: #d6e1e8;
+    border-radius: 1rem;
+    //overflow: hidden;
+    .bar {
+      height: 100%;
+      width: 0%;
+      background-color: #f2515d;
+      border-radius: 1rem;
+    }
+    .text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      left: 0%;
+      font-size: .7rem;
+      bottom: -300%;
+      color: #f2515d;
+    }
+  }
+
+}

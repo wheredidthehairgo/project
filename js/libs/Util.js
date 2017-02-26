@@ -23,32 +23,47 @@ exports.getOption  = function (key){
     }
     return "";
   }
-  //加载图片
+
+  /**
+   * @param {array} resource 数组或者jquery数组
+   * @param {function} $onLoadComplete 完成的回调
+   * @param {function} $onLoadProgress (loaded , total) 进度回调
+   * @param {object} $onLoadTarget 作用域
+   */
   exports.loadImg = function(resources = [],$onLoadComplete = null,$onLoadProgress = null ,$onLoadTarget = null ){
     let total = resources.length,loaded = 0;
-    resources.forEach(( src )=>{
-        let img =  new Image();
-        img.src = src;
+    if(total === 0) {
+      $onLoadComplete && $onLoadComplete.call($onLoadTarget);
+      return ;
+    }
+    $.each(resources,( index,src )=>{
+      let img = null;
+        if(typeof src === "object"){
+          img = src;
+        }else{
+          img =  new Image();
+          img.src = src;
+        }
         if (img.complete) {
           loaded++;
           if(loaded === total){
-            $onLoadComplete && $onLoadComplete();
+            $onLoadComplete && $onLoadComplete.call($onLoadTarget);
           }else{
-            $onLoadProgress && $onLoadProgress(loaded,total);
+            $onLoadProgress && $onLoadProgress.call($onLoadTarget,loaded,total);
           }
         } else {
           img.onload = function () {
             loaded++;
             img.onload = null;
             if(loaded === total){
-              $onLoadComplete && $onLoadComplete();
+              $onLoadComplete && $onLoadComplete.call($onLoadTarget);
             }else{
-              $onLoadProgress && $onLoadProgress(loaded,total);
+              $onLoadProgress && $onLoadProgress.call($onLoadTarget,loaded,total);
             }
           }
         }
         if (!total) {
-          $onLoadComplete && $onLoadComplete();
+          $onLoadComplete && $onLoadComplete.call($onLoadTarget);
         }
     })
   }

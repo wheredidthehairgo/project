@@ -11,7 +11,7 @@ global.Data = {};
 
 const Loading = require('./libs/Loading');
 //示例对象
-
+View.loading = new Loading();
 
 const HomeTest = require('./View/HomeTest');
 
@@ -25,10 +25,10 @@ let isLoaded = false;
 //网络加载
 let isInitNet = false;
 
-
-$(function(){
+//主要是加载js的loading
+View.loading.preLoadingJS(function(){
   //微信授权
-  shareApi.auth(init);  
+  shareApi.auth(init);
 })
 
 
@@ -62,7 +62,6 @@ function init(userInfo){
 //初始化UI
 function initUI(){
   console.log('initUI');
-  View.loading = new Loading('.loading');
   View.homeTest = new HomeTest('.home');
   Popup.popup = new PopupTest('.popup');
 }
@@ -73,16 +72,19 @@ function complete(){
 
     console.log('complete')
   if(isInitNet && isLoaded){
-    main();
+    setTimeout(function(){
+        main();
+    },2000)
+
   }
 }
 
 //初始化数据
 function main(){
-  // console.log('initData')
   $('.main').show();
-  console.log($);
   View.loading.hide();
   View.homeTest.show();
   Popup.popup.show();
 }
+
+// $()

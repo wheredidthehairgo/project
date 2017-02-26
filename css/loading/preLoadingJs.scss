@@ -1,33 +1,26 @@
-@-webkit-keyframes ball-spin-fade-loader {
-	50% {
-		opacity: 0.3;
-		-webkit-transform: scale(0.4);
-		transform: scale(0.4);
-	}
-	100% {
-		opacity: 1;
-		-webkit-transform: scale(1);
-		transform: scale(1);
-	}
+//js加载loading
+//例子
+// <div class="ball-spin-fade-loader">
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// 	<div></div>
+// </div>
+.loading.pre-loading-js{
+	// background: ;
+
 }
 
-@keyframes ball-spin-fade-loader {
-	50% {
-		opacity: 0.3;
-		-webkit-transform: scale(0.4);
-		transform: scale(0.4);
-	}
-	100% {
-		opacity: 1;
-		-webkit-transform: scale(1);
-		transform: scale(1);
-	}
-}
 
 .ball-spin-fade-loader {
 	position: relative;
-	transform: translate(45%, 30px);
-	-webkit-transform: translate(45%, 30px);
+	transform: translate(45%, 50%);
+	top: 50%;
 }
 
 .ball-spin-fade-loader> div:nth-child(1) {
@@ -96,6 +89,35 @@
 	animation-fill-mode: both;
 	position: absolute;
 }
+
+@-webkit-keyframes ball-spin-fade-loader {
+	50% {
+		opacity: 0.3;
+		-webkit-transform: scale(0.4);
+		transform: scale(0.4);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes ball-spin-fade-loader {
+	50% {
+		opacity: 0.3;
+		-webkit-transform: scale(0.4);
+		transform: scale(0.4);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+
+//另外一个loading
 
 .typing_loader {
 	width: 6px;

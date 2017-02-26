@@ -59,6 +59,7 @@
 	
 	var Loading = __webpack_require__(8);
 	
+	View.loading = new Loading();
 	
 	var HomeTest = __webpack_require__(9);
 	
@@ -68,7 +69,7 @@
 	
 	var isInitNet = false;
 	
-	$(function () {
+	View.loading.preLoadingJS(function () {
 	  shareApi.auth(init);
 	});
 	
@@ -97,7 +98,6 @@
 	
 	function initUI() {
 	  console.log('initUI');
-	  View.loading = new Loading('.loading');
 	  View.homeTest = new HomeTest('.home');
 	  Popup.popup = new PopupTest('.popup');
 	}
@@ -106,13 +106,14 @@
 	
 	  console.log('complete');
 	  if (isInitNet && isLoaded) {
-	    main();
+	    setTimeout(function () {
+	      main();
+	    }, 2000);
 	  }
 	}
 	
 	function main() {
 	  $('.main').show();
-	  console.log($);
 	  View.loading.hide();
 	  View.homeTest.show();
 	  Popup.popup.show();
@@ -126,6 +127,8 @@
 	
 	
 	'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	exports.randomNum = function (Min, Max) {
 	  var Range = Max - Min;
@@ -153,29 +156,38 @@
 	
 	  var total = resources.length,
 	      loaded = 0;
-	  resources.forEach(function (src) {
-	    var img = new Image();
-	    img.src = src;
+	  if (total === 0) {
+	    $onLoadComplete && $onLoadComplete.call($onLoadTarget);
+	    return;
+	  }
+	  $.each(resources, function (index, src) {
+	    var img = null;
+	    if ((typeof src === "undefined" ? "undefined" : _typeof(src)) === "object") {
+	      img = src;
+	    } else {
+	      img = new Image();
+	      img.src = src;
+	    }
 	    if (img.complete) {
 	      loaded++;
 	      if (loaded === total) {
-	        $onLoadComplete && $onLoadComplete();
+	        $onLoadComplete && $onLoadComplete.call($onLoadTarget);
 	      } else {
-	        $onLoadProgress && $onLoadProgress(loaded, total);
+	        $onLoadProgress && $onLoadProgress.call($onLoadTarget, loaded, total);
 	      }
 	    } else {
 	      img.onload = function () {
 	        loaded++;
 	        img.onload = null;
 	        if (loaded === total) {
-	          $onLoadComplete && $onLoadComplete();
+	          $onLoadComplete && $onLoadComplete.call($onLoadTarget);
 	        } else {
-	          $onLoadProgress && $onLoadProgress(loaded, total);
+	          $onLoadProgress && $onLoadProgress.call($onLoadTarget, loaded, total);
 	        }
 	      };
 	    }
 	    if (!total) {
-	      $onLoadComplete && $onLoadComplete();
+	      $onLoadComplete && $onLoadComplete.call($onLoadTarget);
 	    }
 	  });
 	};
@@ -520,7 +532,15 @@
 	var TITLE = '寻找佛山最美女神';
 	var DESC = '唯有美丽与立白壕礼不可辜负';
 	var IMGURL = Config.host + ('/resources/img/icon_' + Config.super_name + '.jpg');
-	var LINK = Config.shareUrl + '?url=' + encodeURIComponent(dataSDK.dealUrl(wechat.filter(['code', 'id'], { share: 'share' })));
+	var LINK = Config.shareUrl + '?url=' + encodeURIComponent(dealUrl(wechat.filter(['code', 'id'], { share: 'share' })));
+	
+	function dealUrl(url) {
+	  try {
+	    return dataSDK.dealUrl(url);
+	  } catch (e) {
+	    return url;
+	  }
+	}
 	
 	exports.init = function () {
 	  wechat.config();
@@ -588,61 +608,71 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Loading = function (_BaseClass) {
-	  _inherits(Loading, _BaseClass);
-	
-	  function Loading(str) {
+	var Loading = function () {
+	  function Loading() {
 	    _classCallCheck(this, Loading);
 	
-	    var _this = _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).call(this, str));
-	
-	    _this.show();
-	    return _this;
+	    this.init();
 	  }
 	
 	  _createClass(Loading, [{
-	    key: "preload",
-	    value: function preload(cb) {
-	      var $img = $("img");
-	      var loaded = 0;
-	      var total = $img.length;
-	      $img.each(function (i) {
-	        if (this.complete) {
-	          loaded++;
-	          cb(loaded, total);
-	        } else {
-	          this.onload = function () {
-	            loaded++;
-	            cb(loaded, total);
-	            this.onload = null;
-	          };
+	    key: 'init',
+	    value: function init() {
+	      $('.pre-loading-js').show();
+	      $('.loading-img').hide();
+	      $('.loading-net').hide();
+	    }
+	  }, {
+	    key: 'preLoadingJS',
+	    value: function preLoadingJS(cb) {
+	      var onload = false,
+	          loadImg = false;
+	      window.onload = function () {
+	        onload = true;
+	        callBack();
+	      };
+	      Util.loadImg([], function () {
+	        loadImg = true;
+	        callBack();
+	      }, null, null);
+	      function callBack() {
+	        if (onload && loadImg) {
+	          $('.pre-loading-js').hide();
+	          cb();
 	        }
-	      });
-	      if (!total) {
-	        cb(loaded, total);
 	      }
 	    }
 	  }, {
-	    key: "hide",
+	    key: 'preload',
+	    value: function preload(cb) {
+	      $('.loading-img').show();
+	      Util.loadImg($('img'), null, cb(), null);
+	    }
+	  }, {
+	    key: 'hide',
 	    value: function hide() {
-	      _get(Loading.prototype.__proto__ || Object.getPrototypeOf(Loading.prototype), "hide", this).call(this);
+	      $('.loading-img').hide();
+	    }
+	  }, {
+	    key: 'netLoadingShow',
+	    value: function netLoadingShow() {
+	      $('.loading-net').show();
+	    }
+	  }, {
+	    key: 'netLoadingHide',
+	    value: function netLoadingHide() {
+	      $('.loading-net').hide();
 	    }
 	  }]);
 	
 	  return Loading;
-	}(BaseClass);
+	}();
 	
 	module.exports = Loading;
 

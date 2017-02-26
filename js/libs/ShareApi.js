@@ -2,7 +2,17 @@ const wechat = new Wechat(Config.appid);
 const TITLE = '寻找佛山最美女神';
 const DESC = '唯有美丽与立白壕礼不可辜负';
 const IMGURL = Config.host + `/resources/img/icon_${Config.super_name}.jpg`;
-const LINK = `${Config.shareUrl}?url=${encodeURIComponent(dataSDK.dealUrl(wechat.filter(['code','id'],{share:'share'})))}`;
+const LINK =`${Config.shareUrl}?url=${encodeURIComponent(dealUrl(wechat.filter(['code','id'],{share:'share'})))}`;
+
+//处理不加载婓波的异常
+function dealUrl(url){
+  try{
+    return dataSDK.dealUrl(url)
+  }catch( e ){
+    return url;
+  }
+}
+
 
 exports.init = function(){
   wechat.config();
