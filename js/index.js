@@ -4,6 +4,8 @@ global.Util = require('./libs/Util');
 global.ViewAdapt = require('./libs/ViewAdapt');
 global.Config = require('./Config');
 global.TipManager = require('./libs/TipManager');
+global.Tab = require('./libs/Tab');
+global.shareApi = require('./libs/ShareApi');
 global.View = {};
 global.Popup = {};
 global.Data = {};
@@ -12,53 +14,66 @@ const Loading = require('./libs/Loading');
 //示例对象
 
 
-const HomeTest = require('./View/HomeTest');
-const lastPage = require('./View/lastPage');
-const Warning = require('./View/Warning');
+// const HomeTest = require('./View/HomeTest');
+
+
+
 const PopupTest = require('./Popup/PopupTest');
 
 
+// 加载
+let isLoaded = false;
+//网络加载
+let isInitNet = false;
+
+
+//微信授权
+shareApi.auth(init);
+
+//初始化,入口
+function init(userInfo){
+
+  Config.userInfo = userInfo;
+  shareApi.init();
+  initUI();
+    try {
+      dataSDK.pushUserInfo(userInfo)
+    } catch (e) {
+
+    }
+    //增加投票者
+    // $.post(`${Config.server}/god_voter/`,Config.userInfo,({data,code})=>{})
+    View.loading.preload((loaded, total)=>{
+      let percent =  Math.floor( loaded/total *100);
+      $('.loading').find('.bar').css({width: percent+'%'});
+      $('.loading').find('.text').html(`${percent}% loading...`);
+      if(loaded === total){
+        isLoaded = true;
+        // initData();
+        complete();
+      }
+    })
+}
+
 //初始化UI
 function initUI(){
+  console.log('initUI');
   View.loading = new Loading('.loading');
-  View.home = new HomeTest('.start');
-  View.lastPage = new lastPage('.last_page');
-  View.warning = new Warning('.warning');
-  Popup.popup = new PopupTest('.question');
-  console.log('initUI')
-  initData();
-  changecolor();
 }
 
+
+//加载完成
+function complete(){
+    // console.log('complete')
+  if(isInitNet && isLoaded){
+    initData();
+  }
+}
 
 //初始化数据
-function initData(){
-  console.log('initData')
-  View.loading.preload((loaded,total)=>{
-  	if(loaded==total){
-		View.loading.hide();
-		$('.main').show();
-			View.home.show();		
-  	}else{
-		View.loading.show();
-  	}
-  });
-  
-//	View.lastPage.show();
-//	View.warning.show();
-	global.data = [{title:1,describe:'1包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：',qa:'交通中心东直门，全年外来人口穿梭不断',qb:'交通中心东直门，全年外来人口穿梭不断',qc:'交通中心东直门，全年外来人口穿梭不断'},
-	{title:2,describe:'2包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：',qa:'交通中心东直门，全年外来人口穿梭不断',qb:'交通中心东直门，全年外来人口穿梭不断',qc:'交通中心东直门，全年外来人口穿梭不断'},
-	{title:3,describe:'3包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：',qa:'交通中心东直门，全年外来人口穿梭不断',qb:'交通中心东直门，全年外来人口穿梭不断',qc:'交通中心东直门，全年外来人口穿梭不断'},
-	];
-	global.num=0;
-	
+function main(){
+  // console.log('initData')
+  $('.main').show();
+  View.loading.hide();
 
 }
-function changecolor(){
-	setInterval(function(){
-		var color =  parseInt(Math.random() * 4095).toString(16);  //取随机颜色6位16进制！
-		$('.main').css("background-color",'#'+color);
-	
-	},5000);
-}
-initUI();

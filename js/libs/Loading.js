@@ -4,6 +4,7 @@ class Loading extends BaseClass{
 
   constructor(str) {
     super(str);
+    this.show();
   }
 
   preload(cb) {
@@ -28,14 +29,13 @@ class Loading extends BaseClass{
   }
 
   hide() {
-//  this.$dom.fadeOut();
-this.$dom.hide();
+    super.hide();
+    // this.$dom.fadeOut();
   }
-    
-	 show(){
-//	   this.$dom.fadeIn();
-this.$dom.show();
-	 }
+  //
+  // show(){
+  //   this.$dom.fadeIn();
+  // }
 
 }
 

@@ -19,11 +19,11 @@ const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 //配置请求的地址
 const proxyTable = {
-  	// '/fourticket': {
-    //        target: 'http://100jc.net/fourticket',
-    //        changeOrigin: true,
-    //        logLevel: 'debug'
-    //    }
+  	'/god_goddess': {
+           target: 'http://192.168.199.174:9960',
+           changeOrigin: true,
+           logLevel: 'debug'
+       }
 }
 
 const proxyArr = [];

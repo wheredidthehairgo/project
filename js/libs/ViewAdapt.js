@@ -1,7 +1,6 @@
 let initW = 640;
 let initH = 1008;
 let ratio = initW/initH;
-let needRatio = 284/427;
 let arr = [];//["对象",比例]
 
 //需要缩放的容器，需要缩放的最小比例

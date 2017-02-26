@@ -1,0 +1,22 @@
+.panel.rule{
+  .title{
+    margin-bottom: 1em;
+  }
+  .content-2{
+    margin-bottom: 2em;
+    // font-size: .8rem;
+    p{
+        color: #908c8c;
+        font-size: .7rem;
+        margin-bottom: .5em;
+        text-align: left;
+        line-height: 1.5;
+        .super-name{
+          // color: #ff0000;
+        }
+    }
+  }
+  .btn-submit{
+    margin-bottom: .5em;
+  }
+}

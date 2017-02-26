@@ -10,6 +10,8 @@ class TipManager{
     return _instance;
   }
 
+
+  //文本提示
   static show(text){
     const $dom = $(`<div class="info">${text}</div>`);
       $('.main').append($dom);
@@ -19,7 +21,7 @@ class TipManager{
       }, 2500);
   }
 
-
+  //
   static loading(percent,text){
     loading.find('.progress-bar').css({width: percent + '%'});
     loading.find('.text').html(text);
@@ -28,6 +30,13 @@ class TipManager{
     loading.fadeIn();
     loading.find('.progress-bar').css({width: '0%'});
     // loading.fadeInUp();
+  }
+
+  static netLoadingShow(){
+    $('.net-loading').show();
+  }
+  static netLoadingHide(){
+    $('.net-loading').hide();
   }
 
   static loadingHide(){
@@ -41,7 +50,15 @@ class TipManager{
   static uploadedHide(){
     uploaded.fadeOut();
   }
+  
+  // 等待图片加载完毕
+  static loadImgShow(arr,fn){
+    $('.loading-img').show();
 
+  }
+  static loadImgHide(){
+    $('.loading-img').hide();
+  }
 
 }
 module.exports = TipManager;

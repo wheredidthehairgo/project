@@ -1,0 +1,125 @@
+@-webkit-keyframes ball-spin-fade-loader {
+	50% {
+		opacity: 0.3;
+		-webkit-transform: scale(0.4);
+		transform: scale(0.4);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes ball-spin-fade-loader {
+	50% {
+		opacity: 0.3;
+		-webkit-transform: scale(0.4);
+		transform: scale(0.4);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+.ball-spin-fade-loader {
+	position: relative;
+	transform: translate(45%, 30px);
+	-webkit-transform: translate(45%, 30px);
+}
+
+.ball-spin-fade-loader> div:nth-child(1) {
+	top: 25px;
+	left: 0;
+	-webkit-animation: ball-spin-fade-loader 1s 0s infinite linear;
+	animation: ball-spin-fade-loader 1s 0s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(2) {
+	top: 17.04545px;
+	left: 17.04545px;
+	-webkit-animation: ball-spin-fade-loader 1s 0.12s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.12s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(3) {
+	top: 0;
+	left: 25px;
+	-webkit-animation: ball-spin-fade-loader 1s 0.24s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.24s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(4) {
+	top: -17.04545px;
+	left: 17.04545px;
+	-webkit-animation: ball-spin-fade-loader 1s 0.36s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.36s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(5) {
+	top: -25px;
+	left: 0;
+	-webkit-animation: ball-spin-fade-loader 1s 0.48s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.48s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(6) {
+	top: -17.04545px;
+	left: -17.04545px;
+	-webkit-animation: ball-spin-fade-loader 1s 0.6s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.6s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(7) {
+	top: 0;
+	left: -25px;
+	-webkit-animation: ball-spin-fade-loader 1s 0.72s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.72s infinite linear;
+}
+
+.ball-spin-fade-loader> div:nth-child(8) {
+	top: 17.04545px;
+	left: -17.04545px;
+	-webkit-animation: ball-spin-fade-loader 1s 0.84s infinite linear;
+	animation: ball-spin-fade-loader 1s 0.84s infinite linear;
+}
+
+.ball-spin-fade-loader> div {
+	background-color: #fedede;
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	margin: 2px;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	position: absolute;
+}
+
+.typing_loader {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	animation: typing 1s linear infinite alternate;
+	margin: 1em auto;
+	/* Not necessary- its only for layouting*/
+	position: relative;
+	left: -12px;
+}
+
+
+@keyframes typing {
+	0% {
+		background-color: rgba(0, 0, 0, 1);
+		box-shadow: 12px 0px 0px 0px rgba(0, 0, 0, 0.2), 24px 0px 0px 0px rgba(0, 0, 0, 0.2);
+	}
+	25% {
+		background-color: rgba(0, 0, 0, 0.4);
+		box-shadow: 12px 0px 0px 0px rgba(0, 0, 0, 2), 24px 0px 0px 0px rgba(0, 0, 0, 0.2);
+	}
+	75% {
+		background-color: rgba(0, 0, 0, 0.4);
+		box-shadow: 12px 0px 0px 0px rgba(0, 0, 0, 0.2), 24px 0px 0px 0px rgba(0, 0, 0, 1);
+	}
+}

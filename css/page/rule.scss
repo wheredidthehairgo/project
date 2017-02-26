@@ -1,0 +1,87 @@
+.page.rule{
+  position: relative;
+  width: 80%;
+  display: block;
+  margin: auto;
+  background: none;
+  margin-top: 1em;
+  margin-bottom: 5%;
+  hr{
+    color: #c3c2c2;
+    margin-left: -10%;
+    margin-right: -10%;
+  }
+  .xiyiye{
+        width: 100%;
+        margin-bottom: .2em;
+      }
+  .rule-desc{
+      p{
+        font-size: .7rem;
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        margin-bottom: .8em;
+        line-height: 2;
+        b{
+          font-size: .8rem;
+        }
+        .btn-door{
+          color: #ff0000;
+        }
+      }
+      .rule-bg{
+        margin-bottom: 1em;
+      }
+      .xiyiye{
+        margin-bottom: 1em;
+      }
+      img{
+        width: 100%;
+      }
+  }
+
+  .prize{
+    margin-bottom: 1em;
+    p{
+      text-align: center;
+    }
+    img{
+      width: 50%;
+      margin-bottom: .8em;
+    }
+    .prize-item{
+      width: 100%;
+      margin-bottom: .8em;
+      .prize-no{
+        font-weight: 500;
+        font-size: 1rem;
+        margin-bottom: .3em;
+      }
+      .prize-content{
+        font-size: .9rem;
+        margin-bottom: .3em;
+      }
+      .prize-desc{
+        font-size: .7rem;
+      }
+    }
+    .prize-tip{
+      font-size: .7rem;
+    }
+  }
+  .tuijian-title{
+    width: 80%;
+    margin-bottom: .8em;
+  }
+  .fj-tip{
+    margin-top: 1em;
+    font-size: .6rem;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: .8em;
+    line-height: 2;
+  }
+
+}

@@ -3,13 +3,14 @@
  */
 
 'use strict';
-
+//获取随机数
 exports.randomNum = function (Min, Max) {
   var Range = Max - Min;
   var Rand = Math.random();
   return (Min + Math.round(Rand * Range));
 }
 
+//获取参数
 exports.getOption  = function (key){
     var search = location.search;
     if(search=="")return "";
@@ -22,18 +23,49 @@ exports.getOption  = function (key){
     }
     return "";
   }
-
-
-
+  //加载图片
+  exports.loadImg = function(resources = [],$onLoadComplete = null,$onLoadProgress = null ,$onLoadTarget = null ){
+    let total = resources.length,loaded = 0;
+    resources.forEach(( src )=>{
+        let img =  new Image();
+        img.src = src;
+        if (img.complete) {
+          loaded++;
+          if(loaded === total){
+            $onLoadComplete && $onLoadComplete();
+          }else{
+            $onLoadProgress && $onLoadProgress(loaded,total);
+          }
+        } else {
+          img.onload = function () {
+            loaded++;
+            img.onload = null;
+            if(loaded === total){
+              $onLoadComplete && $onLoadComplete();
+            }else{
+              $onLoadProgress && $onLoadProgress(loaded,total);
+            }
+          }
+        }
+        if (!total) {
+          $onLoadComplete && $onLoadComplete();
+        }
+    })
+  }
+/**
+ * @param {string} $wrap  外框
+ * @param {string} $photo 需要赋值的img
+ * @param {string} $url 图片的链接
+ */
 exports.setPhoto = function ($wrap, $photo, url) {
   const ratio = parseInt($wrap.width() / $wrap.height() * 100);
   $photo[0].onload = function () {
     $photo.css({width: 'auto', height: 'auto'});
     const ratioPhoto = parseInt($photo.width() / $photo.height() * 100);
     if (ratioPhoto === 100 || ratioPhoto > ratio) {
-      $photo.css({width: '90%', height: 'auto'});
+      $photo.css({width: '100%', height: 'auto'});
     } else {
-      $photo.css({width: 'auto', height: '90%'});
+      $photo.css({width: 'auto', height: '100%'});
     }
   }
   $photo.attr({src: url});
@@ -102,7 +134,7 @@ $(function(){
 
 
   $.fn.showInfo = function () {
-    this.show().animateCss('fadeInUp');
+    this.show().animateCss('fadeInDown');
   };
 
   $.fn.hideInfo = function () {
