@@ -96,53 +96,43 @@ if (typeof Object.assign != 'function') {
 
 
 $(function(){
-  $.fn.animateCss = function (animationName, cb) {
-    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-    this.addClass('animated ' + animationName).one(animationEnd, ()=> {
-      this.removeClass('animated ' + animationName);
-      if (cb) cb();
-    });
-    return this;
-  };
+  $.fn.extend({
+    animateCss : function (animationName, cb) {
+      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      this.addClass('animated ' + animationName).one(animationEnd, ()=> {
+        this.removeClass('animated ' + animationName);
+        if (cb) cb();
+      });
+      return this;
+    },
+    fadeIn : function () {
+      this.show();
+      this.animateCss('fadeIn');
+    },
 
-  $.fn.fadeIn = function () {
-    this.show();
-    this.animateCss('fadeIn');
-  };
-
-  $.fn.fadeOut = function () {
-    this.animateCss('fadeOut',()=>{
-      this.hide();
-    });
-  };
-  $.fn.fadeInUp = function () {
-    this.show();
-    this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
-  };
-
-  // $.fn.fadeInUp=function () {
-  //   this.show();
-  //   this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
-  // },
-
-  $.fn.fadeOutDown = function (cb) {
-    this.find('.mask').animateCss('fadeOut').next().animateCss('fadeOutDownBig', ()=> {
-      this.hide();
-      if (cb) cb();
-    });
-  };
-
-
-  $.fn.showInfo = function () {
-    this.show().animateCss('fadeInDown');
-  };
-
-  $.fn.hideInfo = function () {
-    this.animateCss('fadeOutUp', ()=> {
-      this.html('');
-      this.hide();
-    });
-  }
-
-
+    fadeOut : function () {
+      this.animateCss('fadeOut',()=>{
+        this.hide();
+      });
+    },
+    fadeInUp : function () {
+      this.show();
+      this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
+    },
+    fadeOutDown : function (cb) {
+      this.find('.mask').animateCss('fadeOut').next().animateCss('fadeOutDownBig', ()=> {
+        this.hide();
+        if (cb) cb();
+      });
+    },
+    showInfo : function () {
+      this.show().animateCss('fadeInDown');
+    },
+    hideInfo : function () {
+      this.animateCss('fadeOutUp', ()=> {
+        this.html('');
+        this.hide();
+      });
+    }
+  });
 })

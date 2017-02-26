@@ -1,11 +1,9 @@
+global.Util = require('./libs/Util');
 global.BaseClass = require('./libs/BaseClass');
 global.BasePopupClass = require('./libs/BasePopupClass');
-global.Util = require('./libs/Util');
 global.ViewAdapt = require('./libs/ViewAdapt');
 global.Config = require('./Config');
 global.TipManager = require('./libs/TipManager');
-global.Tab = require('./libs/Tab');
-global.$ = require('jQuery');
 global.shareApi = require('./libs/ShareApi');
 global.View = {};
 global.Popup = {};
@@ -15,7 +13,7 @@ const Loading = require('./libs/Loading');
 //示例对象
 
 
-// const HomeTest = require('./View/HomeTest');
+const HomeTest = require('./View/HomeTest');
 
 
 
@@ -28,8 +26,11 @@ let isLoaded = false;
 let isInitNet = false;
 
 
-//微信授权
-shareApi.auth(init);
+$(function(){
+  //微信授权
+  shareApi.auth(init);  
+})
+
 
 //初始化,入口
 function init(userInfo){
@@ -50,6 +51,8 @@ function init(userInfo){
       $('.loading').find('.text').html(`${percent}% loading...`);
       if(loaded === total){
         isLoaded = true;
+        //暂时放在这里
+        isInitNet = true;
         // initData();
         complete();
       }
@@ -60,14 +63,17 @@ function init(userInfo){
 function initUI(){
   console.log('initUI');
   View.loading = new Loading('.loading');
+  View.homeTest = new HomeTest('.home');
+  Popup.popup = new PopupTest('.popup');
 }
 
 
 //加载完成
 function complete(){
-    // console.log('complete')
+
+    console.log('complete')
   if(isInitNet && isLoaded){
-    initData();
+    main();
   }
 }
 
@@ -75,6 +81,8 @@ function complete(){
 function main(){
   // console.log('initData')
   $('.main').show();
+  console.log($);
   View.loading.hide();
-
+  View.homeTest.show();
+  Popup.popup.show();
 }

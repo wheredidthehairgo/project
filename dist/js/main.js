@@ -46,140 +46,81 @@
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 	
-	global.BaseClass = __webpack_require__(1);
-	global.BasePopupClass = __webpack_require__(2);
-	global.Util = __webpack_require__(3);
+	global.Util = __webpack_require__(1);
+	global.BaseClass = __webpack_require__(2);
+	global.BasePopupClass = __webpack_require__(3);
 	global.ViewAdapt = __webpack_require__(4);
 	global.Config = __webpack_require__(5);
 	global.TipManager = __webpack_require__(6);
+	global.shareApi = __webpack_require__(7);
 	global.View = {};
 	global.Popup = {};
 	global.Data = {};
 	
-	var Loading = __webpack_require__(7);
+	var Loading = __webpack_require__(8);
 	
 	
-	var HomeTest = __webpack_require__(8);
-	var lastPage = __webpack_require__(9);
-	var Warning = __webpack_require__(10);
-	var PopupTest = __webpack_require__(11);
+	var HomeTest = __webpack_require__(9);
 	
-	function initUI() {
-	  View.loading = new Loading('.loading');
-	  View.home = new HomeTest('.start');
-	  View.lastPage = new lastPage('.last_page');
-	  View.warning = new Warning('.warning');
-	  Popup.popup = new PopupTest('.question');
-	  console.log('initUI');
-	  initData();
-	  changecolor();
-	}
+	var PopupTest = __webpack_require__(10);
 	
-	function initData() {
-	  console.log('initData');
+	var isLoaded = false;
+	
+	var isInitNet = false;
+	
+	$(function () {
+	  shareApi.auth(init);
+	});
+	
+	function init(userInfo) {
+	
+	  Config.userInfo = userInfo;
+	  shareApi.init();
+	  initUI();
+	  try {
+	    dataSDK.pushUserInfo(userInfo);
+	  } catch (e) {}
+	
 	  View.loading.preload(function (loaded, total) {
-	    if (loaded == total) {
-	      View.loading.hide();
-	      $('.main').show();
-	      View.home.show();
-	    } else {
-	      View.loading.show();
+	    var percent = Math.floor(loaded / total * 100);
+	    $('.loading').find('.bar').css({ width: percent + '%' });
+	    $('.loading').find('.text').html(percent + '% loading...');
+	    if (loaded === total) {
+	      isLoaded = true;
+	
+	      isInitNet = true;
+	
+	      complete();
 	    }
 	  });
+	}
 	
-	  global.data = [{ title: 1, describe: '1包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：', qa: '交通中心东直门，全年外来人口穿梭不断', qb: '交通中心东直门，全年外来人口穿梭不断', qc: '交通中心东直门，全年外来人口穿梭不断' }, { title: 2, describe: '2包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：', qa: '交通中心东直门，全年外来人口穿梭不断', qb: '交通中心东直门，全年外来人口穿梭不断', qc: '交通中心东直门，全年外来人口穿梭不断' }, { title: 3, describe: '3包子铺已进入稳定盈利期，做出一番事业的时机到了。英明如你，开始融资吧：', qa: '交通中心东直门，全年外来人口穿梭不断', qb: '交通中心东直门，全年外来人口穿梭不断', qc: '交通中心东直门，全年外来人口穿梭不断' }];
-	  global.num = 0;
+	function initUI() {
+	  console.log('initUI');
+	  View.loading = new Loading('.loading');
+	  View.homeTest = new HomeTest('.home');
+	  Popup.popup = new PopupTest('.popup');
 	}
-	function changecolor() {
-	  setInterval(function () {
-	    var color = parseInt(Math.random() * 4095).toString(16);
-	    $('.main').css("background-color", '#' + color);
-	  }, 5000);
+	
+	function complete() {
+	
+	  console.log('complete');
+	  if (isInitNet && isLoaded) {
+	    main();
+	  }
 	}
-	initUI();
+	
+	function main() {
+	  $('.main').show();
+	  console.log($);
+	  View.loading.hide();
+	  View.homeTest.show();
+	  Popup.popup.show();
+	}
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var BaseClass = function () {
-	  function BaseClass(str) {
-	    _classCallCheck(this, BaseClass);
-	
-	    this.$dom = $(str);
-	    this.$dom.hide();
-	    this.init();
-	  }
-	
-	  _createClass(BaseClass, [{
-	    key: "init",
-	    value: function init() {}
-	  }, {
-	    key: "show",
-	    value: function show() {
-	      this.$dom.show();
-	    }
-	  }, {
-	    key: "hide",
-	    value: function hide() {
-	      this.$dom.hide();
-	    }
-	  }]);
-	
-	  return BaseClass;
-	}();
-	
-	module.exports = BaseClass;
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var BasePopupClass = function (_BaseClass) {
-	  _inherits(BasePopupClass, _BaseClass);
-	
-	  function BasePopupClass(str) {
-	    _classCallCheck(this, BasePopupClass);
-	
-	    return _possibleConstructorReturn(this, (BasePopupClass.__proto__ || Object.getPrototypeOf(BasePopupClass)).call(this, str));
-	  }
-	
-	  _createClass(BasePopupClass, [{
-	    key: "show",
-	    value: function show() {
-	      this.$dom.fadeInUp();
-	    }
-	  }, {
-	    key: "hide",
-	    value: function hide() {
-	      this.$dom.hide();
-	    }
-	  }]);
-	
-	  return BasePopupClass;
-	}(BaseClass);
-	
-	module.exports = BasePopupClass;
-
-/***/ },
-/* 3 */
 /***/ function(module, exports) {
 
 	
@@ -204,15 +145,50 @@
 	  return "";
 	};
 	
+	exports.loadImg = function () {
+	  var resources = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var $onLoadComplete = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+	  var $onLoadProgress = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+	  var $onLoadTarget = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+	
+	  var total = resources.length,
+	      loaded = 0;
+	  resources.forEach(function (src) {
+	    var img = new Image();
+	    img.src = src;
+	    if (img.complete) {
+	      loaded++;
+	      if (loaded === total) {
+	        $onLoadComplete && $onLoadComplete();
+	      } else {
+	        $onLoadProgress && $onLoadProgress(loaded, total);
+	      }
+	    } else {
+	      img.onload = function () {
+	        loaded++;
+	        img.onload = null;
+	        if (loaded === total) {
+	          $onLoadComplete && $onLoadComplete();
+	        } else {
+	          $onLoadProgress && $onLoadProgress(loaded, total);
+	        }
+	      };
+	    }
+	    if (!total) {
+	      $onLoadComplete && $onLoadComplete();
+	    }
+	  });
+	};
+	
 	exports.setPhoto = function ($wrap, $photo, url) {
 	  var ratio = parseInt($wrap.width() / $wrap.height() * 100);
 	  $photo[0].onload = function () {
 	    $photo.css({ width: 'auto', height: 'auto' });
 	    var ratioPhoto = parseInt($photo.width() / $photo.height() * 100);
 	    if (ratioPhoto === 100 || ratioPhoto > ratio) {
-	      $photo.css({ width: '90%', height: 'auto' });
+	      $photo.css({ width: '100%', height: 'auto' });
 	    } else {
-	      $photo.css({ width: 'auto', height: '90%' });
+	      $photo.css({ width: 'auto', height: '100%' });
 	    }
 	  };
 	  $photo.attr({ src: url });
@@ -242,56 +218,137 @@
 	}
 	
 	$(function () {
-	  $.fn.animateCss = function (animationName, cb) {
-	    var _this = this;
+	  $.fn.extend({
+	    animateCss: function animateCss(animationName, cb) {
+	      var _this = this;
 	
-	    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-	    this.addClass('animated ' + animationName).one(animationEnd, function () {
-	      _this.removeClass('animated ' + animationName);
-	      if (cb) cb();
-	    });
-	    return this;
-	  };
+	      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	      this.addClass('animated ' + animationName).one(animationEnd, function () {
+	        _this.removeClass('animated ' + animationName);
+	        if (cb) cb();
+	      });
+	      return this;
+	    },
+	    fadeIn: function fadeIn() {
+	      this.show();
+	      this.animateCss('fadeIn');
+	    },
 	
-	  $.fn.fadeIn = function () {
-	    this.show();
-	    this.animateCss('fadeIn');
-	  };
+	    fadeOut: function fadeOut() {
+	      var _this2 = this;
 	
-	  $.fn.fadeOut = function () {
-	    var _this2 = this;
+	      this.animateCss('fadeOut', function () {
+	        _this2.hide();
+	      });
+	    },
+	    fadeInUp: function fadeInUp() {
+	      this.show();
+	      this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
+	    },
+	    fadeOutDown: function fadeOutDown(cb) {
+	      var _this3 = this;
 	
-	    this.animateCss('fadeOut', function () {
-	      _this2.hide();
-	    });
-	  };
-	  $.fn.fadeInUp = function () {
-	    this.show();
-	    this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
-	  };
+	      this.find('.mask').animateCss('fadeOut').next().animateCss('fadeOutDownBig', function () {
+	        _this3.hide();
+	        if (cb) cb();
+	      });
+	    },
+	    showInfo: function showInfo() {
+	      this.show().animateCss('fadeInDown');
+	    },
+	    hideInfo: function hideInfo() {
+	      var _this4 = this;
 	
-	  $.fn.fadeOutDown = function (cb) {
-	    var _this3 = this;
-	
-	    this.find('.mask').animateCss('fadeOut').next().animateCss('fadeOutDownBig', function () {
-	      _this3.hide();
-	      if (cb) cb();
-	    });
-	  };
-	
-	  $.fn.showInfo = function () {
-	    this.show().animateCss('fadeInUp');
-	  };
-	
-	  $.fn.hideInfo = function () {
-	    var _this4 = this;
-	
-	    this.animateCss('fadeOutUp', function () {
-	      _this4.html('');
-	      _this4.hide();
-	    });
-	  };
+	      this.animateCss('fadeOutUp', function () {
+	        _this4.html('');
+	        _this4.hide();
+	      });
+	    }
+	  });
 	});
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var BaseClass = function () {
+	  function BaseClass(str) {
+	    _classCallCheck(this, BaseClass);
+	
+	    this.$dom = $(str);
+	    this.$dom.hide();
+	    this.init();
+	    this.isShow = false;
+	  }
+	
+	  _createClass(BaseClass, [{
+	    key: 'init',
+	    value: function init() {}
+	  }, {
+	    key: 'show',
+	    value: function show() {
+	      this.$dom.show();
+	      $('body').scrollTop(0);
+	      this.isShow = true;
+	    }
+	  }, {
+	    key: 'hide',
+	    value: function hide() {
+	      this.$dom.hide();
+	      this.isShow = false;
+	    }
+	  }]);
+	
+	  return BaseClass;
+	}();
+	
+	module.exports = BaseClass;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var BasePopupClass = function (_BaseClass) {
+	  _inherits(BasePopupClass, _BaseClass);
+	
+	  function BasePopupClass(str) {
+	    _classCallCheck(this, BasePopupClass);
+	
+	    return _possibleConstructorReturn(this, (BasePopupClass.__proto__ || Object.getPrototypeOf(BasePopupClass)).call(this, str));
+	  }
+	
+	  _createClass(BasePopupClass, [{
+	    key: "show",
+	    value: function show() {
+	      this.$dom.fadeInUp();
+	    }
+	  }, {
+	    key: "hide",
+	    value: function hide() {
+	      this.$dom.fadeOutDown();
+	    }
+	  }]);
+	
+	  return BasePopupClass;
+	}(BaseClass);
+	
+	module.exports = BasePopupClass;
 
 /***/ },
 /* 4 */
@@ -302,7 +359,6 @@
 	var initW = 640;
 	var initH = 1008;
 	var ratio = initW / initH;
-	var needRatio = 284 / 427;
 	var arr = [];
 	exports.push = function (str, needRatio) {
 	  arr.push([str, needRatio]);
@@ -335,25 +391,32 @@
 	
 	'use strict';
 	
+	var pre = 'gd';
 	module.exports = {
-	  debug: false,
-	  storageName: 'libai_userInfo_version_3_11',
-	  userInfo: {
-	    openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
+	  debug: true,
+	  id: null,
+	  super_name: pre,
+	  appid: 'wx26be12d215d3d8cb',
+	  storageName: 'libai_userInfo_version_322_s11',
 	
+	  userInfo: {
+	    openid: 'test23222522222',
 	    nickname: 'AA朱伟杰',
 	    sex: '1',
 	    province: '广东',
 	    city: '广州',
 	    country: '中国',
 	    headimgurl: 'http://wx.qlogo.cn/mmopen/Xmnun9Io49TNwrKPL4SnYq7p5QkMaztSrxxJHWC3twTdYX7Ur39KeiczZeEUBUB3dwIcd49Xpe7w3sSxTXI0aCQ/0',
-	    subscribe: 1
+	    subscribe: 0
 	  },
-	  drawnInfo: {},
-	  host: 'http://100jc.net/fourticket/public/fourCard',
-	  server: 'http://100jc.net/fourticket',
 	
-	  qiniu: 'http://up.qiniu.com'
+	  host: 'http://100jc.net/goddess/public/h5_' + pre,
+	
+	  server: 'http://100jc.net/goddess/' + pre,
+	
+	  qiniu: 'http://up.qiniu.com',
+	
+	  shareUrl: 'http://toupiao.91iot.net/'
 	};
 
 /***/ },
@@ -406,6 +469,16 @@
 	      _loading.find('.progress-bar').css({ width: '0%' });
 	    }
 	  }, {
+	    key: 'netLoadingShow',
+	    value: function netLoadingShow() {
+	      $('.net-loading').show();
+	    }
+	  }, {
+	    key: 'netLoadingHide',
+	    value: function netLoadingHide() {
+	      $('.net-loading').hide();
+	    }
+	  }, {
 	    key: 'loadingHide',
 	    value: function loadingHide() {
 	      _loading.hide();
@@ -420,6 +493,16 @@
 	    value: function uploadedHide() {
 	      uploaded.fadeOut();
 	    }
+	  }, {
+	    key: 'loadImgShow',
+	    value: function loadImgShow(arr, fn) {
+	      $('.loading-img').show();
+	    }
+	  }, {
+	    key: 'loadImgHide',
+	    value: function loadImgHide() {
+	      $('.loading-img').hide();
+	    }
 	  }]);
 	
 	  return TipManager;
@@ -431,9 +514,85 @@
 /* 7 */
 /***/ function(module, exports) {
 
+	'use strict';
+	
+	var wechat = new Wechat(Config.appid);
+	var TITLE = '寻找佛山最美女神';
+	var DESC = '唯有美丽与立白壕礼不可辜负';
+	var IMGURL = Config.host + ('/resources/img/icon_' + Config.super_name + '.jpg');
+	var LINK = Config.shareUrl + '?url=' + encodeURIComponent(dataSDK.dealUrl(wechat.filter(['code', 'id'], { share: 'share' })));
+	
+	exports.init = function () {
+	  wechat.config();
+	  exports.share();
+	};
+	
+	exports.share = function () {
+	  var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : TITLE;
+	  var desc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DESC;
+	  var link = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : LINK;
+	  var imgUrl = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : IMGURL;
+	
+	  wechat.shareFriend({
+	    appmessageTitle: title,
+	    appmessageDesc: desc,
+	    link: link,
+	    imgUrl: imgUrl
+	  }, function () {
+	    try {
+	      dataSDK.share('friend');
+	    } catch (e) {}
+	  });
+	  wechat.shareTimeline({
+	    timelineTitle: title,
+	    link: link,
+	    imgUrl: imgUrl
+	  }, function () {
+	    try {
+	      dataSDK.share('timeline');
+	    } catch (e) {}
+	  });
+	};
+	
+	exports.auth = function (cb) {
+	  if (Config.debug) {
+	    cb(Config.userInfo);
+	  } else if (window.localStorage.getItem(Config.storageName)) {
+	    var _userInfo = JSON.parse(window.localStorage.getItem(Config.storageName));
+	
+	    wechat.getSubscribe(_userInfo.openid, function (err, res) {
+	      if (err) return alert(err);
+	      _userInfo.subscribe = res.subscribe;
+	      window.localStorage.setItem(Config.storageName, JSON.stringify(_userInfo));
+	      cb(_userInfo);
+	    });
+	  } else if (wechat.getQuery('code')) {
+	    wechat.ready(function () {
+	      wechat.getUserInfo(function (err, res) {
+	        if (err) return wechat.goAuth('snsapi_userinfo', 'STATE', wechat.filter());
+	        console.log(res);
+	        wechat.getSubscribe(res.openid, function (err, res2) {
+	          if (err) return alert(err);
+	          res.subscribe = res2.subscribe;
+	          window.localStorage.setItem(Config.storageName, JSON.stringify(res));
+	          cb(res);
+	        });
+	      });
+	    });
+	  } else {
+	    wechat.goAuth('snsapi_userinfo', 'STATE', wechat.filter());
+	  }
+	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
 	"use strict";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -447,7 +606,10 @@
 	  function Loading(str) {
 	    _classCallCheck(this, Loading);
 	
-	    return _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).call(this, str));
+	    var _this = _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).call(this, str));
+	
+	    _this.show();
+	    return _this;
 	  }
 	
 	  _createClass(Loading, [{
@@ -475,12 +637,7 @@
 	  }, {
 	    key: "hide",
 	    value: function hide() {
-	      this.$dom.hide();
-	    }
-	  }, {
-	    key: "show",
-	    value: function show() {
-	      this.$dom.show();
+	      _get(Loading.prototype.__proto__ || Object.getPrototypeOf(Loading.prototype), "hide", this).call(this);
 	    }
 	  }]);
 	
@@ -490,7 +647,7 @@
 	module.exports = Loading;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -532,96 +689,7 @@
 	module.exports = HomeTest;
 
 /***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var lastPage = function (_BaseClass) {
-	  _inherits(lastPage, _BaseClass);
-	
-	  function lastPage(str) {
-	    _classCallCheck(this, lastPage);
-	
-	    return _possibleConstructorReturn(this, (lastPage.__proto__ || Object.getPrototypeOf(lastPage)).call(this, str));
-	  }
-	
-	  _createClass(lastPage, [{
-	    key: 'init',
-	    value: function init() {
-	      _get(lastPage.prototype.__proto__ || Object.getPrototypeOf(lastPage.prototype), 'init', this).call(this);
-	      var self = this;
-	      this.$dom.find('.restart_btn').on('tap', function () {
-	        View.home.show();
-	        self.hide();
-	      });
-	
-	      this.$dom.find('.buy_btn').on('tap', function () {
-	        View.warning.show();
-	        self.hide();
-	      });
-	    }
-	  }]);
-	
-	  return lastPage;
-	}(BaseClass);
-	
-	module.exports = lastPage;
-
-/***/ },
 /* 10 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var lastPage = function (_BaseClass) {
-	  _inherits(lastPage, _BaseClass);
-	
-	  function lastPage(str) {
-	    _classCallCheck(this, lastPage);
-	
-	    return _possibleConstructorReturn(this, (lastPage.__proto__ || Object.getPrototypeOf(lastPage)).call(this, str));
-	  }
-	
-	  _createClass(lastPage, [{
-	    key: 'init',
-	    value: function init() {
-	      _get(lastPage.prototype.__proto__ || Object.getPrototypeOf(lastPage.prototype), 'init', this).call(this);
-	      var self = this;
-	      this.$dom.find('.describe').on('tap', function () {
-	        View.home.show();
-	        self.hide();
-	      });
-	    }
-	  }]);
-	
-	  return lastPage;
-	}(BaseClass);
-	
-	module.exports = lastPage;
-
-/***/ },
-/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -642,69 +710,18 @@
 	  function PopupTest(str) {
 	    _classCallCheck(this, PopupTest);
 	
-	    var _this = _possibleConstructorReturn(this, (PopupTest.__proto__ || Object.getPrototypeOf(PopupTest)).call(this, str));
-	
-	    _this.$dom.find('.describe').on('click', function () {
-	      num = parseInt(_this.$dom.attr("number"));
-	      var text = 1200;
-	      _this.show_money('+' + text);
-	      var total = _this.$dom.find('.total').html();
-	      console.log(total);
-	      _this.$dom.find('.total').html(parseInt(total) + parseInt(text));
-	      if (num < 3) {
-	        num++;
-	
-	        _this.question(num);
-	        return;
-	      }
-	      return;
-	    });
-	    return _this;
+	    return _possibleConstructorReturn(this, (PopupTest.__proto__ || Object.getPrototypeOf(PopupTest)).call(this, str));
 	  }
 	
 	  _createClass(PopupTest, [{
-	    key: 'last_choose',
-	    value: function last_choose() {
-	      var _this2 = this;
-	
-	      this.$dom.find(".q_last").on('click', function () {
-	
-	        _this2.hide();
-	        View.lastPage.show();
-	      });
-	    }
-	  }, {
-	    key: 'show_money',
-	    value: function show_money(text) {
-	      var $dom = $('<div class="add_money">' + text + '</div>');
-	      this.$dom.append($dom);
-	      $dom.showInfo();
-	      setTimeout(function () {
-	        $dom.hideInfo();
-	      }, 1000);
-	    }
-	  }, {
-	    key: 'question',
-	    value: function question(title) {
-	      if (title == 3) {
-	        this.$dom.find('.describe').attr("class", "q_last");
-	        this.last_choose();
-	      }
-	      this.hide();
-	      var message = '${message}' + '<p>第' + '${title}' + '题</p>';
-	      var temp = message.replace('${message}', data[title - 1].describe).replace('${title}', data[title - 1].title);
-	      this.$dom.find('.message').html(temp);
-	      this.$dom.find('.choose_text_a').html(data[title - 1].qa);
-	      this.$dom.find('.choose_text_b').html(data[title - 1].qb);
-	      this.$dom.find('.choose_text_c').html(data[title - 1].qc);
-	
-	      this.$dom.attr("number", num);
-	      this.show();
-	    }
-	  }, {
 	    key: 'init',
 	    value: function init() {
+	      var _this2 = this;
+	
 	      _get(PopupTest.prototype.__proto__ || Object.getPrototypeOf(PopupTest.prototype), 'init', this).call(this);
+	      this.$dom.find('.box').on('tap', function () {
+	        _this2.hide();
+	      });
 	    }
 	  }]);
 	
