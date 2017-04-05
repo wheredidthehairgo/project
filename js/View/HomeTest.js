@@ -6,8 +6,8 @@ class HomeTest extends BaseClass{
 
   init(){
     super.init();
-    let self = this;
-    this.$dom.find('.start_btn').on('tap',()=>{
+    const self = this;
+    this.$dom.find('.start_btn').on('tap', () => {
       Popup.popup.show();
       self.hide();
     });

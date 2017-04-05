@@ -1,90 +1,80 @@
-global.Util = require('./libs/Util');
-global.BaseClass = require('./libs/BaseClass');
-global.BasePopupClass = require('./libs/BasePopupClass');
-global.ViewAdapt = require('./libs/ViewAdapt');
-global.Config = require('./Config');
-global.TipManager = require('./libs/TipManager');
-global.shareApi = require('./libs/ShareApi');
-global.View = {};
-global.Popup = {};
-global.Data = {};
+ global.Util = require('./libs/Util');
+ global.BaseClass = require('./libs/BaseClass');
+ global.BasePopupClass = require('./libs/BasePopupClass');
+ global.ViewAdapt = require('./libs/ViewAdapt');
+ global.Config = require('./Config');
+ global.TipManager = require('./libs/TipManager');
+ global.shareApi = require('./libs/ShareApi');
+ global.View = {};
+ global.Popup = {};
+ global.Data = {};
 
-const Loading = require('./libs/Loading');
-//示例对象
-View.loading = new Loading();
+ const Loading = require('./libs/Loading');
+// 示例对象
+ global.View.loading = new Loading();
 
-const HomeTest = require('./View/HomeTest');
+ const HomeTest = require('./View/HomeTest');
 
 
-
-const PopupTest = require('./Popup/PopupTest');
+ const PopupTest = require('./Popup/PopupTest');
 
 
 // 加载
-let isLoaded = false;
-//网络加载
-let isInitNet = false;
+ let isLoaded = false;
+// 网络加载
+ let isInitNet = false;
 
-//主要是加载js的loading
-View.loading.preLoadingJS(function(){
-  //微信授权
-  shareApi.auth(init);
-})
+// 主要是加载js的loading
+ global.View.loading.preLoadingJS(function () {
+  // 微信授权
+   global.shareApi.auth(init);
+ });
 
 
-//初始化,入口
-function init(userInfo){
+// 初始化,入口
+ function init(userInfo) {
 
-  Config.userInfo = userInfo;
-  shareApi.init();
-  initUI();
-    try {
-      dataSDK.pushUserInfo(userInfo)
-    } catch (e) {
+   Config.userInfo = userInfo;
+   global.shareApi.init();
+   initUI();
+   try {
+     dataSDK.pushUserInfo(userInfo);
+   } catch (e) {}
 
-    }
-    //增加投票者
-    // $.post(`${Config.server}/god_voter/`,Config.userInfo,({data,code})=>{})
-    View.loading.preload((loaded, total)=>{
-      let percent =  Math.floor( loaded/total *100);
-      $('.loading').find('.bar').css({width: percent+'%'});
-      $('.loading').find('.text').html(`${percent}% loading...`);
-      if(loaded === total){
-        isLoaded = true;
-        //暂时放在这里
-        isInitNet = true;
+   global.View.loading.preload((loaded, total) => {
+     const percent = Math.floor(loaded / total * 100);
+     $('.loading').find('.bar').css({ width: percent + '%' });
+     $('.loading').find('.text').html(`${ percent }% loading...`);
+     if (loaded === total) {
+       isLoaded = true;
+        // 暂时放在这里
+       isInitNet = true;
         // initData();
-        complete();
-      }
-    })
-}
+       complete();
+     }
+   });
+ }
 
-//初始化UI
-function initUI(){
-  console.log('initUI');
-  View.homeTest = new HomeTest('.home');
-  Popup.popup = new PopupTest('.popup');
-}
+// 初始化UI
+ function initUI() {
+   console.log('initUI');
+   global.View.homeTest = new HomeTest('.home');
+   global.Popup.popup = new PopupTest('.popup');
+ }
 
 
-//加载完成
-function complete(){
+// 加载完成
+ function complete() {
+   console.log('complete');
+   if (isInitNet && isLoaded) {
+     main();
+   }
+ }
 
-    console.log('complete')
-  if(isInitNet && isLoaded){
-    setTimeout(function(){
-        main();
-    },2000)
-
-  }
-}
-
-//初始化数据
-function main(){
-  $('.main').show();
-  View.loading.hide();
-  View.homeTest.show();
-  Popup.popup.show();
-}
-
-// $()
+// 初始化数据
+ function main() {
+   $('.main').show();
+   global.View.loading.hide();
+   global.View.homeTest.show();
+   global.Popup.popup.show();
+ }

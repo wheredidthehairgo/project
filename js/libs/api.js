@@ -1,10 +1,10 @@
-let debug = true;
+// const debug = true;
 
 exports.add = function (option){
-  option.success = option.success || function(){};
-  if(debug){
-
-  }else{
-    $.ajax(option);
-  }
-}
+  option.success = option.success || function (){};
+  // if(debug){
+  //
+  // }else{
+  //   $.ajax(option);
+  // }
+};

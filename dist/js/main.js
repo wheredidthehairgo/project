@@ -59,7 +59,7 @@
 	
 	var Loading = __webpack_require__(8);
 	
-	View.loading = new Loading();
+	global.View.loading = new Loading();
 	
 	var HomeTest = __webpack_require__(9);
 	
@@ -69,20 +69,20 @@
 	
 	var isInitNet = false;
 	
-	View.loading.preLoadingJS(function () {
-	  shareApi.auth(init);
+	global.View.loading.preLoadingJS(function () {
+	  global.shareApi.auth(init);
 	});
 	
 	function init(userInfo) {
 	
 	  Config.userInfo = userInfo;
-	  shareApi.init();
+	  global.shareApi.init();
 	  initUI();
 	  try {
 	    dataSDK.pushUserInfo(userInfo);
 	  } catch (e) {}
 	
-	  View.loading.preload(function (loaded, total) {
+	  global.View.loading.preload(function (loaded, total) {
 	    var percent = Math.floor(loaded / total * 100);
 	    $('.loading').find('.bar').css({ width: percent + '%' });
 	    $('.loading').find('.text').html(percent + '% loading...');
@@ -98,25 +98,22 @@
 	
 	function initUI() {
 	  console.log('initUI');
-	  View.homeTest = new HomeTest('.home');
-	  Popup.popup = new PopupTest('.popup');
+	  global.View.homeTest = new HomeTest('.home');
+	  global.Popup.popup = new PopupTest('.popup');
 	}
 	
 	function complete() {
-	
 	  console.log('complete');
 	  if (isInitNet && isLoaded) {
-	    setTimeout(function () {
-	      main();
-	    }, 2000);
+	    main();
 	  }
 	}
 	
 	function main() {
 	  $('.main').show();
-	  View.loading.hide();
-	  View.homeTest.show();
-	  Popup.popup.show();
+	  global.View.loading.hide();
+	  global.View.homeTest.show();
+	  global.Popup.popup.show();
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
@@ -137,15 +134,19 @@
 	};
 	
 	exports.getOption = function (key) {
-	  var search = location.search;
-	  if (search == "") return "";
+	  var search = window.location.search;
+	  if (search === '') {
+	    return '';
+	  }
 	  search = search.slice(1);
 	  var searchArr = search.split('&');
 	  for (var i = 0; i < searchArr.length; i++) {
 	    var arr = searchArr[i].split('=');
-	    if (arr[0] == key) return arr[1];
+	    if (arr[0] === key) {
+	      return arr[1];
+	    }
 	  }
-	  return "";
+	  return '';
 	};
 	
 	exports.loadImg = function () {
@@ -154,22 +155,22 @@
 	  var $onLoadProgress = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 	  var $onLoadTarget = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 	
-	  var total = resources.length,
-	      loaded = 0;
+	  var total = resources.length;
+	  var loaded = 0;
 	  if (total === 0) {
 	    $onLoadComplete && $onLoadComplete.call($onLoadTarget);
 	    return;
 	  }
 	  $.each(resources, function (index, src) {
 	    var img = null;
-	    if ((typeof src === "undefined" ? "undefined" : _typeof(src)) === "object") {
+	    if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === 'object') {
 	      img = src;
 	    } else {
-	      img = new Image();
+	      img = new window.Image();
 	      img.src = src;
 	    }
 	    if (img.complete) {
-	      loaded++;
+	      loaded += 1;
 	      if (loaded === total) {
 	        $onLoadComplete && $onLoadComplete.call($onLoadTarget);
 	      } else {
@@ -177,7 +178,7 @@
 	      }
 	    } else {
 	      img.onload = function () {
-	        loaded++;
+	        loaded += 1;
 	        img.onload = null;
 	        if (loaded === total) {
 	          $onLoadComplete && $onLoadComplete.call($onLoadTarget);
@@ -193,10 +194,10 @@
 	};
 	
 	exports.setPhoto = function ($wrap, $photo, url) {
-	  var ratio = parseInt($wrap.width() / $wrap.height() * 100);
+	  var ratio = parseInt($wrap.width() / $wrap.height() * 100, 10);
 	  $photo[0].onload = function () {
 	    $photo.css({ width: 'auto', height: 'auto' });
-	    var ratioPhoto = parseInt($photo.width() / $photo.height() * 100);
+	    var ratioPhoto = parseInt($photo.width() / $photo.height() * 100, 10);
 	    if (ratioPhoto === 100 || ratioPhoto > ratio) {
 	      $photo.css({ width: '100%', height: 'auto' });
 	    } else {
@@ -206,77 +207,76 @@
 	  $photo.attr({ src: url });
 	};
 	
-	if (typeof Object.assign != 'function') {
+	if (typeof Object.assign !== 'function') {
 	  Object.assign = function (target) {
-	    'use strict';
-	
 	    if (target == null) {
 	      throw new TypeError('Cannot convert undefined or null to object');
 	    }
 	
-	    target = Object(target);
+	    var target2 = Object(target);
 	    for (var index = 1; index < arguments.length; index++) {
 	      var source = arguments[index];
 	      if (source != null) {
 	        for (var key in source) {
 	          if (Object.prototype.hasOwnProperty.call(source, key)) {
-	            target[key] = source[key];
+	            target2[key] = source[key];
 	          }
 	        }
 	      }
 	    }
-	    return target;
+	    return target2;
 	  };
 	}
 	
-	$(function () {
-	  $.fn.extend({
-	    animateCss: function animateCss(animationName, cb) {
-	      var _this = this;
+	$.fn.extend({
+	  animateCss: function animateCss(animationName, cb) {
+	    var _this = this;
 	
-	      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-	      this.addClass('animated ' + animationName).one(animationEnd, function () {
-	        _this.removeClass('animated ' + animationName);
-	        if (cb) cb();
-	      });
-	      return this;
-	    },
-	    fadeIn: function fadeIn() {
-	      this.show();
-	      this.animateCss('fadeIn');
-	    },
+	    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	    this.addClass('animated ' + animationName).one(animationEnd, function () {
+	      _this.removeClass('animated ' + animationName);
+	      if (cb) {
+	        cb();
+	      }
+	    });
+	    return this;
+	  },
+	  fadeIn: function fadeIn() {
+	    this.show();
+	    this.animateCss('fadeIn');
+	  },
+	  fadeOut: function fadeOut() {
+	    var _this2 = this;
 	
-	    fadeOut: function fadeOut() {
-	      var _this2 = this;
+	    this.animateCss('fadeOut', function () {
+	      _this2.hide();
+	    });
+	  },
+	  fadeInUp: function fadeInUp() {
+	    this.show();
+	    this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
+	  },
+	  fadeOutDown: function fadeOutDown(cb) {
+	    var _this3 = this;
 	
-	      this.animateCss('fadeOut', function () {
-	        _this2.hide();
-	      });
-	    },
-	    fadeInUp: function fadeInUp() {
-	      this.show();
-	      this.find('.mask').animateCss('fadeIn').next().animateCss('fadeInUpBig');
-	    },
-	    fadeOutDown: function fadeOutDown(cb) {
-	      var _this3 = this;
+	    this.find('.mask').animateCss('fadeOut').next().animateCss('fadeOutDownBig', function () {
+	      _this3.hide();
+	      if (cb) {
+	        cb();
+	      }
+	    });
+	  },
+	  showInfo: function showInfo() {
+	    this.show().animateCss('fadeInDown');
+	  },
+	  hideInfo: function hideInfo() {
+	    var _this4 = this;
 	
-	      this.find('.mask').animateCss('fadeOut').next().animateCss('fadeOutDownBig', function () {
-	        _this3.hide();
-	        if (cb) cb();
-	      });
-	    },
-	    showInfo: function showInfo() {
-	      this.show().animateCss('fadeInDown');
-	    },
-	    hideInfo: function hideInfo() {
-	      var _this4 = this;
-	
-	      this.animateCss('fadeOutUp', function () {
-	        _this4.html('');
-	        _this4.hide();
-	      });
-	    }
-	  });
+	    this.animateCss('fadeOutUp', function () {
+	      _this4.html('');
+	      _this4.hide();
+	    });
+	  }
 	});
 
 /***/ },
@@ -366,12 +366,10 @@
 /* 4 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
-	var initW = 640;
-	var initH = 1008;
-	var ratio = initW / initH;
 	var arr = [];
+	
 	exports.push = function (str, needRatio) {
 	  arr.push([str, needRatio]);
 	  resize();
@@ -387,7 +385,7 @@
 	      var w = item[1] * wH;
 	      var marginL = (wW - w) / 2;
 	      $(item[0]).width(w);
-	      $(item[0]).css({ "marginLeft": marginL });
+	      $(item[0]).css({ 'marginLeft': marginL });
 	    }
 	  });
 	}
@@ -470,14 +468,17 @@
 	    }
 	  }, {
 	    key: 'loading',
-	    value: function loading(percent, text) {
+	    value: function loading() {
+	      var percent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+	      var text = arguments[1];
+	
 	      _loading.find('.progress-bar').css({ width: percent + '%' });
 	      _loading.find('.text').html(text);
 	    }
 	  }, {
 	    key: 'loadingShow',
 	    value: function loadingShow() {
-	      _loading.fadeIn();
+	      _loading.show();
 	      _loading.find('.progress-bar').css({ width: '0%' });
 	    }
 	  }, {
@@ -507,7 +508,7 @@
 	    }
 	  }, {
 	    key: 'loadImgShow',
-	    value: function loadImgShow(arr, fn) {
+	    value: function loadImgShow() {
 	      $('.loading-img').show();
 	    }
 	  }, {
@@ -575,13 +576,15 @@
 	};
 	
 	exports.auth = function (cb) {
-	  if (Config.debug) {
+	  if (Config.debug && Util.getOption('debug')) {
 	    cb(Config.userInfo);
 	  } else if (window.localStorage.getItem(Config.storageName)) {
 	    var _userInfo = JSON.parse(window.localStorage.getItem(Config.storageName));
 	
 	    wechat.getSubscribe(_userInfo.openid, function (err, res) {
-	      if (err) return alert(err);
+	      if (err) {
+	        return alert(err);
+	      }
 	      _userInfo.subscribe = res.subscribe;
 	      window.localStorage.setItem(Config.storageName, JSON.stringify(_userInfo));
 	      cb(_userInfo);
@@ -589,10 +592,14 @@
 	  } else if (wechat.getQuery('code')) {
 	    wechat.ready(function () {
 	      wechat.getUserInfo(function (err, res) {
-	        if (err) return wechat.goAuth('snsapi_userinfo', 'STATE', wechat.filter());
+	        if (err) {
+	          return wechat.goAuth('snsapi_userinfo', 'STATE', wechat.filter());
+	        }
 	        console.log(res);
 	        wechat.getSubscribe(res.openid, function (err, res2) {
-	          if (err) return alert(err);
+	          if (err) {
+	            return alert(err);
+	          }
 	          res.subscribe = res2.subscribe;
 	          window.localStorage.setItem(Config.storageName, JSON.stringify(res));
 	          cb(res);
@@ -652,7 +659,7 @@
 	    key: 'preload',
 	    value: function preload(cb) {
 	      $('.loading-img').show();
-	      Util.loadImg($('img'), null, cb(), null);
+	      Util.loadImg($('img'), null, cb, null);
 	    }
 	  }, {
 	    key: 'hide',

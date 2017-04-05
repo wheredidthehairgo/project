@@ -8,17 +8,16 @@ class Ercode extends BasePopupClass{
   init(){
     super.init();
     this.callBack = null;
-    this.$dom.find('.btn').on('tap',()=>{
+    this.$dom.find('.btn').on('tap', () => {
       this.hide();
       this.callBack && this.callBack();
-      try {dataSDK.btnClick(`btn-submit`, '确认');} catch (e) {  }
-    })
+      try { dataSDK.btnClick(`btn-submit`, '确认'); } catch (e) { }
+    });
   }
 
-  show(type,fn){
+  show(){
     super.show();
   }
-
 
 
 }

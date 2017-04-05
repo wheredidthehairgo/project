@@ -1,13 +1,19 @@
 {
   "name": "baseProject",
   "version": "1.0.0",
-  "description": "",
-  "main": "gulpfile.js",
+  "description": "this is a html5 framework",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
   "keywords": [],
-  "author": "",
+  "author": "xyz",
   "license": "ISC",
   "dependencies": {
     "anime": "^0.1.2",
@@ -18,12 +24,16 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.1.7",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-tap": "^0.1.3",
+    "gulp-uglify": "^2.1.2",
     "gulp-webpack": "^1.5.0",
     "http-proxy-middleware": "^0.17.3",
     "jquery": "^3.1.1",
@@ -32,6 +42,9 @@
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.15.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "eslint": "^3.9.1",
+    "eslint-config-lei": "0.0.14",
+    "eslint-plugin-promise": "^3.3.0"
   }
 }

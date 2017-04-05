@@ -1,37 +1,36 @@
 
 let _instance;
-let loading = $('.tip.uploading');
-let uploaded = $('.tip.uploaded');
+const loading = $('.tip.uploading');
+const uploaded = $('.tip.uploaded');
 class TipManager{
   static getInstance(){
     if(!_instance){
-      _instance=new TipManager();
+      _instance = new TipManager();
     }
     return _instance;
   }
-
-
-  //文本提示
+  // 文本提示
   static show(text){
-    const $dom = $(`<div class="info">${text}</div>`);
-      $('.main').append($dom);
-      $dom.showInfo();
-      setTimeout(function () {
-        $dom.hideInfo();
-      }, 2500);
+    const $dom = $(`<div class="info">${ text }</div>`);
+    $('.main').append($dom);
+    $dom.showInfo();
+    setTimeout(function () {
+      $dom.hideInfo();
+    }, 2500);
   }
 
   //
-  static loading(percent,text){
-    loading.find('.progress-bar').css({width: percent + '%'});
+  static loading(percent = 0, text){
+    loading.find('.progress-bar').css({ width: percent + '%' });
     loading.find('.text').html(text);
   }
+
   static loadingShow(){
-    loading.fadeIn();
-    loading.find('.progress-bar').css({width: '0%'});
-    // loading.fadeInUp();
+    loading.show();
+    loading.find('.progress-bar').css({ width: '0%' });
   }
 
+  // 网络提示
   static netLoadingShow(){
     $('.net-loading').show();
   }
@@ -50,9 +49,9 @@ class TipManager{
   static uploadedHide(){
     uploaded.fadeOut();
   }
-  
+
   // 等待图片加载完毕
-  static loadImgShow(arr,fn){
+  static loadImgShow(){
     $('.loading-img').show();
 
   }

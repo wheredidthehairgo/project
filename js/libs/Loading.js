@@ -12,31 +12,36 @@ class Loading {
 
   /**
    * 预加载js或者图片
+   * @param {Function} cb 回调
    */
   preLoadingJS(cb){
-    let onload = false,loadImg = false;
-    window.onload = function(){
-        onload = true;
-        callBack();
+    let onload = false,
+      loadImg = false;
+    window.onload = function (){
+      onload = true;
+      callBack();
     };
-    Util.loadImg([],()=>{
+    Util.loadImg([], () => {
       loadImg = true;
       callBack();
-    },null,null);
+    }, null, null);
     function callBack(){
       if(onload && loadImg){
-          $('.pre-loading-js').hide();
+        $('.pre-loading-js').hide();
         cb();
       }
     }
   }
-  //加载完成
+
   /**
+   *
+   * 加载完成
    * 第二次加载，主要加载资源
+   * @param {Function} cb 回调函数
    */
   preload(cb) {
     $('.loading-img').show();
-    Util.loadImg($('img'),null,cb,null)
+    Util.loadImg($('img'), null, cb, null);
   }
 
   hide(){
@@ -44,7 +49,7 @@ class Loading {
   }
 
 
-  //网络加载页面
+  // 网络加载页面
   netLoadingShow(){
     $('.loading-net').show();
   }

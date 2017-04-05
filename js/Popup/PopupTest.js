@@ -7,11 +7,10 @@ class PopupTest extends BasePopupClass{
 
   init(){
     super.init();
-    this.$dom.find('.box').on('tap',()=>{
+    this.$dom.find('.box').on('tap', () => {
       this.hide();
-    })
+    });
   }
-
 
 
 }
