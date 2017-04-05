@@ -530,9 +530,9 @@
 	'use strict';
 	
 	var wechat = new Wechat(Config.appid);
-	var TITLE = '寻找佛山最美女神';
-	var DESC = '唯有美丽与立白壕礼不可辜负';
-	var IMGURL = Config.host + ('/resources/img/icon_' + Config.super_name + '.jpg');
+	var TITLE = '标题';
+	var DESC = '描述';
+	var IMGURL = Config.host + '/resources/img/icon.jpg';
 	var LINK = Config.shareUrl + '?url=' + encodeURIComponent(dealUrl(wechat.filter(['code', 'id'], { share: 'share' })));
 	
 	function dealUrl(url) {
