@@ -18,7 +18,7 @@ exports.getOption = function (key) {
   const searchArr = search.split('&');
   for (let i = 0 ; i < searchArr.length;i++) {
     const arr = searchArr[i].split('=');
-    if (arr[0] === key) { return arr[1]; }
+    if (arr[0] === key) {return arr[1]; }
   }
   return '';
 };

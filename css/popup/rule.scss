@@ -1,22 +1,32 @@
 .panel.rule{
   .title{
-    margin-bottom: 1em;
+    margin: .8em 0;
+    color: #84250e;
   }
+  
   .content-2{
-    margin-bottom: 2em;
+    margin: .2em 0;
     // font-size: .8rem;
     p{
-        color: #908c8c;
-        font-size: .7rem;
-        margin-bottom: .5em;
+        color: #3c3c3c;
+        font-size: .8rem;
+        font-weight: 600;
+        // margin-bottom: .5em;
         text-align: left;
         line-height: 1.5;
         .super-name{
           // color: #ff0000;
         }
+        > span{
+          margin-left: 6.6em;
+          &:nth-of-type(1){
+            margin: 0;
+          }
+        }
     }
   }
   .btn-submit{
-    margin-bottom: .5em;
+    margin-top: .5em; 
+    margin-bottom: 1.5em;
   }
 }

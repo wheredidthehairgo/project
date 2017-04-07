@@ -3,7 +3,6 @@
 <head>
   <!-- <base href="http://weijie.91iot.net/libai/ticketCard5/"> -->
   <meta charset="UTF-8">
-
   <meta name="author" content="广州兔展,dyyz1993@qq.com,http://www.rabbitpre.com/">
   <meta name="description" content="一只高效有力的H5制作团队">
   <!-- 关闭识别为手机号码 -->
@@ -14,18 +13,48 @@
 </head>
 <body>
 <div class="main">
-  <div class="home page">
-    <div class="container">
-      <img class="bg" src="resources/img/home_bg.png" alt="">
-      <img class="btn sure-btn" src="resources/img/btn_blessing.png" alt="">
-      <img class="btn sure2-btn" src="resources/img/btn_blessing.png" alt="">
+	<img class="bg" src="resources/img/home_bg.png" alt="">
+  <div class="home page" style="display: none">
+    <div class="main-container">
+			<img src="resources/img/main_bg.png" class="main-img" alt="">
+			<div></div>
+			<div class="main-rule">摇出三个相同图案即中奖！</div>
+			<div class="main-btn">
+				<div class="rule-btn"><img src="resources/img/rule_btn.png" class="bg" alt=""><span>规则</span></div>
+				<div class="play-btn"><img src="resources/img/play_btn.png" class="bg" alt=""></div>
+				<div class="share-btn"><img src="resources/img/share_btn.png" class="bg" alt=""><span>分享</span></div>
+			</div>
     </div>
+		<div class="side-container">
+			<img src="resources/img/main-bottom.png" class="main-img" alt="">
+			<div class="side-content">
+				<p><span class="red">100%中奖 </span>iphone7、爱奇艺会员、</p>
+				<p>快乐家官方商城券等你拿！</p>
+				<p>点击“马上抽奖”按钮摇奖吧！</p>
+			</div>
+			<div class="side-prize">
+				<img src="resources/img/content-bottom.png" class="bg" alt="">
+				<div class="prize-content">中奖名单：</div>
+			</div>			
+		</div>
   </div>
-  <div class="popup panel">
+  <div class="popup panel rule">
     <div class="mask"></div>
     <div class="box">
       <div class="wrap">
-        <img src="resources/img/popup_bg.png" class="bg" alt="">
+        <img src="resources/img/popup_bg.png" class="bg popup-bg" alt="">
+				<img src="resources/img/popup_close.png" class="close" alt="">
+				<div class="wrap-content">
+					<p class="title">活动规则</p>
+					<div class="content-2">
+						<p>1、活动时间：2017年4月7日至4月14日</p>
+						<p>2、抽奖机会：每位用户均获得一次抽奖机会，若抽中抽奖机会将用完，若没抽中将赠送多一次的抽奖机会</p>
+						<p>3、奖品设置：<span>5元滴滴打车券</span><br><span>爱奇艺VIP会员月卡</span><br><span>快乐家官方商城20元立减券</span><br><span>iphone7</span></p>
+						<p>4、每位中奖用户需完成手机号码验证，验证后奖品将以兑奖码或领奖链接的方式进行发放，兑奖码可复制到官方网站兑奖。其中，Iphone7奖品领取在提交个人信息后，三个工作日内由活动官方工作人员电话联系，邮寄发奖。</p>
+					</div>
+					<div class="btn btn-submit">
+						<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
+				</div>				
       </div>
     </div>
   </div>

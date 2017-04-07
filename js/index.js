@@ -16,7 +16,7 @@
  const HomeTest = require('./View/HomeTest');
 
 
- const PopupTest = require('./Popup/PopupTest');
+ const Rule = require('./Popup/Rule');
 
 
 // 加载
@@ -41,25 +41,21 @@
      dataSDK.pushUserInfo(userInfo);
    } catch (e) {}
 
-   global.View.loading.preload((loaded, total) => {
-     const percent = Math.floor(loaded / total * 100);
-     $('.loading').find('.bar').css({ width: percent + '%' });
-     $('.loading').find('.text').html(`${ percent }% loading...`);
-     if (loaded === total) {
+   global.View.loading.preload(() => {     
        isLoaded = true;
         // 暂时放在这里
        isInitNet = true;
         // initData();
        complete();
      }
-   });
+   );
  }
 
 // 初始化UI
  function initUI() {
    console.log('initUI');
    global.View.homeTest = new HomeTest('.home');
-   global.Popup.popup = new PopupTest('.popup');
+   global.Popup.popup = new Rule('.popup');
  }
 
 

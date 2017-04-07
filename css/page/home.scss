@@ -1,152 +1,239 @@
 .home.page{
-
-  .count{
-    box-sizing: border-box;
+  .main-container, .side-container {
     position: relative;
-    padding:.2em 0;
-    display: block;
-    @include  clear_fix();
-    .count-number{
+    margin: 0 auto; 
+    width: 95%;
+    .main-img {
       position: relative;
-      width: 33.33%;
-      display: inline-block;
-      float: left;
-      box-sizing: border-box;
-      &:nth-child(1),&:nth-child(2){
-        border-right: 2px solid #dcdada;
-      }
-      p{
-        font-size: .9rem;
-      }
-      .number{
-        font-size: .85rem;
-        margin-top: .3em;
-        color: #f2515d;
-      }
-    }
-    span{
-      display: block;
-    }
-  }
-  .search{
-    box-sizing: border-box;
-    background: #e0e0e0;
-    padding:.5em;
-    position: relative;
-    width: 100%;
-    .search-content{
-      position: relative;
-    }
-    .search-input{
+      margin-top: 1em;
       width: 100%;
-      box-sizing:border-box;
-      display: block;
-      background: url('../resources/img/search.png') no-repeat;
-      background-size: 100% 100%;
-      border: none;
-      height: 2em;
-      padding: 0 3em 0 2em;
+      height: 100%;
+      z-index: -1;
     }
-    .search-text{
-      font-size: .9rem;
-      color:#f2515d;
+    .main-rule {
       position: absolute;
-      top: 0;
-      right: 1rem;
-      line-height: 2rem;
-      vertical-align: middle;
-
+      left: 50%;
+      transform: translateX(-50%);
+      top: 38.5%;
+      width: 80%;
+      color: #fff;
+      font-size: .9em;
     }
-  }
-  // 作品
-  .zuopin{
-    .tab{
-      padding-top: .4em;
-      border-bottom: 1px solid #dcdada;
-      // margin-bottom: 1em;
-      @include clear_fix();
-    }
-    .tab-item{
-      width: 50%;
-      float: left;
-      position: relative;
-      font-size: .8rem;
-      &.active span{
-        color:#f2515d;
-        border-bottom: 3px solid #f2515d;
-      }
-      span{
-        width: 65%;
-        display: inline-block;
-        padding-bottom: .5em;
-      };
-    }
-    .tab-container{
-      padding:.5em .5em ;
-      @include clear_fix();
-      .show-item{
+    .main-btn {
+      position: absolute;
+      bottom: 3%;
+      display: flex;
+      justify-content:space-around;
+      width: 100%;
+      > div {
         position: relative;
-        padding-bottom: 47%;
-        // padding-top: 100%;
-        width: 32%;
-        float: left;
-        margin-right: 2%;
-        margin-bottom: 2%;
-        &:nth-child(3n){
-          margin-right:0;
-        }
-        .show-content{
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0%;
-          .item-img{
-            // position: absolute;
-            width: 100%;
-            height: 100%;
-          }
-          .show-bottom{
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-          }
-          .name-content{
-            position: relative;
-            color: #fff;
-            font-size: .6rem;
-            padding: .5em .3em;
-            @include clear_fix();
-            .name{
-              position: relative;
-              float: left;
-            }
-            .number{
-              position: relative;
-              float: right;
-            }
-          }
-          .name-mask{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0,0,0,.5);
-          }
-          .btn-toupiao{
-            color: #fff;
-            box-sizing: border-box;
-            // position: absolute;
-            background: #f2515d;
-            width: 100%;
-            padding:.3em;
-            font-size: .7rem;
-            // height: 14%;
-          }
-        }
+      }
+    }
+    .play-btn {
+      width: 43%;
+    }
+
+    .rule-btn, .share-btn {
+      width: 2.7em;
+      height: 2.7em;
+      color: #fff;
+      >span {
+        position: absolute;
+        bottom: .6em;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: .6em; 
+      }
+    }
+
+    .rule-btn {
+      margin-left: 10%;
+    }
+    
+    .share-btn {
+      margin-right: 10%;
+    }
+  }
+  .side-container {
+    width: 87%;
+    .side-content {
+      position: absolute;
+      top: 19%;
+      width:100%;
+      text-align: center;
+      color: #be6507;
+      line-height: 1.3;
+      font-size: .9em;
+      font-weight: 600;
+      .red {
+        color: #f33648;
+        font-size: 1.1em;
+      }
+    }
+    .side-prize {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2em;
+      line-height: 2em;
+      .prize-content {
+        padding: 0 .8em;
+        height: 100%;
+        font-size: .8em;
+        color: #fff;
       }
     }
   }
+  // .count{
+  //   box-sizing: border-box;
+  //   position: relative;
+  //   padding:.2em 0;
+  //   display: block;
+  //   @include  clear_fix();
+  //   .count-number{
+  //     position: relative;
+  //     width: 33.33%;
+  //     display: inline-block;
+  //     float: left;
+  //     box-sizing: border-box;
+  //     &:nth-child(1),&:nth-child(2){
+  //       border-right: 2px solid #dcdada;
+  //     }
+  //     p{
+  //       font-size: .9rem;
+  //     }
+  //     .number{
+  //       font-size: .85rem;
+  //       margin-top: .3em;
+  //       color: #f2515d;
+  //     }
+  //   }
+  //   span{
+  //     display: block;
+  //   }
+  // }
+  // .search{
+  //   box-sizing: border-box;
+  //   background: #e0e0e0;
+  //   padding:.5em;
+  //   position: relative;
+  //   width: 100%;
+  //   .search-content{
+  //     position: relative;
+  //   }
+  //   .search-input{
+  //     width: 100%;
+  //     box-sizing:border-box;
+  //     display: block;
+  //     background: url('../resources/img/search.png') no-repeat;
+  //     background-size: 100% 100%;
+  //     border: none;
+  //     height: 2em;
+  //     padding: 0 3em 0 2em;
+  //   }
+  //   .search-text{
+  //     font-size: .9rem;
+  //     color:#f2515d;
+  //     position: absolute;
+  //     top: 0;
+  //     right: 1rem;
+  //     line-height: 2rem;
+  //     vertical-align: middle;
+
+  //   }
+  // }
+  // // 作品
+  // .zuopin{
+  //   .tab{
+  //     padding-top: .4em;
+  //     border-bottom: 1px solid #dcdada;
+  //     // margin-bottom: 1em;
+  //     @include clear_fix();
+  //   }
+  //   .tab-item{
+  //     width: 50%;
+  //     float: left;
+  //     position: relative;
+  //     font-size: .8rem;
+  //     &.active span{
+  //       color:#f2515d;
+  //       border-bottom: 3px solid #f2515d;
+  //     }
+  //     span{
+  //       width: 65%;
+  //       display: inline-block;
+  //       padding-bottom: .5em;
+  //     };
+  //   }
+  //   .tab-container{
+  //     padding:.5em .5em ;
+  //     @include clear_fix();
+  //     .show-item{
+  //       position: relative;
+  //       padding-bottom: 47%;
+  //       // padding-top: 100%;
+  //       width: 32%;
+  //       float: left;
+  //       margin-right: 2%;
+  //       margin-bottom: 2%;
+  //       &:nth-child(3n){
+  //         margin-right:0;
+  //       }
+  //       .show-content{
+  //         position: absolute;
+  //         width: 100%;
+  //         height: 100%;
+  //         top: 0;
+  //         left: 0%;
+  //         .item-img{
+  //           // position: absolute;
+  //           width: 100%;
+  //           height: 100%;
+  //         }
+  //         .show-bottom{
+  //           position: absolute;
+  //           bottom: 0;
+  //           width: 100%;
+  //         }
+  //         .name-content{
+  //           position: relative;
+  //           color: #fff;
+  //           font-size: .6rem;
+  //           padding: .5em .3em;
+  //           @include clear_fix();
+  //           .name{
+  //             position: relative;
+  //             float: left;
+  //           }
+  //           .number{
+  //             position: relative;
+  //             float: right;
+  //           }
+  //         }
+  //         .name-mask{
+  //           position: absolute;
+  //           width: 100%;
+  //           height: 100%;
+  //           top: 0;
+  //           left: 0;
+  //           right: 0;
+  //           background-color: rgba(0,0,0,.5);
+  //         }
+  //         .btn-toupiao{
+  //           color: #fff;
+  //           box-sizing: border-box;
+  //           // position: absolute;
+  //           background: #f2515d;
+  //           width: 100%;
+  //           padding:.3em;
+  //           font-size: .7rem;
+  //           // height: 14%;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }

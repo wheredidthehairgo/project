@@ -1,4 +1,4 @@
-class PopupTest extends BasePopupClass{
+class Rule extends BasePopupClass{
   constructor(str){
     super(str);
 
@@ -7,9 +7,6 @@ class PopupTest extends BasePopupClass{
 
   init(){
     super.init();
-    this.$dom.find('.box').on('tap', () => {
-      this.hide();
-    });
     this.$dom.find('.close').on('tap',()=>{
       this.hide();
     })
@@ -20,4 +17,4 @@ class PopupTest extends BasePopupClass{
 
 
 }
-module.exports = PopupTest;
+module.exports = Rule;

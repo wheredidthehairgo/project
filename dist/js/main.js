@@ -63,7 +63,7 @@
 	
 	var HomeTest = __webpack_require__(9);
 	
-	var PopupTest = __webpack_require__(10);
+	var Rule = __webpack_require__(10);
 	
 	var isLoaded = false;
 	
@@ -82,24 +82,19 @@
 	    dataSDK.pushUserInfo(userInfo);
 	  } catch (e) {}
 	
-	  global.View.loading.preload(function (loaded, total) {
-	    var percent = Math.floor(loaded / total * 100);
-	    $('.loading').find('.bar').css({ width: percent + '%' });
-	    $('.loading').find('.text').html(percent + '% loading...');
-	    if (loaded === total) {
-	      isLoaded = true;
+	  global.View.loading.preload(function () {
+	    isLoaded = true;
 	
-	      isInitNet = true;
+	    isInitNet = true;
 	
-	      complete();
-	    }
+	    complete();
 	  });
 	}
 	
 	function initUI() {
 	  console.log('initUI');
 	  global.View.homeTest = new HomeTest('.home');
-	  global.Popup.popup = new PopupTest('.popup');
+	  global.Popup.popup = new Rule('.popup');
 	}
 	
 	function complete() {
@@ -659,7 +654,7 @@
 	    key: 'preload',
 	    value: function preload(cb) {
 	      $('.loading-img').show();
-	      Util.loadImg($('img'), null, cb, null);
+	      Util.loadImg($('img'), cb, null, null);
 	    }
 	  }, {
 	    key: 'hide',
@@ -741,31 +736,34 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var PopupTest = function (_BasePopupClass) {
-	  _inherits(PopupTest, _BasePopupClass);
+	var Rule = function (_BasePopupClass) {
+	  _inherits(Rule, _BasePopupClass);
 	
-	  function PopupTest(str) {
-	    _classCallCheck(this, PopupTest);
+	  function Rule(str) {
+	    _classCallCheck(this, Rule);
 	
-	    return _possibleConstructorReturn(this, (PopupTest.__proto__ || Object.getPrototypeOf(PopupTest)).call(this, str));
+	    return _possibleConstructorReturn(this, (Rule.__proto__ || Object.getPrototypeOf(Rule)).call(this, str));
 	  }
 	
-	  _createClass(PopupTest, [{
+	  _createClass(Rule, [{
 	    key: 'init',
 	    value: function init() {
 	      var _this2 = this;
 	
-	      _get(PopupTest.prototype.__proto__ || Object.getPrototypeOf(PopupTest.prototype), 'init', this).call(this);
-	      this.$dom.find('.box').on('tap', function () {
+	      _get(Rule.prototype.__proto__ || Object.getPrototypeOf(Rule.prototype), 'init', this).call(this);
+	      this.$dom.find('.close').on('tap', function () {
+	        _this2.hide();
+	      });
+	      this.$dom.find('.btn').on('tap', function () {
 	        _this2.hide();
 	      });
 	    }
 	  }]);
 	
-	  return PopupTest;
+	  return Rule;
 	}(BasePopupClass);
 	
-	module.exports = PopupTest;
+	module.exports = Rule;
 
 /***/ }
 /******/ ]);

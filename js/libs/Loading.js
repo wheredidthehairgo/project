@@ -41,7 +41,7 @@ class Loading {
    */
   preload(cb) {
     $('.loading-img').show();
-    Util.loadImg($('img'), null, cb, null);
+    Util.loadImg($('img'), cb, null, null);
   }
 
   hide(){
