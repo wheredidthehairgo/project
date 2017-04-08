@@ -1,0 +1,31 @@
+.panel.tixing{
+  .title, .title-2 {
+    font-weight: bold;
+    color: #84250e;
+  }
+
+  .title{
+    margin-top: 2em;   
+  }
+  .title-2{
+    margin-bottom: .5em;
+    font-size: 1.5rem;
+    padding:0 .5em;
+    line-height: 1.5;
+    // width: 80%;
+    // display: block;
+  }
+  .tip-bg{
+    width: 40%;
+  }
+  .content-2{
+    margin: 1em 0;
+    // font-size: .8rem;
+    p{
+      font-size: .7rem;
+      margin-bottom: .5em;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+}

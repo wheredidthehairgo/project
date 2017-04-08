@@ -30,3 +30,18 @@
 [0407/171324.360:ERROR:process_reader_win.cc(233)] ReadMemory at 0x4bd3000 of 53248 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
 [0407/171324.360:ERROR:crash_report_exception_handler.cc(111)] WriteEverything failed
 [0407/171324.361:ERROR:scoped_process_suspend.cc(38)] NtResumeProcess: 已尝试访问正在退出的过程。  (0xc000010a)
+[0407/181429.999:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181429.999:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181429.999:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181429.999:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181430.007:ERROR:process_reader_win.cc(233)] ReadMemory at 0x51a0048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0407/181430.007:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0407/181430.038:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181430.045:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5610048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0407/181430.045:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0407/181430.052:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181430.060:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5cf0048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0407/181430.061:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0407/181430.074:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0407/181430.085:ERROR:process_reader_win.cc(233)] ReadMemory at 0x53a0048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0407/181430.085:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
