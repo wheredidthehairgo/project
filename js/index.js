@@ -5,6 +5,7 @@
  global.Config = require('./Config');
  global.TipManager = require('./libs/TipManager');
  global.shareApi = require('./libs/ShareApi');
+ global.Gun=require('./libs/Gun');
  global.View = {};
  global.Popup = {};
  global.Data = {};
@@ -13,10 +14,9 @@
 // 示例对象
  global.View.loading = new Loading();
 
- const HomeTest = require('./View/HomeTest');
+ const Home = require('./View/Home');
 
-
- const Rule = require('./Popup/Rule');
+ const Popups = require('./Popup/Popups');
 
 
 // 加载
@@ -54,8 +54,10 @@
 // 初始化UI
  function initUI() {
    console.log('initUI');
-   global.View.homeTest = new HomeTest('.home');
-   global.Popup.popup = new Rule('.popup');
+   global.View.homeTest = new Home('.home');
+   global.Popup.popup = new Popups('.panel');
+   global.Popup.rule = new Popups('.rule');
+   global.Popup.share= new Popups('.share');
  }
 
 
@@ -72,5 +74,5 @@
    $('.main').show();
    global.View.loading.hide();
    global.View.homeTest.show();
-   global.Popup.popup.show();
+  //  global.Popup.popup.show();
  }

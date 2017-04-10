@@ -1,4 +1,4 @@
-class Rule extends BasePopupClass{
+class Popups extends BasePopupClass{
   constructor(str){
     super(str);
 
@@ -17,4 +17,4 @@ class Rule extends BasePopupClass{
 
 
 }
-module.exports = Rule;
+module.exports = Popups;

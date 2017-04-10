@@ -1,64 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- <base href="http://weijie.91iot.net/libai/ticketCard5/"> -->
-  <meta charset="UTF-8">
-  <meta name="author" content="广州兔展,dyyz1993@qq.com,http://www.rabbitpre.com/">
-  <meta name="description" content="一只高效有力的H5制作团队">
-  <!-- 关闭识别为手机号码 -->
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Demo</title>
-  <link rel="stylesheet" href="css/main.min.css">
+	<!-- <base href="http://weijie.91iot.net/libai/ticketCard5/"> -->
+	<meta charset="UTF-8">
+	<meta name="author" content="广州兔展,dyyz1993@qq.com,http://www.rabbitpre.com/">
+	<meta name="description" content="一只高效有力的H5制作团队">
+	<!-- 关闭识别为手机号码 -->
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Demo</title>
+	<link rel="stylesheet" href="css/main.min.css">
 </head>
+
 <body>
-<div class="main">
-	<img class="bg" src="resources/img/home_bg.png" alt="">
-  <div class="home page" style="display: none">
-    <div class="main-container">
-			<img src="resources/img/main_bg.png" class="main-img" alt="">
-			<div></div>
-			<div class="main-rule">摇出三个相同图案即中奖！</div>
-			<div class="main-btn">
-				<div class="rule-btn"><img src="resources/img/rule_btn.png" class="bg" alt=""><span>规则</span></div>
-				<div class="play-btn"><img src="resources/img/play_btn.png" class="bg" alt=""></div>
-				<div class="share-btn"><img src="resources/img/share_btn.png" class="bg" alt=""><span>分享</span></div>
-			</div>
-    </div>
-		<div class="side-container">
-			<img src="resources/img/main-bottom.png" class="main-img" alt="">
-			<div class="side-content">
-				<p><span class="red">100%中奖 </span>iphone7、爱奇艺会员、</p>
-				<p>快乐家官方商城券等你拿！</p>
-				<p>点击“马上抽奖”按钮摇奖吧！</p>
-			</div>
-			<div class="side-prize">
-				<img src="resources/img/content-bottom.png" class="bg" alt="">
-				<div class="prize-content">中奖名单：</div>
-			</div>			
-		</div>
-  </div>
-  <div class="popup panel rule">
-    <div class="mask"></div>
-    <div class="box">
-      <div class="wrap">
-        <img src="resources/img/popup_bg.png" class="bg popup-bg" alt="">
-				<img src="resources/img/popup_close.png" class="close" alt="">
-				<div class="wrap-content">
-					<p class="title">活动规则</p>
-					<div class="content-2">
-						<p>1、活动时间：2017年4月7日至4月14日</p>
-						<p>2、抽奖机会：每位用户均获得一次抽奖机会，若抽中抽奖机会将用完，若没抽中将赠送多一次的抽奖机会</p>
-						<p>3、奖品设置：<span>5元滴滴打车券</span><br><span>爱奇艺VIP会员月卡</span><br><span>快乐家官方商城20元立减券</span><br><span>iphone7</span></p>
-						<p>4、每位中奖用户需完成手机号码验证，验证后奖品将以兑奖码或领奖链接的方式进行发放，兑奖码可复制到官方网站兑奖。其中，Iphone7奖品领取在提交个人信息后，三个工作日内由活动官方工作人员电话联系，邮寄发奖。</p>
+	<div class="main">
+		<img class="bg" src="resources/img/home_bg.png" alt="">
+		<div class="page follow" style="display: none">
+			<div class="main-container">
+				<img src="resources/img/follow_bg.png" class="main-img" alt="">
+				<div class="main-content">
+					<div class="main-title">
+						<p>Baby、晓明给您发福利</p>
 					</div>
-					<div class="btn btn-submit">
-						<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
-				</div>				
-      </div>
-    </div>
-  </div>
-	<!--<div class="popup panel tips">
+					<img src="resources/img/qrcode.png" class="iqiyi-pic" alt="">
+					<p>长按/识别二维码关注快乐家</p>
+					<p>领取你的专属福利！100%中奖！</p>
+				</div>
+			</div>
+		</div>
+		<div class="home page">
+			<div class="main-container">
+				<img src="resources/img/main_bg.png" class="main-img" alt="">
+				<div class="main-rule">摇出三个相同图案即中奖！</div>
+				<img src="resources/img/main_border.png" alt="" class="laohuji-border">	
+				<div class="laohuji-container">
+					<div class="laohuji-part">
+						<div class="laohuji-pic"></div>
+					</div>
+					<div class="laohuji-part">
+						<div class="laohuji-pic second"></div>
+					</div>
+					<div class="laohuji-part">
+						<div class="laohuji-pic third"></div>
+					</div>
+				</div>
+				<div class="main-btn">
+					<div class="rule-btn"><img src="resources/img/rule_btn.png" class="bg" alt=""><span>规则</span></div>
+					<div class="play-btn"><img src="resources/img/play_btn.png" class="bg" alt=""></div>
+					<div class="share-btn"><img src="resources/img/share_btn.png" class="bg" alt=""><span>分享</span></div>
+				</div>
+			</div>
+			<div class="side-container">
+				<img src="resources/img/main-bottom.png" class="main-img" alt="">
+				<div class="side-content">
+					<p><span class="red">100%中奖 </span>iphone7、爱奇艺会员、</p>
+					<p>快乐家官方商城券等你拿！</p>
+					<p>点击“马上抽奖”按钮摇奖吧！</p>
+				</div>
+				<div class="side-prize">
+					<img src="resources/img/content-bottom.png" class="bg" alt="">
+					<div class="prize-content">中奖名单：</div>
+				</div>
+			</div>
+		</div>
+		<div class="exchange page" style="display: none">
+			<div class="main-container">
+				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
+				<div class="main-content">
+					<div class="main-title">
+						<p>恭喜您获得</p>
+						<p>20块立减券</p>
+					</div>
+					<img src="resources/img/libaiquan.png" alt="">
+					<p>点击领取优惠券</p>
+					<p>奖品将放到您的微信卡包</p>
+				</div>
+				<div class="main-submit">
+					<div class="btn btn-exchange">
+						<img src="resources/img/popup_btn.png" class="bg" alt="">领优惠券</div>
+					<p>注：在快乐家官方商城购买买立白</p>
+					<p>天然皂液900g*7包时可立减20元。</p>
+					<a><span class="red">>>前往快乐家官方商城使用优惠>></span></a>
+				</div>
+			</div>
+			<div class="side-container">
+				<ul>
+					<li>奖品发放说明：</li>
+					<li>1、兑奖次数：仅限兑奖一次。</li>
+					<li>2、兑奖方式：领取优惠券到微信卡包后，进入快乐家官方商城购买立白天然皂液900g*7包，支付时将享有立减20元的优惠。</li>
+					<li>3、有效时间：以微信卡券上的时间为准。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="exchange page" style="display: none">
+			<div class="main-container">
+				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
+				<div class="main-content">
+					<div class="main-title">
+						<p>恭喜您获得</p>
+						<p>爱奇艺VIP会员月卡</p>
+					</div>
+					<img src="resources/img/iqiyi.png" class="iqiyi-pic" alt="">
+					<p>请复制or保存兑换码</p>
+					<p>点击“前往兑奖”可到官方网站兑奖</p>
+				</div>
+				<div class="main-submit submit-iqiyi">
+					<div class="copy">
+						<div class="copy-content">xxxx-xxx-xx-xx-xx</div>
+						<div class="btn btn-copy">
+							<img src="resources/img/copy_btn.png" class="bg" alt="">复制</div>
+					</div>
+					<div class="btn btn-exchange">
+						<img src="resources/img/popup_btn.png" class="bg" alt="">领优惠券</div>
+				</div>
+			</div>
+			<div class="side-container">
+				<ul>
+					<li>奖品发放说明：</li>
+					<li>1、兑奖次数：每个兑换码仅限兑奖一次。</li>
+					<li>2、兑奖方式：进入爱奇艺VIP会员专区，输入获得的券码到激活码，提交验证即可。</li>
+					<li>3、使用时间：绑定到个人爱奇艺账号后，享有一个月爱奇艺VIP会员权益。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="exchange page iphone" style="display: none">
+			<div class="main-container">
+				<img src="resources/img/exchange_bg2.png" class="main-img" alt="">
+				<div class="main-content">
+					<div class="main-title">
+						<p>恭喜您获得</p>
+						<p>Iphone7</p>
+					</div>
+					<img src="resources/img/iphone.png" class="iqiyi-pic" alt="">
+					<p>奖品将以邮寄的方式发给你</p>
+				</div>
+			</div>
+			<div class="side-container">
+				<ul>
+					<li>奖品发放说明：</li>
+					<li>奖品会在七个工作日内，由活动官方工作人员电话联系，邮寄发奖。</li>
+					<li>谢谢您对活动的大力支持！</li>
+				</ul>
+			</div>
+		</div>
+		<div class="exchange page fail" style="display: none">
+			<div class="main-container">
+				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
+				<div class="main-content">
+					<div class="main-title">
+						<p>很遗憾</p>
+						<p>未能抽中福利</p>
+					</div>
+					<img src="resources/img/expression2.png" class="iqiyi-pic" alt="">
+				</div>
+				<div class="main-submit">
+					<p>继续参与FUN享社区的互动，</p>
+					<p>还有福利派送哦！</p>
+					<div class="btn btn-exchange">
+						<img src="resources/img/popup_btn.png" class="bg" alt="">领优惠券</div>
+				</div>
+			</div>
+			<div class="side-container">
+				<ul>
+					<li>奖品发放说明：</li>
+					<li>1. 兑奖次数：每个兑换码仅限兑奖一次。</li>
+					<li>2. 5元滴滴打车券：每个兑换码仅限兑奖一次。</li>
+					<li>3. 乐视网月度会员：每个兑换码仅限兑奖一次。</li>
+					<li>4. 快乐家官方商城20元优惠券：每个兑换码仅限兑奖一次。</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="popup panel rule">
+			<div class="mask"></div>
+			<div class="box">
+				<div class="wrap">
+					<img src="resources/img/popup_bg.png" class="bg popup-bg" alt="">
+					<img src="resources/img/popup_close.png" class="close" alt="">
+					<div class="wrap-content">
+						<p class="title">温馨提示：</p>
+						<div class="content-2">
+							<p>1、活动时间：2017年4月7日至4月14日</p>
+							<p>2、抽奖机会：每位用户均获得一次抽奖机会，若抽中抽奖机会将用完，若没抽中将赠送多一次的抽奖机会</p>
+							<p>3、奖品设置：<span>5元滴滴打车券</span><br><span>爱奇艺VIP会员月卡</span><br><span>快乐家官方商城20元立减券</span><br><span>iphone7</span></p>
+							<p>4、每位中奖用户需完成手机号码验证，验证后奖品将以兑奖码或领奖链接的方式进行发放，兑奖码可复制到官方网站兑奖。其中，Iphone7奖品领取在提交个人信息后，三个工作日内由活动官方工作人员电话联系，邮寄发奖。</p>
+						</div>
+						<div class="btn btn-submit">
+							<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="popup panel tips">
 		<div class="mask"></div>
 		<div class="box">
 			<div class="wrap">
@@ -77,7 +211,37 @@
 				</div>
 			</div>
 		</div>
-	</div>-->
+	</div>
+	<div class="popup panel prize">
+		<div class="mask"></div>
+		<div class="box">
+			<div class="wrap">
+				<img src="resources/img/popup_bg.png" class="bg popup-bg" alt="">
+				<div class="wrap-content">
+					<p class="title">恭喜你获得</p>
+					<p class="title-2">20元立减券</p>
+					<div class="prize-pic">
+						<img src="resources/img/firework.png" alt="">
+						<img src="resources/img/libaiquan.png" alt="">
+					</div>
+					<div class="content-2">
+						<p>完成手机号码验证</p>
+						<p>奖品将以卡券形式放在您的微信卡包</p>
+					</div>
+					<div class="lingjiang">
+						<input type="phone" type="text" placeholder="请输入你的手机号" name type>
+					</div>
+					<div class="lingjiang identify">
+						<input type="check" type="text" placeholder="请输入手机验证码" name type>
+						<div class="btn btn-identify">
+						<img src="resources/img/identify.png" class="bg" alt="">确定</div>
+					</div>
+				</div>
+				<div class="btn btn-submit">
+					<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
+			</div>
+		</div>
+	</div>
 	<div class="popup panel prize">
 		<div class="mask"></div>
 		<div class="box">
@@ -88,71 +252,124 @@
 					<p class="title-2">爱奇艺VIP会员月卡</p>
 					<div class="prize-pic">
 						<img src="resources/img/firework.png" alt="">
+						<img src="resources/img/iqiyi.png" alt="">
 					</div>
 					<div class="content-2">
 						<p>完成手机号码验证</p>
-						<p>奖品将以卡券形式放在您的微信卡包</p>
+						<p>奖品将以兑换码的方式发给您</p>
+					</div>
+					<div class="lingjiang">
+						<input type="phone" type="text" placeholder="请输入你的手机号" name type>
+					</div>
+					<div class="lingjiang identify">
+						<input type="check" type="text" placeholder="请输入手机验证码" name type>
+						<div class="btn btn-identify">
+						<img src="resources/img/identify.png" class="bg" alt="">确定</div>
 					</div>
 				</div>
+				<div class="btn btn-submit">
+					<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-<!-- 预加载  加载js的时候和加载初始化 -->
-
-<div class="pre-loading-js loading">
-  <div class="ball-spin-fade-loader">
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
+	<div class="popup panel prize">
+		<div class="mask"></div>
+		<div class="box">
+			<div class="wrap">
+				<img src="resources/img/popup_bg.png" class="bg popup-bg" alt="">
+				<div class="wrap-content">
+					<p class="title title-3">恭喜你获得</p>
+					<p class="title-2 title-4">iphone7</p>
+					<div class="prize-pic phone-pic">
+						<img src="resources/img/firework.png" alt="">
+						<img src="resources/img/iphone.png" class="phone-pic" alt="">
+					</div>
+					<div class="content-2 content-3">
+						<p>完成手机号码验证</p>
+						<p>奖品将以兑换码的方式发给您</p>
+						<p><span class="red">（请真实填写信息，以免影响奖品发放）</span></p>
+					</div>
+					<div class="lingjiang">
+						<input type="phone" type="text" placeholder="请输入你的真实姓名" name type>
+					</div>
+					<div class="lingjiang">
+						<input type="phone" type="text" placeholder="请输入你的邮寄地址" name type>
+					</div>
+					<div class="lingjiang">
+						<input type="phone" type="text" placeholder="请输入你的手机号" name type>
+					</div>
+					<div class="lingjiang identify">
+						<input type="check" type="text" placeholder="请输入手机验证码" name type>
+						<div class="btn btn-identify">
+						<img src="resources/img/identify.png" class="bg" alt="">确定</div>
+					</div>
+				</div>
+				<div class="btn btn-submit">
+					<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-<!-- 加载图片 主加载页 -->
-<div class="loading-img loading">
-  <div class="ball-spin-fade-loader">
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
+	<div class="share panel" style="">
+		<div class="mask"></div>
+		<img src="resources/img/share2.png" alt="" class="">
 	</div>
-</div>
-
-<!-- 网络请求的加载页 -->
-<div class="loading-net loading">
-  <div class="ball-spin-fade-loader">
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
 	</div>
-</div>
-<!-- <script src="app/js/vconsole.min.js" charset="utf-8"></script> -->
-<script src="resources/js/jquery-3.1.1.min.js" charset="utf-8"></script>
-<!-- <script id="fiboDataSDK" type="text/javascript"
+
+	<!-- 预加载  加载js的时候和加载初始化 -->
+
+	<div class="pre-loading-js loading">
+		<div class="ball-spin-fade-loader">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<!-- 加载图片 主加载页 -->
+	<div class="loading-img loading">
+		<div class="ball-spin-fade-loader">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<!-- 网络请求的加载页 -->
+	<div class="loading-net loading">
+		<div class="ball-spin-fade-loader">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- <script src="app/js/vconsole.min.js" charset="utf-8"></script> -->
+	<script src="resources/js/jquery-3.1.1.min.js" charset="utf-8"></script>
+	<!-- <script id="fiboDataSDK" type="text/javascript"
         src="http://sdk.fibodata.com/data/datasdk.min.js?pfid=zb_eunvjzrex&appid=M2FvEBuaQ"></script> -->
-<script src="resources/js/jweixin-1.0.0.js"></script>
-<script src="//weijie.91iot.net/open-service/libs/wechat.js"></script>
+	<script src="resources/js/jweixin-1.0.0.js"></script>
+	<script src="//weijie.91iot.net/open-service/libs/wechat.js"></script>
 
-<script src="resources/js/touch.js" charset="utf-8"></script>
-<script src="js/main.js" charset="utf-8"></script>
-<!-- <script src="js/main.min.js" charset="utf-8"></script> -->
+	<script src="resources/js/touch.js" charset="utf-8"></script>
+	<script src="js/main.js" charset="utf-8"></script>
+	<!-- <script src="js/main.min.js" charset="utf-8"></script> -->
 </body>
+
 </html>

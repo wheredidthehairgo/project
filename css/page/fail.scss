@@ -1,0 +1,19 @@
+.exchange.page.fail {
+    .main-content {
+        >img {
+            width: 40%;
+        }
+    }
+    .main-submit {
+        bottom: 0;
+        p:last-of-type {
+            margin-bottom: 3em;
+        }
+        .btn-exchange {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+    }
+}
