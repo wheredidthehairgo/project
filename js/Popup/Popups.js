@@ -10,7 +10,7 @@ class Popups extends BasePopupClass{
     this.$dom.find('.close').on('tap',()=>{
       this.hide();
     })
-    this.$dom.find('.btn').on('tap',()=>{
+    this.$dom.find('#btn-confirm').on('tap',()=>{
       this.hide();
     })
   }

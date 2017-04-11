@@ -6,7 +6,7 @@ module.exports={
     starmove(str, value, hei, i, fn){
             $(str).animate({
                 backgroundPositionY: (hei*18) - (hei*value)
-                //现在圈数为3
+                //现在圈数为6
             },{
                 duration: 3000+i*2000,
                 easing:"linear",

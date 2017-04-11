@@ -83,6 +83,9 @@
     }
     .btn-identify {
       width: 40%;
+      >span {
+        font-size: .8rem;
+      }
     }
   }
   .btn-submit {

@@ -16,7 +16,7 @@
 <body>
 	<div class="main">
 		<img class="bg" src="resources/img/home_bg.png" alt="">
-		<div class="page follow" style="display: none">
+		<div class="follow page" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/follow_bg.png" class="main-img" alt="">
 				<div class="main-content">
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="home page">
+		<div class="home page" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/main_bg.png" class="main-img" alt="">
 				<div class="main-rule">摇出三个相同图案即中奖！</div>
@@ -60,11 +60,13 @@
 				</div>
 				<div class="side-prize">
 					<img src="resources/img/content-bottom.png" class="bg" alt="">
-					<div class="prize-content">中奖名单：</div>
+					<div class="prize-content">
+						<div>中奖名单：梦XXX获得爱奇艺会员</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="exchange page" style="display: none">
+		<div class="exchange page lijianquan" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
 				<div class="main-content">
@@ -93,7 +95,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="exchange page" style="display: none">
+		<div class="exchange page iqiyi" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
 				<div class="main-content">
@@ -107,8 +109,8 @@
 				</div>
 				<div class="main-submit submit-iqiyi">
 					<div class="copy">
-						<div class="copy-content">xxxx-xxx-xx-xx-xx</div>
-						<div class="btn btn-copy">
+						<div class="copy-content"><span id="copy-content"></span></div>
+						<div class="btn btn-copy" id="btn-copy" data-clipboard-action="copy" data-clipboard-target="#copy-content">
 							<img src="resources/img/copy_btn.png" class="bg" alt="">复制</div>
 					</div>
 					<div class="btn btn-exchange">
@@ -124,7 +126,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="exchange page iphone" style="display: none">
+		<div class="exchange page iphone" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg2.png" class="main-img" alt="">
 				<div class="main-content">
@@ -144,7 +146,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="exchange page fail" style="display: none">
+		<div class="exchange page fail" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
 				<div class="main-content">
@@ -172,27 +174,30 @@
 			</div>
 		</div>
 
-		<div class="popup panel rule">
+		<div class="popup panel rule" style="display:none">
 			<div class="mask"></div>
 			<div class="box">
 				<div class="wrap">
 					<img src="resources/img/popup_bg.png" class="bg popup-bg" alt="">
 					<img src="resources/img/popup_close.png" class="close" alt="">
 					<div class="wrap-content">
-						<p class="title">温馨提示：</p>
+						<p class="title">活动规则</p>
 						<div class="content-2">
-							<p>1、活动时间：2017年4月7日至4月14日</p>
-							<p>2、抽奖机会：每位用户均获得一次抽奖机会，若抽中抽奖机会将用完，若没抽中将赠送多一次的抽奖机会</p>
-							<p>3、奖品设置：<span>5元滴滴打车券</span><br><span>爱奇艺VIP会员月卡</span><br><span>快乐家官方商城20元立减券</span><br><span>iphone7</span></p>
-							<p>4、每位中奖用户需完成手机号码验证，验证后奖品将以兑奖码或领奖链接的方式进行发放，兑奖码可复制到官方网站兑奖。其中，Iphone7奖品领取在提交个人信息后，三个工作日内由活动官方工作人员电话联系，邮寄发奖。</p>
+							<p>1、活动时间：2017年4月18日至4月30日</p>
+							<p>2、抽奖机会：每位用户均获得一次抽奖机会，100%中奖。</p>
+							<p>3、奖品设置：<span>iphone7</span><br><span>爱奇艺VIP会员月卡</span><br><span>快乐家官方商城20元立减券</span></p>
+							<p>4、奖品说明：</p>
+							<p>快乐家官方商城20元立减券：根据提示领券后，优惠券将以卡券形式放在微信卡包。在快乐家官方商城购买立白天然皂液900g*7包，支付时将享有立减20元的优惠。</p>
+							<p>爱奇艺VIP会员月卡：完成手机号码验证后，奖品将以兑奖码的方式进行发放，兑奖码可复制到官方网站兑奖。绑定到个人爱奇艺账号后，享有爱奇艺VIP会员一个月。</p>
+							<p>iphone7：提交个人信息填写及手机号码验证后，七个工作日内由活动官方工作人员电话联系，邮寄发奖。</p>
 						</div>
-						<div class="btn btn-submit">
+						<div class="btn btn-submit" id="btn-confirm">
 							<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="popup panel tips">
+		<div class="popup panel tips" style="display:none">
 		<div class="mask"></div>
 		<div class="box">
 			<div class="wrap">
@@ -206,13 +211,13 @@
 						<p>别灰心，参与FUN享社区的互动，</p>
 						<p>还有福利派送哦！</p>
 					</div>
-					<div class="btn btn-submit">
+					<div class="btn btn-submit" id="btn-confirm">
 						<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="popup panel prize">
+	<div class="popup panel prize prize-ljq" style="display:none">
 		<div class="mask"></div>
 		<div class="box">
 			<div class="wrap">
@@ -229,20 +234,20 @@
 						<p>奖品将以卡券形式放在您的微信卡包</p>
 					</div>
 					<div class="lingjiang">
-						<input type="phone" type="text" placeholder="请输入你的手机号" name type>
+						<input id="input-phone" type="phone" type="text" placeholder="请输入你的手机号" name type>
 					</div>
 					<div class="lingjiang identify">
-						<input type="check" type="text" placeholder="请输入手机验证码" name type>
+						<input id="input-check" type="check" type="text" placeholder="请输入手机验证码" name type>
 						<div class="btn btn-identify">
-						<img src="resources/img/identify.png" class="bg" alt="">确定</div>
+						<img src="resources/img/identify.png" class="bg" alt=""><span>发送验证码</span></div>
 					</div>
 				</div>
-				<div class="btn btn-submit">
+				<div class="btn btn-submit" id="btn-submit">
 					<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
 			</div>
 		</div>
 	</div>
-	<div class="popup panel prize">
+	<div class="popup panel prize prize-iqy" style="display:none">
 		<div class="mask"></div>
 		<div class="box">
 			<div class="wrap">
@@ -259,20 +264,20 @@
 						<p>奖品将以兑换码的方式发给您</p>
 					</div>
 					<div class="lingjiang">
-						<input type="phone" type="text" placeholder="请输入你的手机号" name type>
+						<input id="input-phone" type="phone" type="text" placeholder="请输入你的手机号" name type>
 					</div>
 					<div class="lingjiang identify">
-						<input type="check" type="text" placeholder="请输入手机验证码" name type>
+						<input id="input-check" type="check" type="text" placeholder="请输入手机验证码" name type>
 						<div class="btn btn-identify">
-						<img src="resources/img/identify.png" class="bg" alt="">确定</div>
+						<img src="resources/img/identify.png" class="bg" alt=""><span>发送验证码</span></div>
 					</div>
 				</div>
-				<div class="btn btn-submit">
+				<div class="btn btn-submit" id="btn-submit">
 					<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
 			</div>
 		</div>
 	</div>
-	<div class="popup panel prize">
+	<div class="popup panel prize prize-ip7" style="display:none">
 		<div class="mask"></div>
 		<div class="box">
 			<div class="wrap">
@@ -290,26 +295,26 @@
 						<p><span class="red">（请真实填写信息，以免影响奖品发放）</span></p>
 					</div>
 					<div class="lingjiang">
-						<input type="phone" type="text" placeholder="请输入你的真实姓名" name type>
+						<input id="input-name" type="phone" type="text" placeholder="请输入你的真实姓名" name type>
 					</div>
 					<div class="lingjiang">
-						<input type="phone" type="text" placeholder="请输入你的邮寄地址" name type>
+						<input id="input-address" type="phone" type="text" placeholder="请输入你的邮寄地址" name type>
 					</div>
 					<div class="lingjiang">
-						<input type="phone" type="text" placeholder="请输入你的手机号" name type>
+						<input id="input-phone" type="phone" type="text" placeholder="请输入你的手机号" name type>
 					</div>
 					<div class="lingjiang identify">
-						<input type="check" type="text" placeholder="请输入手机验证码" name type>
+						<input id="input-check" type="check" type="text" placeholder="请输入手机验证码" name type>
 						<div class="btn btn-identify">
-						<img src="resources/img/identify.png" class="bg" alt="">确定</div>
+						<img src="resources/img/identify.png" class="bg" alt=""><span>发送验证码</span></div>
 					</div>
 				</div>
-				<div class="btn btn-submit">
+				<div class="btn btn-submit" id="btn-submit">
 					<img src="resources/img/popup_btn.png" class="bg" alt="">确定</div>
 			</div>
 		</div>
 	</div>
-	<div class="share panel" style="">
+	<div class="share panel" style="display: none">
 		<div class="mask"></div>
 		<img src="resources/img/share2.png" alt="" class="">
 	</div>
@@ -332,7 +337,7 @@
 	</div>
 
 	<!-- 加载图片 主加载页 -->
-	<div class="loading-img loading">
+	<div class="pre-loading-js loading">
 		<div class="ball-spin-fade-loader">
 			<div></div>
 			<div></div>

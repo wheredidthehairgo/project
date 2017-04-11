@@ -65,7 +65,11 @@
                     width: 60%;
                     height: 2em;
                     background-color: #fff;
-                    color: #4662e1;
+                    span {
+                        font-size: .8rem;
+                        line-height: 3;
+                        color: #4662e1;
+                    }
                 }
                 .btn-copy {
                     width: 30%;

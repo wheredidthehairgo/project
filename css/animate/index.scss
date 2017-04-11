@@ -29,3 +29,14 @@
     transform: scale3d(1, 1, 1);
   }
 }
+
+@keyframes rotate {
+  0%{
+    transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+  }
+  100%{
+    transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+  }
+}

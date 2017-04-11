@@ -81,3 +81,49 @@
 [0408/123837.747:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
 [0408/123837.756:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5a10048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
 [0408/123837.756:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0410/185618.891:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.893:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.909:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5c30048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0410/185618.909:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.930:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185618.942:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5f10048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0410/185618.942:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0410/185619.029:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185619.040:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5460048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0410/185619.040:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0410/185619.108:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0410/185619.118:ERROR:process_reader_win.cc(233)] ReadMemory at 0x5710048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0410/185619.118:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0411/095105.050:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/095105.061:ERROR:process_reader_win.cc(233)] ReadMemory at 0x56d0048 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0411/095105.061:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll
+[0411/095105.114:ERROR:scoped_process_suspend.cc(38)] NtResumeProcess: 已尝试访问正在退出的过程。  (0xc000010a)
+[0411/182551.985:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/182551.985:ERROR:exception_snapshot_win.cc(87)] thread ID 16712 not found in process
+[0411/182551.985:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.729:ERROR:process_reader_win.cc(142)] SuspendThread: 拒绝访问。 (0x5)
+[0411/204110.740:ERROR:process_reader_win.cc(233)] ReadMemory at 0x4fd5fd8 of 32768 bytes failed: 仅完成部分的 ReadProcessMemory 或 WriteProcessMemory 请求。 (0x12B)
+[0411/204110.740:WARNING:pe_image_annotations_reader.cc(65)] could not read simple annotations from C:\Program Files (x86)\Google\Chrome\Application\57.0.2987.133\chrome_elf.dll

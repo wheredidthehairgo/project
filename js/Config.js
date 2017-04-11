@@ -13,21 +13,21 @@ module.exports = {
   // 用户的数据
   userInfo: {
     // openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
-    openid: 'test23222522222',
-    nickname: 'AA朱伟杰',
+    openid: 'test142',
+    nickname: 'kuku',
     sex: '1',
     province: '广东',
     city: '广州',
     country: '中国',
     headimgurl: 'http://wx.qlogo.cn/mmopen/Xmnun9Io49TNwrKPL4SnYq7p5QkMaztSrxxJHWC3twTdYX7Ur39KeiczZeEUBUB3dwIcd49Xpe7w3sSxTXI0aCQ/0',
-    subscribe: 0,
+    subscribe: 1
   },
   // 当前H5的地址，主要为了ICON；
   // host: `http://100jc.net/goddess/public/h5_${pre}`,
   host: `http://100jc.net/goddess/public/h5_${ pre }`,
   // server: 'http://192.168.199.174:9960',
   // 服务器的地址
-  server: `http://100jc.net/goddess/${ pre }`,
+  server: 'http://100jc.net/tigerGame/tiger/',
   // server: 'http://127.0.0.1:9910',
   // 上传到七牛
   qiniu: 'http://up.qiniu.com',
