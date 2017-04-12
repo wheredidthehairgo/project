@@ -9,6 +9,10 @@ class PrizeIp7 extends BasePopupClass{
     super.init();
     this.isLoad = false;
     let self=this;
+    this.$dom.find('#btn-check').on('tap', function(){
+      self.$dom.find('#show1').hide();
+      self.$dom.find('#show2').show();
+    })
     this.$dom.find('.btn-identify').on('tap',function(){
       if (self.isLoad) {return false};
       let phone=self.$dom.find("#input-phone").val();
@@ -23,13 +27,10 @@ class PrizeIp7 extends BasePopupClass{
         $.ajax({
           type:'put',
           url: Config.server.concat('code/', id, '/', phone)
-        }).done((json)=>{
+        })
+        .done((json)=>{
           if(json.code===0){
-            alert("发送成功");
-            self.setTime();
-            
-          } else if(json.code===1){
-            alert("发送失败");
+            self.setTime(); 
           }
         })
       }
@@ -66,7 +67,7 @@ class PrizeIp7 extends BasePopupClass{
           }
         }).done((json)=>{
           if(json.code===0){
-            alert("验证成功成功");
+            alert("验证成功");
             global.View.myHome.hide();
             global.View.ip7.show();
             self.hide();

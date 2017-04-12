@@ -8,7 +8,7 @@
     margin-top: .8em;   
   }
   .title-2{
-    margin-bottom: .5em;
+    margin-bottom: -0.2em;
     font-size: 1.5rem;
     padding:0 .5em;
     line-height: 1.5;
@@ -16,7 +16,7 @@
     // display: block;
   }
   .title-3 {
-    margin-top: .5em;
+    margin-top: .8em;
   }
   .title-4 {
     margin-bottom: .2em;
@@ -43,8 +43,8 @@
   }
   .phone-pic {
     >img:nth-of-type(2) {
-      top: 45%;
-      width: 45%;
+      top: 75%;
+      width: 36%;
     }
   }
   .content-2{
@@ -58,14 +58,25 @@
     }
   }
   .content-3 {
-    margin: -1em 0 0 0;
+    margin: 4.5em 0 5em 0;
     p{
-      margin-bottom:.2em;
+      margin-bottom:.8em;
+    }
+  }
+  .content-4 {
+    margin: 2em 0 2em 0;
+    p {
+      font-size: 1.2rem;
+      color: #84250e;
+      &:last-of-type {
+        font-size: .7rem;
+        color: #ff0c00;
+      }
     }
   }
   .lingjiang {
     // position: relative;
-    margin-bottom: .4em;
+    margin-bottom: .5em;
     input {
       box-sizing: border-box;
       width: 100%;
@@ -78,6 +89,7 @@
   }
   .identify {
     display: flex;
+    // margin-bottom: 3em;
     input {
       width: 55%;
     }
@@ -90,7 +102,7 @@
   }
   .btn-submit {
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
     left: 50%;
     transform: translate(-50%, 50%);
     z-index: 2;   

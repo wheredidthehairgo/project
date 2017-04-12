@@ -16,6 +16,7 @@
  global.View.loading = new Loading();
 
  const Home = require('./View/Home');
+ const Follow = require('./View/Follow');
  const Ljq = require('./View/Ljq');
  const Iqy = require('./View/Iqy');
  const Ip7 = require('./View/Ip7');
@@ -61,7 +62,7 @@
  function initUI() {
    console.log('initUI');
    global.View.myPage = new (global.BaseClass)('.page');
-   global.View.follow =new (global.BaseClass)('.follow');
+   global.View.follow =new Follow('.follow');
    global.View.myHome = new Home('.home');
    global.View.ljq=new Ljq('.lijianquan');
    global.View.iqy=new Iqy('.iqiyi');
@@ -101,12 +102,12 @@ function initUserInfo(userInfo){
   console.log(Config.server + 'add/');
     $.post(Config.server + 'add/', {
         openid: userInfo.openid,
-        nickname: userInfo.nickname
-        // headimg: userInfo.headimgurl,
-        // sex: userInfo.sex,
-        // province: userInfo.province,
-        // city: userInfo.city,
-        // country: userInfo.country
+        nickname: userInfo.nickname,
+        headimg: userInfo.headimgurl,
+        sex: userInfo.sex,
+        province: userInfo.province,
+        city: userInfo.city,
+        country: userInfo.country
     }, (json)=>{
         global.data = json.data;
       isInitNet = true;
@@ -139,4 +140,5 @@ console.log('提交用户信息成功!');
             }
         }
 }
+$('#main-bg').height($())
 $('body,.popup').height($(window).innerHeight());

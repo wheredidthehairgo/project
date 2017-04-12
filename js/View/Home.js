@@ -6,6 +6,7 @@ class Home extends BaseClass {
 
   init() {
     super.init();
+    ViewAdapt.push('.home.page',342/523);
     this.numBox = this.$dom.find(".laohuji-container");
     this.num = $(this.numBox).find(".laohuji-part");
     this.btn = this.$dom.find(".play-btn");
@@ -25,7 +26,7 @@ class Home extends BaseClass {
 
   run() {
         this.value = [];
-        let hei = this.height;
+        // let hei = this.height;
         $(this.btn).on("click", () => {
             if (this.isBegin) return false;
             $.ajax({
@@ -43,7 +44,7 @@ class Home extends BaseClass {
                         this.value[i] = myvalue;
                         let value = this.value[i];
                         Gun.reset(n);
-                        Gun.starmove(n, value, hei, i, this.jugde.bind(this));
+                        Gun.starmove(n, value, i, this.jugde.bind(this));
                     })
                 }
                 
@@ -71,8 +72,7 @@ class Home extends BaseClass {
             let data=json.data[0];
             let index = 0 ;
             let gift;
-            setInterval(()=>{
-                
+            setInterval(()=>{    
                 switch(data[index].gift_id){
                     case 1: gift='Iphone7'; break;
                     case 2: gift='爱奇艺会员'; break;
@@ -80,9 +80,9 @@ class Home extends BaseClass {
                 }
                 $('.prize-content div').html(`中奖名单：${data[index].nickname}获得${gift}`);
                 index++;    
-            },3000);
+                index=(index>=data.length)?0:index;
+            },2000);
             
-            index>=data.length?0:index;
             // $.each(data, (i,n)=>{})
         })
     }

@@ -13,6 +13,9 @@ class Popups extends BasePopupClass{
     this.$dom.find('#btn-confirm').on('tap',()=>{
       this.hide();
     })
+    this.$dom.find('#share-img').on('tap', ()=>{
+      this.hide();
+    })
   }
 
 

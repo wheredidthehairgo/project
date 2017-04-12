@@ -3,9 +3,10 @@ module.exports={
         $(str).css('backgroundPositionY', 0);
     },
 
-    starmove(str, value, hei, i, fn){
+    starmove(str, value, i, fn){
+            let total=100*18-100*value;
             $(str).animate({
-                backgroundPositionY: (hei*18) - (hei*value)
+                backgroundPositionY: total+'%'
                 //现在圈数为6
             },{
                 duration: 3000+i*2000,

@@ -60,10 +60,16 @@
         height: 2.2rem;
         z-index: 1;
       }
-      > .wrap-content {
+      >.show {
+        height: 100%;
+      }
+      .wrap-content {
         margin: 0 .8em;
+        margin-top: 2%;
         position: relative;
         z-index:2;
+        height: 86%;
+        overflow: scroll;
       }
       .sure-btn {
         position: absolute;
@@ -85,6 +91,7 @@
       }
       .btn-submit{
         margin-top: .2em;
+        margin-bottom: .5em;
       }
     }
   }

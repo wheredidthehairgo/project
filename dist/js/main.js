@@ -64,13 +64,14 @@
 	global.View.loading = new Loading();
 	
 	var Home = __webpack_require__(18);
-	var Ljq = __webpack_require__(19);
-	var Iqy = __webpack_require__(20);
-	var Ip7 = __webpack_require__(21);
-	var Popups = __webpack_require__(22);
-	var PrizeLjq = __webpack_require__(23);
-	var PrizeIqy = __webpack_require__(24);
-	var PrizeIp7 = __webpack_require__(25);
+	var Follow = __webpack_require__(19);
+	var Ljq = __webpack_require__(20);
+	var Iqy = __webpack_require__(21);
+	var Ip7 = __webpack_require__(22);
+	var Popups = __webpack_require__(23);
+	var PrizeLjq = __webpack_require__(24);
+	var PrizeIqy = __webpack_require__(25);
+	var PrizeIp7 = __webpack_require__(26);
 	
 	var isLoaded = false;
 	
@@ -100,7 +101,7 @@
 	function initUI() {
 	  console.log('initUI');
 	  global.View.myPage = new global.BaseClass('.page');
-	  global.View.follow = new global.BaseClass('.follow');
+	  global.View.follow = new Follow('.follow');
 	  global.View.myHome = new Home('.home');
 	  global.View.ljq = new Ljq('.lijianquan');
 	  global.View.iqy = new Iqy('.iqiyi');
@@ -135,7 +136,12 @@
 	  console.log(Config.server + 'add/');
 	  $.post(Config.server + 'add/', {
 	    openid: userInfo.openid,
-	    nickname: userInfo.nickname
+	    nickname: userInfo.nickname,
+	    headimg: userInfo.headimgurl,
+	    sex: userInfo.sex,
+	    province: userInfo.province,
+	    city: userInfo.city,
+	    country: userInfo.country
 	  }, function (json) {
 	    global.data = json.data;
 	    isInitNet = true;
@@ -173,6 +179,7 @@
 	    }
 	  }
 	}
+	$('#main-bg').height($());
 	$('body,.popup').height($(window).innerHeight());
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
@@ -460,7 +467,7 @@
 	
 	'use strict';
 	
-	var pre = 'gd';
+	var pre = 'tiger';
 	module.exports = {
 	  debug: true,
 	  id: null,
@@ -469,7 +476,7 @@
 	  storageName: 'libai_userInfo_version_322_s11',
 	
 	  userInfo: {
-	    openid: 'test142',
+	    openid: 'test105',
 	    nickname: 'kuku',
 	    sex: '1',
 	    province: '广东',
@@ -1349,15 +1356,16 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	module.exports = {
 	    reset: function reset(str) {
 	        $(str).css('backgroundPositionY', 0);
 	    },
-	    starmove: function starmove(str, value, hei, i, fn) {
+	    starmove: function starmove(str, value, i, fn) {
+	        var total = 100 * 18 - 100 * value;
 	        $(str).animate({
-	            backgroundPositionY: hei * 18 - hei * value
+	            backgroundPositionY: total + '%'
 	        }, {
 	            duration: 3000 + i * 2000,
 	            easing: "linear",
@@ -1467,6 +1475,7 @@
 	        key: "init",
 	        value: function init() {
 	            _get(Home.prototype.__proto__ || Object.getPrototypeOf(Home.prototype), "init", this).call(this);
+	            ViewAdapt.push('.home.page', 342 / 523);
 	            this.numBox = this.$dom.find(".laohuji-container");
 	            this.num = $(this.numBox).find(".laohuji-part");
 	            this.btn = this.$dom.find(".play-btn");
@@ -1488,7 +1497,7 @@
 	            var _this2 = this;
 	
 	            this.value = [];
-	            var hei = this.height;
+	
 	            $(this.btn).on("click", function () {
 	                if (_this2.isBegin) return false;
 	                $.ajax({
@@ -1506,7 +1515,7 @@
 	                            _this2.value[i] = myvalue;
 	                            var value = _this2.value[i];
 	                            Gun.reset(n);
-	                            Gun.starmove(n, value, hei, i, _this2.jugde.bind(_this2));
+	                            Gun.starmove(n, value, i, _this2.jugde.bind(_this2));
 	                        });
 	                    }
 	                });
@@ -1538,7 +1547,6 @@
 	                var index = 0;
 	                var gift = void 0;
 	                setInterval(function () {
-	
 	                    switch (data[index].gift_id) {
 	                        case 1:
 	                            gift = 'Iphone7';break;
@@ -1549,9 +1557,8 @@
 	                    }
 	                    $('.prize-content div').html("\u4E2D\u5956\u540D\u5355\uFF1A" + data[index].nickname + "\u83B7\u5F97" + gift);
 	                    index++;
-	                }, 3000);
-	
-	                index >= data.length ? 0 : index;
+	                    index = index >= data.length ? 0 : index;
+	                }, 2000);
 	            });
 	        }
 	    }]);
@@ -1566,7 +1573,42 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Follow = function (_BaseClass) {
+	  _inherits(Follow, _BaseClass);
+	
+	  function Follow(str) {
+	    _classCallCheck(this, Follow);
+	
+	    return _possibleConstructorReturn(this, (Follow.__proto__ || Object.getPrototypeOf(Follow)).call(this, str));
+	  }
+	
+	  _createClass(Follow, [{
+	    key: 'init',
+	    value: function init() {
+	      ViewAdapt.push('.follow.page', 640 / 900);
+	    }
+	  }]);
+	
+	  return Follow;
+	}(BaseClass);
+	
+	module.exports = Follow;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -1588,9 +1630,13 @@
 	    }
 	
 	    _createClass(Ljq, [{
-	        key: "init",
+	        key: 'init',
 	        value: function init() {
-	            _get(Ljq.prototype.__proto__ || Object.getPrototypeOf(Ljq.prototype), "init", this).call(this);
+	            _get(Ljq.prototype.__proto__ || Object.getPrototypeOf(Ljq.prototype), 'init', this).call(this);
+	            ViewAdapt.push('.lijianquan', 640 / 900);
+	            this.$dom.find('#btn-exchange').on('tap', function () {
+	                window.location.href = 'http://55952265.m.weimob.com/vshop/55952265/Coupon/CouponTemplate?CouponTemplateNo=46513317281e465e8fb928e2dd8427f8';
+	            });
 	        }
 	    }]);
 	
@@ -1600,7 +1646,7 @@
 	module.exports = Ljq;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1628,6 +1674,10 @@
 	        key: 'init',
 	        value: function init() {
 	            _get(Iqy.prototype.__proto__ || Object.getPrototypeOf(Iqy.prototype), 'init', this).call(this);
+	            ViewAdapt.push('.iqiyi', 640 / 900);
+	            this.$dom.find('#btn-exchange').on('tap', function () {
+	                window.location.href = 'http://vip.iqiyi.com/jihuoma.html';
+	            });
 	        }
 	    }, {
 	        key: 'show',
@@ -1647,10 +1697,10 @@
 	module.exports = Iqy;
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -1672,9 +1722,10 @@
 	    }
 	
 	    _createClass(Ip7, [{
-	        key: "init",
+	        key: 'init',
 	        value: function init() {
-	            _get(Ip7.prototype.__proto__ || Object.getPrototypeOf(Ip7.prototype), "init", this).call(this);
+	            _get(Ip7.prototype.__proto__ || Object.getPrototypeOf(Ip7.prototype), 'init', this).call(this);
+	            ViewAdapt.push('.iphone', 640 / 900);
 	        }
 	    }]);
 	
@@ -1684,7 +1735,7 @@
 	module.exports = Ip7;
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1720,6 +1771,9 @@
 	      this.$dom.find('#btn-confirm').on('tap', function () {
 	        _this2.hide();
 	      });
+	      this.$dom.find('#share-img').on('tap', function () {
+	        _this2.hide();
+	      });
 	    }
 	  }]);
 	
@@ -1729,7 +1783,7 @@
 	module.exports = Popups;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -1775,7 +1829,6 @@
 	            url: Config.server.concat('code/', id, '/', phone)
 	          }).done(function (json) {
 	            if (json.code === 0) {
-	              alert("发送成功");
 	              self.setTime();
 	            } else if (json.code === 1) {
 	              alert("发送失败");
@@ -1838,7 +1891,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -1884,7 +1937,6 @@
 	            url: Config.server.concat('code/', id, '/', phone)
 	          }).done(function (json) {
 	            if (json.code === 0) {
-	              alert("发送成功");
 	              self.setTime();
 	            } else if (json.code === 1) {
 	              alert("发送失败");
@@ -1950,7 +2002,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -1980,6 +2032,10 @@
 	      _get(PrizeIp7.prototype.__proto__ || Object.getPrototypeOf(PrizeIp7.prototype), 'init', this).call(this);
 	      this.isLoad = false;
 	      var self = this;
+	      this.$dom.find('#btn-check').on('tap', function () {
+	        self.$dom.find('#show1').hide();
+	        self.$dom.find('#show2').show();
+	      });
 	      this.$dom.find('.btn-identify').on('tap', function () {
 	        if (self.isLoad) {
 	          return false;
@@ -1998,10 +2054,7 @@
 	            url: Config.server.concat('code/', id, '/', phone)
 	          }).done(function (json) {
 	            if (json.code === 0) {
-	              alert("发送成功");
 	              self.setTime();
-	            } else if (json.code === 1) {
-	              alert("发送失败");
 	            }
 	          });
 	        }
@@ -2037,7 +2090,7 @@
 	            }
 	          }).done(function (json) {
 	            if (json.code === 0) {
-	              alert("验证成功成功");
+	              alert("验证成功");
 	              global.View.myHome.hide();
 	              global.View.ip7.show();
 	              self.hide();

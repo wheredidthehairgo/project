@@ -3,7 +3,7 @@
  */
 
 'use strict';
-const pre = 'gd';
+const pre = 'tiger';
 module.exports = {
   debug: true,
   id: null,
@@ -13,7 +13,7 @@ module.exports = {
   // 用户的数据
   userInfo: {
     // openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
-    openid: 'test142',
+    openid: 'test105',
     nickname: 'kuku',
     sex: '1',
     province: '广东',

@@ -23,7 +23,6 @@ class PrizeLjq extends BasePopupClass{
           url: Config.server.concat('code/', id, '/', phone)
         }).done((json)=>{
           if(json.code===0){
-            alert("发送成功");
             self.setTime();
             
           } else if(json.code===1){
@@ -46,7 +45,8 @@ class PrizeLjq extends BasePopupClass{
         $.ajax({
           type:'put',
           url: Config.server.concat('check/', myid, '/', phone, '/', check)
-        }).done((json)=>{
+        })
+        .done((json)=>{
           if(json.code===0){
             alert("验证成功");
             global.View.myHome.hide();

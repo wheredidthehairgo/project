@@ -21,9 +21,9 @@ class PrizeIqy extends BasePopupClass{
         $.ajax({
           type:'put',
           url: Config.server.concat('code/', id, '/', phone)
-        }).done((json)=>{
+        })
+        .done((json)=>{
           if(json.code===0){
-            alert("发送成功");
             self.setTime();
             
           } else if(json.code===1){
