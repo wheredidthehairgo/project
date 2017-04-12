@@ -4,14 +4,16 @@ module.exports={
     },
 
     starmove(str, value, i, fn){
-            let total=100*18-100*value;
+            let total=100*21-100*value;
             $(str).animate({
                 backgroundPositionY: total+'%'
-                //现在圈数为6
+                //现在圈数为7
             },{
                 duration: 3000+i*2000,
-                easing:"linear",
-                complete:fn
+                easing:"swing",
+                complete:()=>{fn();$(str).css('animation','scale 2s')}
                 });   
     }
+
+
 }

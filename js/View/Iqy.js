@@ -5,6 +5,7 @@ class Iqy extends BaseClass {
     init() {
         super.init();
         ViewAdapt.push('.iqiyi',640/900);
+        $('.iqiyi').height($(window).innerHeight());
         this.$dom.find('#btn-exchange').on('tap',()=>{
             window.location.href=`http://vip.iqiyi.com/jihuoma.html`;
         })

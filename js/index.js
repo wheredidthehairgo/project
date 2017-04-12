@@ -7,6 +7,7 @@
  global.TipManager = require('./libs/TipManager');
  global.shareApi = require('./libs/ShareApi');
  global.Gun=require('./libs/Gun');
+ global.Easing = require('jquery.easing');
  global.View = {};
  global.Popup = {};
  global.Data = {};

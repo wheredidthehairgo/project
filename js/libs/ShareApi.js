@@ -1,8 +1,9 @@
 const wechat = new Wechat(Config.appid);
-const TITLE = '标题';
-const DESC = '描述';
+const TITLE = '疯狂摇摇乐';
+const DESC = '晓明baby邀你一起玩游戏！壕礼等你拿，100%中奖！';
 const IMGURL = Config.host + `/resources/img/icon.jpg`;
-const LINK = `${ Config.shareUrl }?url=${ encodeURIComponent(dealUrl(wechat.filter([ 'code', 'id' ], { share: 'share' }))) }`;
+const LINK = dealUrl(wechat.filter([ 'code', 'id' ], { share: 'share' }));
+// const LINK = dataSDK.dealUrl(wechat.filter(['code', 'id'], { share: 'share' }));
 
 // 处理不加载婓波的异常
 function dealUrl(url) {

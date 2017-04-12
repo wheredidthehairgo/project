@@ -13,7 +13,7 @@ module.exports = {
   // 用户的数据
   userInfo: {
     // openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
-    openid: 'test105',
+    openid: 'test111',
     nickname: 'kuku',
     sex: '1',
     province: '广东',
@@ -24,7 +24,7 @@ module.exports = {
   },
   // 当前H5的地址，主要为了ICON；
   // host: `http://100jc.net/goddess/public/h5_${pre}`,
-  host: `http://100jc.net/goddess/public/h5_${ pre }`,
+  host: `http://100jc.net/tigerGame/public/h5`,
   // server: 'http://192.168.199.174:9960',
   // 服务器的地址
   server: 'http://100jc.net/tigerGame/tiger/',
