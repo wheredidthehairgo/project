@@ -163,7 +163,7 @@
 	      case 2:
 	        global.Popup.prizeIqy.show();break;
 	      case 3:
-	        global.Popup.prizeLjq.show();break;
+	        global.View.myHome.hide();global.View.ljq.show();break;
 	    }
 	    if (data.chance) {
 	      Config.chance = data.chance;
@@ -180,8 +180,7 @@
 	    }
 	  }
 	}
-	$('#main-bg').height($());
-	$('body,.popup').height($(window).innerHeight());
+	$('.popup').height($(window).innerHeight());
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
@@ -477,7 +476,7 @@
 	  storageName: 'libai_userInfo_version_322_s11',
 	
 	  userInfo: {
-	    openid: 'test111',
+	    openid: 'test163',
 	    nickname: 'kuku',
 	    sex: '1',
 	    province: '广东',
@@ -490,8 +489,6 @@
 	  host: 'http://100jc.net/tigerGame/public/h5',
 	
 	  server: 'http://100jc.net/tigerGame/tiger/',
-	
-	  qiniu: 'http://up.qiniu.com',
 	
 	  shareUrl: 'http://toupiao.91iot.net/'
 	};
@@ -1364,15 +1361,13 @@
 	        $(str).css('backgroundPositionY', 0);
 	    },
 	    starmove: function starmove(str, value, i, fn) {
-	        var total = 100 * 21 - 100 * value;
+	        var total = 100 * 30 - 100 * value;
 	        $(str).animate({
 	            backgroundPositionY: total + '%'
 	        }, {
-	            duration: 3000 + i * 2000,
+	            duration: 3000 + i * 1000,
 	            easing: "swing",
-	            complete: function complete() {
-	                fn();$(str).css('animation', 'scale 2s');
-	            }
+	            complete: fn
 	        });
 	    }
 	};
@@ -9308,19 +9303,23 @@
 	    }, {
 	        key: "jugde",
 	        value: function jugde() {
+	            var _this3 = this;
+	
 	            this.count++;
 	            console.log(this.gift);
 	            if (this.count == 3) {
-	                switch (this.gift) {
-	                    case 1:
-	                        global.Popup.prizeIp7.show();break;
-	                    case 2:
-	                        global.Popup.prizeIqy.show();break;
-	                    case 3:
-	                        global.Popup.prizeLjq.show();break;
-	                }
-	                this.isBegin = false;
-	                this.count = 0;
+	                setTimeout(function () {
+	                    switch (_this3.gift) {
+	                        case 1:
+	                            global.Popup.prizeIp7.show();break;
+	                        case 2:
+	                            global.Popup.prizeIqy.show();break;
+	                        case 3:
+	                            global.View.myHome.hide();global.View.ljq.show();break;
+	                    }
+	                    _this3.isBegin = false;
+	                    _this3.count = 0;
+	                }, 2000);
 	            }
 	        }
 	    }, {
@@ -9331,18 +9330,22 @@
 	                var index = 0;
 	                var gift = void 0;
 	                setInterval(function () {
-	                    switch (data[index].gift_id) {
-	                        case 1:
-	                            gift = 'Iphone7';break;
-	                        case 2:
-	                            gift = '爱奇艺会员';break;
-	                        case 3:
-	                            gift = '立减券';break;
+	                    if (data[index].gift_id) {
+	                        switch (data[index].gift_id) {
+	                            case 1:
+	                                gift = 'Iphone7';break;
+	                            case 2:
+	                                gift = '爱奇艺会员';break;
+	                            case 3:
+	                                gift = '立减券';break;
+	                        }
+	                        $('.prize-content div').html("\u4E2D\u5956\u540D\u5355\uFF1A" + data[index].nickname + "\u83B7\u5F97" + gift);
+	                    } else {
+	                        return;
 	                    }
-	                    $('.prize-content div').html("\u4E2D\u5956\u540D\u5355\uFF1A" + data[index].nickname + "\u83B7\u5F97" + gift);
 	                    index++;
 	                    index = index >= data.length ? 0 : index;
-	                }, 2000);
+	                }, 3000);
 	            });
 	        }
 	    }]);
@@ -9410,6 +9413,7 @@
 	    function Ljq(str) {
 	        _classCallCheck(this, Ljq);
 	
+	        ViewAdapt.push('.lijianquan', 342 / 523);
 	        return _possibleConstructorReturn(this, (Ljq.__proto__ || Object.getPrototypeOf(Ljq)).call(this, str));
 	    }
 	
@@ -9417,8 +9421,6 @@
 	        key: 'init',
 	        value: function init() {
 	            _get(Ljq.prototype.__proto__ || Object.getPrototypeOf(Ljq.prototype), 'init', this).call(this);
-	            ViewAdapt.push('.lijianquan', 640 / 900);
-	            $('.lijianquan').height($(window).innerHeight());
 	            this.$dom.find('#btn-exchange').on('tap', function () {
 	                window.location.href = 'http://55952265.m.weimob.com/vshop/55952265/Coupon/CouponTemplate?CouponTemplateNo=46513317281e465e8fb928e2dd8427f8';
 	            });
@@ -9452,6 +9454,7 @@
 	    function Iqy(str) {
 	        _classCallCheck(this, Iqy);
 	
+	        ViewAdapt.push('.iqiyi', 342 / 523);
 	        return _possibleConstructorReturn(this, (Iqy.__proto__ || Object.getPrototypeOf(Iqy)).call(this, str));
 	    }
 	
@@ -9459,8 +9462,6 @@
 	        key: 'init',
 	        value: function init() {
 	            _get(Iqy.prototype.__proto__ || Object.getPrototypeOf(Iqy.prototype), 'init', this).call(this);
-	            ViewAdapt.push('.iqiyi', 640 / 900);
-	            $('.iqiyi').height($(window).innerHeight());
 	            this.$dom.find('#btn-exchange').on('tap', function () {
 	                window.location.href = 'http://vip.iqiyi.com/jihuoma.html';
 	            });
@@ -9472,7 +9473,7 @@
 	            this.$dom.find('#copy-content').text(Config.ticket_id);
 	            var id = this.$dom.find('#copy-content').text();
 	            this.$dom.find('#btn-copy').on('tap', function () {
-	                prompt("请复制", id);
+	                TipManager.show("请手动复制");
 	            });
 	        }
 	    }]);
@@ -9504,6 +9505,7 @@
 	    function Ip7(str) {
 	        _classCallCheck(this, Ip7);
 	
+	        ViewAdapt.push('.iphone', 342 / 523);
 	        return _possibleConstructorReturn(this, (Ip7.__proto__ || Object.getPrototypeOf(Ip7)).call(this, str));
 	    }
 	
@@ -9511,7 +9513,6 @@
 	        key: 'init',
 	        value: function init() {
 	            _get(Ip7.prototype.__proto__ || Object.getPrototypeOf(Ip7.prototype), 'init', this).call(this);
-	            ViewAdapt.push('.iphone', 640 / 900);
 	        }
 	    }]);
 	
@@ -9605,9 +9606,9 @@
 	        }
 	        var phone = self.$dom.find("#input-phone").val();
 	        if (phone === "") {
-	          alert("手机号不能为空");
+	          TipManager.show("手机号不能为空");
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          alert("手机号格式错误");
+	          TipManager.show("手机号格式错误");
 	        } else {
 	          var id = Config.user_id;
 	          $.ajax({
@@ -9617,7 +9618,7 @@
 	            if (json.code === 0) {
 	              self.setTime();
 	            } else if (json.code === 1) {
-	              alert("发送失败");
+	              TipManager.show("发送失败");
 	            }
 	          });
 	        }
@@ -9626,11 +9627,11 @@
 	        var phone = self.$dom.find("#input-phone").val();
 	        var check = self.$dom.find("#input-check").val();
 	        if (phone === "") {
-	          alert("手机号不能为空");
+	          TipManager.show("手机号不能为空");
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          alert("手机号格式错误");
+	          TipManager.show("手机号格式错误");
 	        } else if (check === '') {
-	          alert("没有输入验证码");
+	          TipManager.show("没有输入验证码");
 	        } else {
 	          var myid = Config.user_id;
 	          $.ajax({
@@ -9638,12 +9639,12 @@
 	            url: Config.server.concat('check/', myid, '/', phone, '/', check)
 	          }).done(function (json) {
 	            if (json.code === 0) {
-	              alert("验证成功");
+	              TipManager.show("验证成功");
 	              global.View.myHome.hide();
 	              global.View.ljq.show();
 	              self.hide();
 	            } else if (json.code === 1) {
-	              alert("发送失败");
+	              TipManager.show("发送失败");
 	            }
 	          });
 	        }
@@ -9713,9 +9714,9 @@
 	        };
 	        var phone = self.$dom.find("#input-phone").val();
 	        if (phone === "") {
-	          alert("手机号不能为空");
+	          TipManager.show("手机号不能为空");
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          alert("手机号格式错误");
+	          TipManager.show("手机号格式错误");
 	        } else {
 	          var id = Config.user_id;
 	          $.ajax({
@@ -9725,7 +9726,7 @@
 	            if (json.code === 0) {
 	              self.setTime();
 	            } else if (json.code === 1) {
-	              alert("发送失败");
+	              TipManager.show("发送失败");
 	            }
 	          });
 	        }
@@ -9734,11 +9735,11 @@
 	        var phone = self.$dom.find("#input-phone").val();
 	        var check = self.$dom.find("#input-check").val();
 	        if (phone === "") {
-	          alert("手机号不能为空");
+	          TipManager.show("手机号不能为空");
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          alert("手机号格式错误");
+	          TipManager.show("手机号格式错误");
 	        } else if (check === '') {
-	          alert("没有输入验证码");
+	          TipManager.show("没有输入验证码");
 	        } else {
 	          var myid = Config.user_id;
 	          $.ajax({
@@ -9749,12 +9750,12 @@
 	              var data = json.data;
 	              console.log(data);
 	              Config.ticket_id = data.ticket_id;
-	              alert("验证成功");
+	              TipManager.show("验证成功");
 	              global.View.myHome.hide();
 	              global.View.iqy.show();
 	              self.hide();
 	            } else if (json.code === 1006 || json.code === 1) {
-	              alert("没有爱奇艺码");
+	              TipManager.show("没有爱奇艺码");
 	            }
 	          });
 	        }
@@ -9828,10 +9829,10 @@
 	        };
 	        var phone = self.$dom.find("#input-phone").val();
 	        if (phone === "") {
-	          alert("手机号不能为空");
+	          TipManager.show("手机号不能为空");
 	          return;
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          alert("手机号格式错误");
+	          TipManager.show("手机号格式错误");
 	          return;
 	        } else {
 	          var id = Config.user_id;
@@ -9851,19 +9852,19 @@
 	        var myname = self.$dom.find("#input-name").val();
 	        var myaddress = self.$dom.find("#input-address").val();
 	        if (myname === '') {
-	          alert('名字不能为空');
+	          TipManager.show('名字不能为空');
 	          return;
 	        } else if (myaddress === '') {
-	          alert('地址不能为空');
+	          TipManager.show('地址不能为空');
 	          return;
 	        } else if (phone === "") {
-	          alert("手机号不能为空");
+	          TipManager.show("手机号不能为空");
 	          return;
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          alert("手机号格式错误");
+	          TipManager.show("手机号格式错误");
 	          return;
 	        } else if (check === '') {
-	          alert("没有输入验证码");
+	          TipManager.show("没有输入验证码");
 	          return;
 	        } else {
 	          var myid = Config.user_id;
@@ -9876,12 +9877,12 @@
 	            }
 	          }).done(function (json) {
 	            if (json.code === 0) {
-	              alert("验证成功");
+	              TipManager.show("验证成功");
 	              global.View.myHome.hide();
 	              global.View.ip7.show();
 	              self.hide();
 	            } else if (json.code === 1) {
-	              alert("发送失败");
+	              TipManager.show("发送失败");
 	            }
 	          });
 	        }

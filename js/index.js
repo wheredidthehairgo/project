@@ -123,11 +123,11 @@ console.log('提交用户信息成功!');
         let data=global.data ;
         Config.user_id = (typeof(data) == "number")?data:data.user_id;
         if(!data.mobile){
-          global.View.myHome.show();
+            global.View.myHome.show(); 
             switch(data.gift_id){
               case 1: global.Popup.prizeIp7.show(); break;
               case 2: global.Popup.prizeIqy.show(); break;
-              case 3: global.Popup.prizeLjq.show(); break;
+              case 3: global.View.myHome.hide();global.View.ljq.show(); break;
             }
             if(data.chance) {
               Config.chance=data.chance;
@@ -141,5 +141,4 @@ console.log('提交用户信息成功!');
             }
         }
 }
-$('#main-bg').height($())
-$('body,.popup').height($(window).innerHeight());
+$('.popup').height($(window).innerHeight());

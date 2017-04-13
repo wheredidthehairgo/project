@@ -40,7 +40,6 @@
     "vconsole": "^2.5.2",
     "zepto": "^1.2.0",
     "clipboard": "^1.6.1",
-    "easing": "^0.0.4",
     "jquery.easing": "^1.4.1"
   },
   "devDependencies": {

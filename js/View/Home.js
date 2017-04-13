@@ -57,13 +57,15 @@ class Home extends BaseClass {
         this.count++;
         console.log(this.gift);
         if (this.count == 3) {
-            switch(this.gift){
-                case 1: global.Popup.prizeIp7.show(); break;
-                case 2: global.Popup.prizeIqy.show(); break;
-                case 3: global.Popup.prizeLjq.show(); break;
-            }
-            this.isBegin = false;
-            this.count = 0
+            setTimeout(()=>{
+                switch(this.gift){
+                    case 1: global.Popup.prizeIp7.show(); break;
+                    case 2: global.Popup.prizeIqy.show(); break;
+                    case 3: global.View.myHome.hide(); global.View.ljq.show(); break;
+                }
+                this.isBegin = false;
+                this.count = 0
+            },2000)
         }
     }
 
@@ -72,16 +74,20 @@ class Home extends BaseClass {
             let data=json.data[0];
             let index = 0 ;
             let gift;
-            setInterval(()=>{    
-                switch(data[index].gift_id){
-                    case 1: gift='Iphone7'; break;
-                    case 2: gift='爱奇艺会员'; break;
-                    case 3: gift='立减券'; break;
+            setInterval(()=>{  
+                if(data[index].gift_id){
+                    switch(data[index].gift_id){
+                        case 1: gift='Iphone7'; break;
+                        case 2: gift='爱奇艺会员'; break;
+                        case 3: gift='立减券'; break;
+                    }
+                    $('.prize-content div').html(`中奖名单：${data[index].nickname}获得${gift}`);
+                }else {
+                    return ;
                 }
-                $('.prize-content div').html(`中奖名单：${data[index].nickname}获得${gift}`);
                 index++;    
                 index=(index>=data.length)?0:index;
-            },2000);
+            },3000);
             
             // $.each(data, (i,n)=>{})
         })

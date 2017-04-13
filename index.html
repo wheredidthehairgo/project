@@ -19,6 +19,7 @@
 		<div class="follow page" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/follow_bg.png" class="main-img" alt="">
+				<img src="resources/img/libai_logo.png" class="logo-img" alt="">
 				<div class="main-content">
 					<div class="main-title">
 						<p>Baby、晓明给您发福利</p>
@@ -33,8 +34,7 @@
 			<div>
 				<div class="main-container">
 					<img src="resources/img/main_bg.png" class="main-img" alt="">
-					<!--<div class="main-rule">摇出三个相同图案即中奖！</div>-->
-					<!--<img src="resources/img/main_border.png" alt="" class="laohuji-border">	-->
+					<img src="resources/img/libai_logo.png" class="logo-img" alt="">
 					<div class="laohuji-container">
 						<div class="laohuji-part">
 							<div class="laohuji-pic"></div>
@@ -71,10 +71,11 @@
 		<div class="exchange page lijianquan" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
+				<img src="resources/img/libai_logo.png" class="logo-img" alt="">
 				<div class="main-content">
 					<div class="main-title">
 						<p>恭喜您获得</p>
-						<p>20块立减券</p>
+						<p>20元立减券</p>
 					</div>
 					<img src="resources/img/libaiquan.png" alt="">
 					<p>点击领取优惠券</p>
@@ -83,16 +84,16 @@
 				<div class="main-submit">
 					<div class="btn btn-exchange" id="btn-exchange">
 						<img src="resources/img/popup_btn.png" class="bg" alt="">领优惠券</div>
-					<p>注：在快乐家官方商城购买买立白</p>
-					<p>天然皂液900g*7包时可立减20元。</p>
-					<a><span class="red">>>前往快乐家官方商城使用优惠>></span></a>
+					<!--<p>注：在快乐家官方商城购买立白</p>
+					<p>天然皂液900g*7包时可立减20元。</p>-->
+					<a href="http://55952265.m.weimob.com/vshop/55952265/Index?PageId=541967&IsPre=1"><span class="red">>>前往快乐家官方商城使用优惠>></span></a>
 				</div>
 			</div>
 			<div class="side-container">
 				<ul>
 					<li>奖品发放说明：</li>
 					<li>1、兑奖次数：仅限兑奖一次。</li>
-					<li>2、兑奖方式：领取优惠券到微信卡包后，进入快乐家官方商城购买立白天然皂液900g*7包，支付时将享有立减20元的优惠。</li>
+					<li>2、兑奖方式：领取优惠券到微信卡包后，进入快乐家官方商城购买立白天然皂液900g*7包，支付时将享有立减优惠。</li>
 					<li>3、有效时间：以微信卡券上的时间为准。</li>
 				</ul>
 			</div>
@@ -100,6 +101,7 @@
 		<div class="exchange page iqiyi" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg1.png" class="main-img" alt="">
+				<img src="resources/img/libai_logo.png" class="logo-img" alt="">
 				<div class="main-content">
 					<div class="main-title">
 						<p>恭喜您获得</p>
@@ -109,14 +111,14 @@
 					<p>请复制or保存兑换码</p>
 					<p>点击“前往兑奖”可到官方网站兑奖</p>
 				</div>
-				<div class="main-submit submit-iqiyi">
+				<div class="main-submit">
 					<div class="copy">
-						<div class="copy-content"><span id="copy-content"></span></div>
+						<div class="copy-content"><span id="copy-content" selectable="true"></span></div>
 						<div class="btn btn-copy" id="btn-copy" data-clipboard-action="copy" data-clipboard-target="#copy-content">
 							<img src="resources/img/copy_btn.png" class="bg" alt="">复制</div>
 					</div>
-					<div class="btn btn-exchange" id="btn-exchange">
-						<img src="resources/img/popup_btn.png" class="bg" alt="">领优惠券</div>
+					<div class="btn" id="btn-exchange">
+						<img src="resources/img/popup_btn.png" class="bg" alt="">前往兑换</div>
 				</div>
 			</div>
 			<div class="side-container">
@@ -131,10 +133,11 @@
 		<div class="exchange page iphone" style="display:none">
 			<div class="main-container">
 				<img src="resources/img/exchange_bg2.png" class="main-img" alt="">
+				<img src="resources/img/libai_logo.png" class="logo-img" alt="">
 				<div class="main-content">
 					<div class="main-title">
 						<p>恭喜您获得</p>
-						<p>Iphone7</p>
+						<p>Iphone7<span>32G黑色款</span></p>
 					</div>
 					<img src="resources/img/iphone.png" class="iqiyi-pic" alt="">
 					<p>奖品将以邮寄的方式发给你</p>
@@ -333,10 +336,10 @@
 				</div>
 		</div>
 	</div>
+	</div>
 	<div class="share panel" style="display: none">
 		<div class="mask"></div>
 		<img src="resources/img/share2.png" id="share-img" alt="" class="">
-	</div>
 	</div>
 
 	<!-- 预加载  加载js的时候和加载初始化 -->
@@ -392,7 +395,7 @@
 	<script src="//weijie.91iot.net/open-service/libs/wechat.js"></script>
 
 	<script src="resources/js/touch.js" charset="utf-8"></script>
-	<script src="js/main.js" charset="utf-8"></script>
+	<script src="js/main.js?v=10001" charset="utf-8"></script>
 	<!-- <script src="js/main.min.js" charset="utf-8"></script> -->
 </body>
 

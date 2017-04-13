@@ -17,10 +17,10 @@ class PrizeIp7 extends BasePopupClass{
       if (self.isLoad) {return false};
       let phone=self.$dom.find("#input-phone").val();
       if(phone === ""){
-        alert("手机号不能为空");
+        TipManager.show("手机号不能为空");
         return ;
       } else if(!/^\d{11}$/i.test(String(phone))) {
-        alert("手机号格式错误");
+        TipManager.show("手机号格式错误");
         return ;
       } else {
         let id=Config.user_id;
@@ -41,19 +41,19 @@ class PrizeIp7 extends BasePopupClass{
       let myname=self.$dom.find("#input-name").val();
       let myaddress=self.$dom.find("#input-address").val();
       if(myname === ''){
-        alert('名字不能为空');
+        TipManager.show('名字不能为空');
         return ;
       } else if(myaddress === ''){
-        alert('地址不能为空');
+        TipManager.show('地址不能为空');
         return ;
       } else if(phone === ""){
-        alert("手机号不能为空");
+        TipManager.show("手机号不能为空");
         return ;
       } else if(!/^\d{11}$/i.test(String(phone))) {
-        alert("手机号格式错误");
+        TipManager.show("手机号格式错误");
         return ;
       } else if(check === ''){
-        alert("没有输入验证码");
+        TipManager.show("没有输入验证码");
         return ;
       }
        else {
@@ -67,13 +67,13 @@ class PrizeIp7 extends BasePopupClass{
           }
         }).done((json)=>{
           if(json.code===0){
-            alert("验证成功");
+            TipManager.show("验证成功");
             global.View.myHome.hide();
             global.View.ip7.show();
             self.hide();
             
           } else if(json.code===1){
-            alert("发送失败");
+            TipManager.show("发送失败");
           }
         })
       }

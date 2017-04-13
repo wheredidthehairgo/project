@@ -13,7 +13,7 @@ module.exports = {
   // 用户的数据
   userInfo: {
     // openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
-    openid: 'test111',
+    openid: 'test163',
     nickname: 'kuku',
     sex: '1',
     province: '广东',
@@ -30,7 +30,7 @@ module.exports = {
   server: 'http://100jc.net/tigerGame/tiger/',
   // server: 'http://127.0.0.1:9910',
   // 上传到七牛
-  qiniu: 'http://up.qiniu.com',
+  // qiniu: 'http://up.qiniu.com',
   // 需要代理的分享地址
   shareUrl: 'http://toupiao.91iot.net/',
 };

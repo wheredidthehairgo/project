@@ -1,7 +1,7 @@
+@import "./libs/font";
 @import "./libs/normalize";
 @import "./libs/mixin";
 @import "./libs/animate";
-@import "./libs/font";
 @import "./page/index.scss";
 @import "./popup/index.scss";
 @import "./loading/index.scss";
@@ -11,7 +11,7 @@
 @import "./animate/index.scss";
 html {
   -webkit-overflow-scrolling: touch;
-  font-size: 18px;
+  // font-size: 18px;
   font-family: Arial, "黑体";
 }
 

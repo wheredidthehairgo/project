@@ -1,11 +1,10 @@
 class Iqy extends BaseClass {
     constructor(str){
+        ViewAdapt.push('.iqiyi',342/523);
         super(str);
     }
     init() {
         super.init();
-        ViewAdapt.push('.iqiyi',640/900);
-        $('.iqiyi').height($(window).innerHeight());
         this.$dom.find('#btn-exchange').on('tap',()=>{
             window.location.href=`http://vip.iqiyi.com/jihuoma.html`;
         })
@@ -16,7 +15,7 @@ class Iqy extends BaseClass {
         this.$dom.find('#copy-content').text(Config.ticket_id);
         let id=this.$dom.find('#copy-content').text();
         this.$dom.find('#btn-copy').on('tap', ()=>{
-            prompt("请复制", id);
+            TipManager.show("请手动复制");
         })
     
         // var clipboard = new (global.Clipboard)('#btn-copy');

@@ -13,9 +13,9 @@ class PrizeLjq extends BasePopupClass{
       if (self.isLoad){return false;} 
       let phone=self.$dom.find("#input-phone").val();
       if(phone === ""){
-        alert("手机号不能为空");
+        TipManager.show("手机号不能为空");
       } else if(!/^\d{11}$/i.test(String(phone))) {
-        alert("手机号格式错误");
+        TipManager.show("手机号格式错误");
       } else {
         let id=Config.user_id;
         $.ajax({
@@ -26,7 +26,7 @@ class PrizeLjq extends BasePopupClass{
             self.setTime();
             
           } else if(json.code===1){
-            alert("发送失败");
+            TipManager.show("发送失败");
           }
         })
       }
@@ -35,11 +35,11 @@ class PrizeLjq extends BasePopupClass{
       let phone=self.$dom.find("#input-phone").val();
       let check=self.$dom.find("#input-check").val();
       if(phone === ""){
-        alert("手机号不能为空");
+        TipManager.show("手机号不能为空");
       } else if(!/^\d{11}$/i.test(String(phone))) {
-        alert("手机号格式错误");
+        TipManager.show("手机号格式错误");
       } else if(check === ''){
-        alert("没有输入验证码");
+        TipManager.show("没有输入验证码");
       } else {
         let myid=Config.user_id;
         $.ajax({
@@ -48,12 +48,12 @@ class PrizeLjq extends BasePopupClass{
         })
         .done((json)=>{
           if(json.code===0){
-            alert("验证成功");
+            TipManager.show("验证成功");
             global.View.myHome.hide();
             global.View.ljq.show();
             self.hide();
           } else if(json.code===1){
-            alert("发送失败");
+            TipManager.show("发送失败");
           }
         })
       }

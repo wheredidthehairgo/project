@@ -6,6 +6,16 @@
         top: calc(4em + 21px);
         .main-title {
             margin-top: .2em;
+            p{
+                &:nth-of-type(2) {
+                    position: relative;
+                }
+                span {
+                    position: absolute;
+                    font-size: .7rem;
+                    bottom: 0.2rem;
+                }
+            }
         }
         >img {width: 19%;}
     }

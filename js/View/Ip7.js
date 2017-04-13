@@ -1,10 +1,10 @@
 class Ip7 extends BaseClass {
     constructor(str){
+        ViewAdapt.push('.iphone',342/523);
         super(str);
     }
     init() {
         super.init();
-        ViewAdapt.push('.iphone',640/900);
     }
 }
 module.exports = Ip7;
