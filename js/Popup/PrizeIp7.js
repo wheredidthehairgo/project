@@ -14,6 +14,7 @@ class PrizeIp7 extends BasePopupClass{
       self.$dom.find('#show2').show();
     })
     this.$dom.find('.btn-identify').on('tap',function(){
+      try { dataSDK.btnClick('button4','Iphone7验证'); } catch (e) {}     
       if (self.isLoad) {return false};
       let phone=self.$dom.find("#input-phone").val();
       if(phone === ""){
@@ -36,6 +37,7 @@ class PrizeIp7 extends BasePopupClass{
       }
     })
     this.$dom.find('#btn-submit').on('tap',function(){
+      try { dataSDK.btnClick('button5','Iphone7提交名单'); } catch (e) {}     
       let phone=self.$dom.find("#input-phone").val();
       let check=self.$dom.find("#input-check").val();
       let myname=self.$dom.find("#input-name").val();

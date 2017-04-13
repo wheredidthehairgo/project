@@ -13,7 +13,7 @@ module.exports = {
   // 用户的数据
   userInfo: {
     // openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
-    openid: 'test163',
+    openid: 'test176',
     nickname: 'kuku',
     sex: '1',
     province: '广东',

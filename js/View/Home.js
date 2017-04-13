@@ -28,6 +28,7 @@ class Home extends BaseClass {
         this.value = [];
         // let hei = this.height;
         $(this.btn).on("click", () => {
+            try { dataSDK.btnClick('button1','抽奖'); } catch (e) {}
             if (this.isBegin) return false;
             $.ajax({
                 type: 'put',
@@ -39,9 +40,9 @@ class Home extends BaseClass {
                 }else{
                     this.gift = json.data.gift_id;
                     this.isBegin = true;
-                    let myvalue = this.gift===1?this.gift===2?1:2:3
+                    let myvalue = this.gift;
                     $.each(this.num, (i, n) => {
-                        this.value[i] = myvalue;
+                        this.value[i] = 3;
                         let value = this.value[i];
                         Gun.reset(n);
                         Gun.starmove(n, value, i, this.jugde.bind(this));
@@ -65,7 +66,7 @@ class Home extends BaseClass {
                 }
                 this.isBegin = false;
                 this.count = 0
-            },2000)
+            },4000)
         }
     }
 

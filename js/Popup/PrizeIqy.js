@@ -10,6 +10,7 @@ class PrizeIqy extends BasePopupClass{
     this.isLoad = false;
     let self=this;
     this.$dom.find('.btn-identify').on('tap',function(){
+      try { dataSDK.btnClick('button6','爱奇艺验证'); } catch (e) {} 
       if (self.isLoad) {return false};
       let phone=self.$dom.find("#input-phone").val();
       if(phone === ""){
@@ -33,6 +34,7 @@ class PrizeIqy extends BasePopupClass{
       }
     })
     this.$dom.find('#btn-submit').on('tap',function(){
+      try { dataSDK.btnClick('button7','爱奇艺提交'); } catch (e) {}     
       let phone=self.$dom.find("#input-phone").val();
       let check=self.$dom.find("#input-check").val();
       if(phone === ""){

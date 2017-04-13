@@ -71,3 +71,12 @@
     -webkit-transform: scale(1);
   }
 }
+
+@keyframes RotateIn{
+	0%{
+		transform: rotate(0);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}

@@ -22,6 +22,3 @@ function resize(){
     }
   });
 }
-window.onresize = function (){
-  resize();
-};

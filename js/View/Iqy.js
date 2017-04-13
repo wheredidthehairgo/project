@@ -6,6 +6,7 @@ class Iqy extends BaseClass {
     init() {
         super.init();
         this.$dom.find('#btn-exchange').on('tap',()=>{
+            try { dataSDK.btnClick('button2','跳转到爱奇艺'); } catch (e) {}       
             window.location.href=`http://vip.iqiyi.com/jihuoma.html`;
         })
     }

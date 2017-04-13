@@ -1,22 +1,28 @@
 .exchange.page.iphone {
-    .main-img {
-        margin-top: 4em;
+    .logo-img {
+        top: 9%;
     }
-    .main-content {
-        top: calc(4em + 21px);
-        .main-title {
-            margin-top: .2em;
-            p{
-                &:nth-of-type(2) {
-                    position: relative;
-                }
-                span {
-                    position: absolute;
-                    font-size: .7rem;
-                    bottom: 0.2rem;
+    .main-container{
+        top: 44%;
+        transform: translate(-50%,-50%);
+        .main-content {
+            .main-title {
+                margin-top: .2em;
+                p{
+                    &:nth-of-type(2) {
+                        position: relative;
+                    }
+                    span {
+                        position: absolute;
+                        font-size: .7rem;
+                        bottom: 0.2rem;
+                    }
                 }
             }
+            >img {width: 19%;}
         }
-        >img {width: 19%;}
+    }
+    .side-container {
+        bottom: 5%
     }
 }
