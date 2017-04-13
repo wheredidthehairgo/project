@@ -158,6 +158,7 @@
 	  Config.user_id = typeof data == "number" ? data : data.user_id;
 	  if (!data.mobile) {
 	    global.View.myHome.show();
+	
 	    audio();
 	    switch (data.gift_id) {
 	      case 1:
@@ -186,6 +187,10 @@
 	
 	function audio() {
 	  var audio = document.getElementById("audio");
+	  document.addEventListener("WeixinJSBridgeReady", function () {
+	    audio.play();
+	  }, false);
+	
 	  audio.play();
 	  $('#music_off').click(function () {
 	    if (audio.paused) {
