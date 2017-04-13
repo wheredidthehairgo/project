@@ -40,9 +40,9 @@ class Home extends BaseClass {
                 }else{
                     this.gift = json.data.gift_id;
                     this.isBegin = true;
-                    let myvalue = this.gift;
+                    // let myvalue = this.gift;
                     $.each(this.num, (i, n) => {
-                        this.value[i] = 3;
+                        this.value[i] = parseInt(Math.random()*3);
                         let value = this.value[i];
                         Gun.reset(n);
                         Gun.starmove(n, value, i, this.jugde.bind(this));
@@ -56,7 +56,6 @@ class Home extends BaseClass {
 
     jugde() {
         this.count++;
-        console.log(this.gift);
         if (this.count == 3) {
             setTimeout(()=>{
                 switch(this.gift){

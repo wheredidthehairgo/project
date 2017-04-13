@@ -14,6 +14,9 @@
         // margin-bottom: .5em;
         text-align: left;
         line-height: 1.5;
+        &:nth-of-type(5),&:nth-of-type(6),&:nth-of-type(7){
+          text-indent: 2em;
+        }
         .super-name{
           // color: #ff0000;
         }

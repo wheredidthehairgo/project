@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 	
@@ -206,9 +206,9 @@
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	
@@ -368,9 +368,9 @@
 	  }
 	});
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -411,9 +411,9 @@
 	
 	module.exports = BaseClass;
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -451,9 +451,9 @@
 	
 	module.exports = BasePopupClass;
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -479,9 +479,9 @@
 	  });
 	}
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	
@@ -496,7 +496,7 @@
 	  storageName: 'libai_userInfo_version_322_s11',
 	
 	  userInfo: {
-	    openid: 'test176',
+	    openid: 'test178',
 	    nickname: 'kuku',
 	    sex: '1',
 	    province: '广东',
@@ -513,9 +513,9 @@
 	  shareUrl: 'http://toupiao.91iot.net/'
 	};
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 	
@@ -705,9 +705,9 @@
 	    module.exports = Clipboard;
 	});
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 	
@@ -933,9 +933,9 @@
 	    module.exports = ClipboardAction;
 	});
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -981,9 +981,9 @@
 	
 	module.exports = select;
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -1044,9 +1044,9 @@
 	
 	module.exports = E;
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -1107,9 +1107,9 @@
 	
 	module.exports = listen;
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1133,9 +1133,9 @@
 	  return type === '[object Function]';
 	};
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -1165,9 +1165,9 @@
 	
 	module.exports = delegate;
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1188,9 +1188,9 @@
 	
 	module.exports = closest;
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1282,9 +1282,9 @@
 	
 	module.exports = TipManager;
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1370,9 +1370,9 @@
 	  }
 	};
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1396,9 +1396,9 @@
 	    }
 	};
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1468,9 +1468,9 @@
 	
 	module.exports = Loading;
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 	
@@ -1535,9 +1535,9 @@
 	                    } else {
 	                        _this2.gift = json.data.gift_id;
 	                        _this2.isBegin = true;
-	                        var myvalue = _this2.gift;
+	
 	                        $.each(_this2.num, function (i, n) {
-	                            _this2.value[i] = 3;
+	                            _this2.value[i] = parseInt(Math.random() * 3);
 	                            var value = _this2.value[i];
 	                            Gun.reset(n);
 	                            Gun.starmove(n, value, i, _this2.jugde.bind(_this2));
@@ -1552,7 +1552,6 @@
 	            var _this3 = this;
 	
 	            this.count++;
-	            console.log(this.gift);
 	            if (this.count == 3) {
 	                setTimeout(function () {
 	                    switch (_this3.gift) {
@@ -1602,9 +1601,9 @@
 	module.exports = Home;
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1637,9 +1636,9 @@
 	
 	module.exports = Follow;
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1681,9 +1680,9 @@
 	
 	module.exports = Ljq;
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1735,9 +1734,9 @@
 	
 	module.exports = Iqy;
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1773,9 +1772,9 @@
 	
 	module.exports = Ip7;
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1818,9 +1817,9 @@
 	
 	module.exports = Popups;
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -1857,9 +1856,9 @@
 	
 	module.exports = Share;
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 	
@@ -1965,9 +1964,9 @@
 	module.exports = PrizeLjq;
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 	
@@ -2082,9 +2081,9 @@
 	module.exports = PrizeIqy;
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 	
@@ -2215,6 +2214,6 @@
 	module.exports = PrizeIp7;
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=main.js.map
