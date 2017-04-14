@@ -1,4 +1,14 @@
 /**
+ * @Author: yingzhou xu
+ * @Date:   2017-04-14T11:15:01+08:00
+ * @Email:  dyyz1993@qq.com
+ * @Filename: Util.js
+ * @Last modified by:   yingzhou xu
+ * @Last modified time: 2017-04-14T15:53:21+08:00
+ */
+
+
+/**
  * Created by Weijie Zhu on 2016/11/29.
  */
 
@@ -9,7 +19,17 @@ exports.randomNum = function (Min, Max) {
   const Rand = Math.random();
   return (Min + Math.round(Rand * Range));
 };
-
+exports.copySelectedRange = function (e) {
+  const t = document.createRange();
+  t.selectNodeContents(e);
+  const n = document.getSelection();
+  n.removeAllRanges(),
+                n.addRange(t),
+                document.execCommand('copy', !0);
+};
+exports.detectBrowserAccessClipboardSupport = function () {
+  return document.queryCommandSupported('copy') == 1;
+},
 // 获取参数
 exports.getOption = function (key) {
   let search = window.location.search;
@@ -18,7 +38,7 @@ exports.getOption = function (key) {
   const searchArr = search.split('&');
   for (let i = 0 ; i < searchArr.length;i++) {
     const arr = searchArr[i].split('=');
-    if (arr[0] === key) {return arr[1]; }
+    if (arr[0] === key) { return arr[1]; }
   }
   return '';
 };

@@ -4,7 +4,7 @@
  * @Email:  dyyz1993@qq.com
  * @Filename: index.js
  * @Last modified by:   yingzhou xu
- * @Last modified time: 2017-04-14T11:33:04+08:00
+ * @Last modified time: 2017-04-14T15:54:58+08:00
  */
 
 
@@ -41,10 +41,11 @@
  let isLoaded = false;
 // 网络加载
  let isInitNet = false;
-
+ audio();
 // 主要是加载js的loading
  global.View.loading.preLoadingJS(function () {
   // 微信授权
+
    global.shareApi.auth(init);
  });
 
@@ -92,6 +93,7 @@
 // 加载完成
  function complete() {
    console.log('complete');
+   ViewAdapt.resizeFonfSize(640 / 1008);
    if (isInitNet && isLoaded) {
      main();
    }
@@ -133,6 +135,13 @@
    console.log('提交用户信息成功!');
    const data = global.data ;
    Config.user_id = (typeof(data) === 'number') ? data : data.user_id;
+
+   // 测试
+   // global.Popup.prizeIp7.show();
+  //  global.Popup.prizeIqy.show();
+  //  global.View.ip7.show();
+  //  return;
+
    if(!data.mobile){
      global.View.myHome.show();
 
@@ -153,6 +162,7 @@
      case 3: global.View.ljq.show(); break;
      }
    }
+
  }
 
  function audio(){
@@ -176,3 +186,5 @@
      $('#music_off').css('animation', 'none');
    });
  }
+
+ console.log('copy：' + Util.detectBrowserAccessClipboardSupport());

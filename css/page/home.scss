@@ -1,14 +1,23 @@
+// @Author: yingzhou xu
+// @Date:   2017-04-14T11:15:01+08:00
+// @Email:  dyyz1993@qq.com
+// @Filename: home.scss
+// @Last modified by:   yingzhou xu
+// @Last modified time: 2017-04-14T15:18:07+08:00
+
+
+
 .home.page{
   height: 100%;
   .logo-img{
     left: 7%;
-    top: 3%;
+    top: 2%;
   }
   .main-container, .side-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0 auto; 
+    margin: 0 auto;
     width: 95%;
     .main-img {
       position: relative;
@@ -31,7 +40,7 @@
       left: 50%;
       transform: translatex(-51%);
       width: 248px;
-      height: 140px; 
+      height: 140px;
     }
     .laohuji-container {
       position: absolute;
@@ -42,10 +51,10 @@
       padding: 6.5% 4%;
       justify-content: space-around;
       background:url('../resources/img/main_border.png') top center no-repeat;
-      background-size: 100% 100%; 
+      background-size: 100% 100%;
       .laohuji-part {
         background: url('../resources/img/laohuji.png') top center repeat-y;
-        background-size: 100%; 
+        background-size: 100%;
         width: calc(100% / 3);
         height: 100%;
         float: left;
@@ -53,7 +62,7 @@
           width: 100%;
           padding-top: 131.57%;
           background:url('../resources/img/shade.png') top center no-repeat;
-          background-size: 100% 100%; 
+          background-size: 100% 100%;
           // height: 0;
         }
         &:nth-of-type(2) {
@@ -88,14 +97,14 @@
         left: 0;
         width: 100%;
         text-align: center;
-        font-size: .6rem; 
+        font-size: .6rem;
       }
     }
 
     .rule-btn {
       margin-left: 10%;
     }
-    
+
     .share-btn {
       margin-right: 10%;
     }

@@ -1,3 +1,12 @@
+// @Author: yingzhou xu
+// @Date:   2017-04-14T11:15:01+08:00
+// @Email:  dyyz1993@qq.com
+// @Filename: index.scss
+// @Last modified by:   yingzhou xu
+// @Last modified time: 2017-04-14T15:00:40+08:00
+
+
+
 @import "share";
 @import "look";
 @import "tips";
@@ -89,11 +98,10 @@
         color:#615d5d;
         margin-bottom:.5em
       }
-      .btn-submit{
-        margin-top: .2em;
-        margin-bottom: .5em;
-      }
+      // .btn-submit{
+      //   margin-top: .2em;
+      //   margin-bottom: .5em;
+      // }
     }
   }
 }
-

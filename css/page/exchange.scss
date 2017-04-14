@@ -1,3 +1,12 @@
+// @Author: yingzhou xu
+// @Date:   2017-04-14T11:15:01+08:00
+// @Email:  dyyz1993@qq.com
+// @Filename: exchange.scss
+// @Last modified by:   yingzhou xu
+// @Last modified time: 2017-04-14T15:37:55+08:00
+
+
+
 .exchange.page {
     height: 100%;
     -moz-user-select: none;
@@ -7,7 +16,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        margin: 0 auto; 
+        margin: 0 auto;
         width: 85%;
         top: 9%;
         .main-img {
@@ -40,11 +49,11 @@
                 font-size: .7rem;
                 line-height: 1.5;
                 &:nth-of-type(1) {
-                    margin-top: 1em;
+                    margin-top: 3%;
                 }
             }
             .btn-exchange{
-                margin-top: 1em; 
+                margin-top: 1em;
             }
         }
         .main-submit {
@@ -52,7 +61,7 @@
             bottom: 2%;
             width: 100%;
             .btn-exchange{
-                margin-bottom: 4%; 
+                margin-bottom: 4%;
             }
             .copy {
                 display: flex;
@@ -60,7 +69,7 @@
                 font-size: 1.2rem;
                 .copy-content {
                     border: 1px #fda22f solid;
-                    border-radius: 1em;              
+                    border-radius: 1em;
                     line-height: 2;
                     width: 67%;
                     height: 2em;
@@ -120,4 +129,3 @@
 .iqiyi-pic {
     margin-top: .5em;
 }
-

@@ -1,3 +1,12 @@
+// @Author: yingzhou xu
+// @Date:   2017-04-14T11:15:01+08:00
+// @Email:  dyyz1993@qq.com
+// @Filename: prize.scss
+// @Last modified by:   yingzhou xu
+// @Last modified time: 2017-04-14T15:06:34+08:00
+
+
+
 .panel.prize{
   .title, .title-2, .title-3 {
     font-weight: bold;
@@ -5,10 +14,10 @@
   }
 
   .title{
-    margin-top: .8em;   
+    margin-top: 5%;
   }
   .title-2{
-    margin-bottom: -0.2em;
+    margin-bottom: -1%;
     font-size: 1.5rem;
     padding:0 .5em;
     line-height: 1.5;
@@ -39,7 +48,7 @@
           transform: translate(-50%, -50%);
           width: 70%;
         }
-    }   
+    }
   }
   .phone-pic {
     >img:nth-of-type(2) {
@@ -48,7 +57,7 @@
     }
   }
   .content-2{
-    margin: 1em 0;
+    margin: 2% 0;
     // font-size: .8rem;
     p{
       font-size: .7rem;
@@ -60,7 +69,7 @@
   .content-3 {
     margin-top: 4.5em;
     p{
-      margin-bottom:.8em;
+      margin-bottom:.5%;
     }
   }
   .content-4 {
@@ -76,7 +85,7 @@
   }
   .lingjiang {
     // position: relative;
-    margin-bottom: .5em;
+    margin-bottom: 5%;
     input {
       box-sizing: border-box;
       width: 100%;
@@ -90,10 +99,11 @@
   .identify {
     position: relative;
     height: 2.2rem;
+    margin-bottom: 3%;
     // margin-bottom: 3em;
     input {
       position: absolute;
-      left: 0; 
+      left: 0;
       width: 55%;
     }
     .btn-identify {
@@ -108,10 +118,10 @@
   }
   .btn-submit {
     // position: absolute;
-    // bottom: 5%;
+    margin-top: 5%;
     // left: 50%;
     // transform: translate(-50%, 50%);
-    z-index: 2;   
+    z-index: 2;
   }
 }
 

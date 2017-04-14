@@ -77,8 +77,10 @@
 	var isLoaded = false;
 	
 	var isInitNet = false;
+	audio();
 	
 	global.View.loading.preLoadingJS(function () {
+	
 	  global.shareApi.auth(init);
 	});
 	
@@ -119,6 +121,7 @@
 	
 	function complete() {
 	  console.log('complete');
+	  ViewAdapt.resizeFonfSize(640 / 1008);
 	  if (isInitNet && isLoaded) {
 	    main();
 	  }
@@ -156,6 +159,7 @@
 	  console.log('提交用户信息成功!');
 	  var data = global.data;
 	  Config.user_id = typeof data === 'number' ? data : data.user_id;
+	
 	  if (!data.mobile) {
 	    global.View.myHome.show();
 	
@@ -207,6 +211,8 @@
 	    $('#music_off').css('animation', 'none');
 	  });
 	}
+	
+	console.log('copy：' + Util.detectBrowserAccessClipboardSupport());
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
@@ -224,8 +230,15 @@
 	  var Rand = Math.random();
 	  return Min + Math.round(Rand * Range);
 	};
-	
-	exports.getOption = function (key) {
+	exports.copySelectedRange = function (e) {
+	  var t = document.createRange();
+	  t.selectNodeContents(e);
+	  var n = document.getSelection();
+	  n.removeAllRanges(), n.addRange(t), document.execCommand('copy', !0);
+	};
+	exports.detectBrowserAccessClipboardSupport = function () {
+	  return document.queryCommandSupported('copy') == 1;
+	}, exports.getOption = function (key) {
 	  var search = window.location.search;
 	  if (search === '') {
 	    return '';
@@ -418,7 +431,7 @@
 /* 3 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -434,16 +447,19 @@
 	  function BasePopupClass(str) {
 	    _classCallCheck(this, BasePopupClass);
 	
-	    return _possibleConstructorReturn(this, (BasePopupClass.__proto__ || Object.getPrototypeOf(BasePopupClass)).call(this, str));
+	    var _this = _possibleConstructorReturn(this, (BasePopupClass.__proto__ || Object.getPrototypeOf(BasePopupClass)).call(this, str));
+	
+	    ViewAdapt.push(str + ' .wrap', 640 / 1008, false);
+	    return _this;
 	  }
 	
 	  _createClass(BasePopupClass, [{
-	    key: "show",
+	    key: 'show',
 	    value: function show() {
 	      this.$dom.fadeInUp();
 	    }
 	  }, {
-	    key: "hide",
+	    key: 'hide',
 	    value: function hide() {
 	      this.$dom.fadeOutDown();
 	    }
@@ -463,7 +479,9 @@
 	var arr = [];
 	
 	exports.push = function (str, needRatio) {
-	  arr.push([str, needRatio]);
+	  var ismove = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+	
+	  arr.push([str, needRatio, ismove]);
 	  resize();
 	};
 	
@@ -477,10 +495,19 @@
 	      var w = item[1] * wH;
 	      var marginL = (wW - w) / 2;
 	      $(item[0]).width(w);
-	      $(item[0]).css({ 'marginLeft': marginL });
+	      if (item[2]) {
+	        $(item[0]).css({ 'marginLeft': marginL });
+	      }
 	    }
 	  });
 	}
+	exports.resizeFonfSize = function (needRatio) {
+	  var w = $(window).innerWidth();
+	  var h = $(window).innerHeight();
+	  if (w / h / needRatio > 1) {
+	    $('html').css('fontSize', 16 / (w / h / needRatio) + 'px');
+	  }
+	};
 
 /***/ }),
 /* 5 */
@@ -499,7 +526,7 @@
 	  storageName: 'libai_userInfo_version_322_s11',
 	
 	  userInfo: {
-	    openid: 'test179',
+	    openid: 'test180',
 	    nickname: 'kuku',
 	    sex: '1',
 	    province: '广东',
@@ -1701,39 +1728,40 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Iqy = function (_BaseClass) {
-	    _inherits(Iqy, _BaseClass);
+	  _inherits(Iqy, _BaseClass);
 	
-	    function Iqy(str) {
-	        _classCallCheck(this, Iqy);
+	  function Iqy(str) {
+	    _classCallCheck(this, Iqy);
 	
-	        ViewAdapt.push('.iqiyi', 342 / 523);
-	        return _possibleConstructorReturn(this, (Iqy.__proto__ || Object.getPrototypeOf(Iqy)).call(this, str));
+	    ViewAdapt.push('.iqiyi', 342 / 523);
+	    return _possibleConstructorReturn(this, (Iqy.__proto__ || Object.getPrototypeOf(Iqy)).call(this, str));
+	  }
+	
+	  _createClass(Iqy, [{
+	    key: 'init',
+	    value: function init() {
+	      _get(Iqy.prototype.__proto__ || Object.getPrototypeOf(Iqy.prototype), 'init', this).call(this);
+	      this.$dom.find('#btn-exchange').on('tap', function () {
+	        try {
+	          dataSDK.btnClick('button2', '跳转到爱奇艺');
+	        } catch (e) {}
+	        window.location.href = 'http://vip.iqiyi.com/jihuoma.html';
+	      });
 	    }
+	  }, {
+	    key: 'show',
+	    value: function show() {
+	      _get(Iqy.prototype.__proto__ || Object.getPrototypeOf(Iqy.prototype), 'show', this).call(this);
+	      this.$dom.find('#copy-content').text(Config.ticket_id);
+	      var id = this.$dom.find('#copy-content').text();
+	      this.$dom.find('#btn-copy').on('tap', function () {
+	        TipManager.show('复制成功,如失败请手动复制!');
+	        Util.copySelectedRange(document.querySelector('#copy-content'));
+	      });
+	    }
+	  }]);
 	
-	    _createClass(Iqy, [{
-	        key: 'init',
-	        value: function init() {
-	            _get(Iqy.prototype.__proto__ || Object.getPrototypeOf(Iqy.prototype), 'init', this).call(this);
-	            this.$dom.find('#btn-exchange').on('tap', function () {
-	                try {
-	                    dataSDK.btnClick('button2', '跳转到爱奇艺');
-	                } catch (e) {}
-	                window.location.href = 'http://vip.iqiyi.com/jihuoma.html';
-	            });
-	        }
-	    }, {
-	        key: 'show',
-	        value: function show() {
-	            _get(Iqy.prototype.__proto__ || Object.getPrototypeOf(Iqy.prototype), 'show', this).call(this);
-	            this.$dom.find('#copy-content').text(Config.ticket_id);
-	            var id = this.$dom.find('#copy-content').text();
-	            this.$dom.find('#btn-copy').on('tap', function () {
-	                TipManager.show("请手动复制");
-	            });
-	        }
-	    }]);
-	
-	    return Iqy;
+	  return Iqy;
 	}(BaseClass);
 	
 	module.exports = Iqy;
@@ -1999,18 +2027,19 @@
 	      _get(PrizeIqy.prototype.__proto__ || Object.getPrototypeOf(PrizeIqy.prototype), 'init', this).call(this);
 	      this.isLoad = false;
 	      var self = this;
+	
 	      this.$dom.find('.btn-identify').on('tap', function () {
 	        try {
 	          dataSDK.btnClick('button6', '爱奇艺验证');
 	        } catch (e) {}
 	        if (self.isLoad) {
 	          return false;
-	        };
-	        var phone = self.$dom.find("#input-phone").val();
-	        if (phone === "") {
-	          TipManager.show("手机号不能为空");
+	        }
+	        var phone = self.$dom.find('#input-phone').val();
+	        if (phone === '') {
+	          TipManager.show('手机号不能为空');
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          TipManager.show("手机号格式错误");
+	          TipManager.show('手机号格式错误');
 	        } else {
 	          var id = Config.user_id;
 	          $.ajax({
@@ -2020,7 +2049,7 @@
 	            if (json.code === 0) {
 	              self.setTime();
 	            } else if (json.code === 1) {
-	              TipManager.show("发送失败");
+	              TipManager.show('发送失败');
 	            }
 	          });
 	        }
@@ -2029,14 +2058,14 @@
 	        try {
 	          dataSDK.btnClick('button7', '爱奇艺提交');
 	        } catch (e) {}
-	        var phone = self.$dom.find("#input-phone").val();
-	        var check = self.$dom.find("#input-check").val();
-	        if (phone === "") {
-	          TipManager.show("手机号不能为空");
+	        var phone = self.$dom.find('#input-phone').val();
+	        var check = self.$dom.find('#input-check').val();
+	        if (phone === '') {
+	          TipManager.show('手机号不能为空');
 	        } else if (!/^\d{11}$/i.test(String(phone))) {
-	          TipManager.show("手机号格式错误");
+	          TipManager.show('手机号格式错误');
 	        } else if (check === '') {
-	          TipManager.show("没有输入验证码");
+	          TipManager.show('没有输入验证码');
 	        } else {
 	          var myid = Config.user_id;
 	          $.ajax({
@@ -2047,12 +2076,12 @@
 	              var data = json.data;
 	              console.log(data);
 	              Config.ticket_id = data.ticket_id;
-	              TipManager.show("验证成功");
+	              TipManager.show('验证成功');
 	              global.View.myHome.hide();
 	              global.View.iqy.show();
 	              self.hide();
 	            } else if (json.code === 1006 || json.code === 1) {
-	              TipManager.show("没有爱奇艺码");
+	              TipManager.show('没有爱奇艺码');
 	            }
 	          });
 	        }
@@ -2063,18 +2092,17 @@
 	    value: function setTime() {
 	      var _this2 = this;
 	
-	      this.$dom.find(".btn-identify span").text("60秒后重试");
+	      this.$dom.find('.btn-identify span').text('60秒后重试');
 	      var timer = 59;
 	      var time = setInterval(function () {
 	        if (timer <= 0) {
-	          _this2.$dom.find(".btn-identify span").text("发送验证码");
+	          _this2.$dom.find('.btn-identify span').text('发送验证码');
 	          clearInterval(time);
 	          return;
-	        } else {
-	          _this2.$dom.find(".btn-identify span").text(timer + "秒后重试");
-	          _this2.isLoad = true;
-	          timer--;
 	        }
+	        _this2.$dom.find('.btn-identify span').text(timer + '秒后重试');
+	        _this2.isLoad = true;
+	        timer--;
 	      }, 1000);
 	    }
 	  }]);

@@ -1,4 +1,14 @@
 /**
+ * @Author: yingzhou xu
+ * @Date:   2017-04-14T11:15:01+08:00
+ * @Email:  dyyz1993@qq.com
+ * @Filename: Config.js
+ * @Last modified by:   yingzhou xu
+ * @Last modified time: 2017-04-14T14:11:32+08:00
+ */
+
+
+/**
  * Created by Weijie Zhu on 2016/11/29.
  */
 
@@ -13,14 +23,14 @@ module.exports = {
   // 用户的数据
   userInfo: {
     // openid: 'oPOant400Kkhb6qilPXFfrAw6qBk',
-    openid: 'test179',
+    openid: 'test180',
     nickname: 'kuku',
     sex: '1',
     province: '广东',
     city: '广州',
     country: '中国',
     headimgurl: 'http://wx.qlogo.cn/mmopen/Xmnun9Io49TNwrKPL4SnYq7p5QkMaztSrxxJHWC3twTdYX7Ur39KeiczZeEUBUB3dwIcd49Xpe7w3sSxTXI0aCQ/0',
-    subscribe: 1
+    subscribe: 1,
   },
   // 当前H5的地址，主要为了ICON；
   // host: `http://100jc.net/goddess/public/h5_${pre}`,

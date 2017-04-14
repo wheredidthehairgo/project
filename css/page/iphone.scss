@@ -1,3 +1,12 @@
+// @Author: yingzhou xu
+// @Date:   2017-04-14T11:15:01+08:00
+// @Email:  dyyz1993@qq.com
+// @Filename: iphone.scss
+// @Last modified by:   yingzhou xu
+// @Last modified time: 2017-04-14T15:36:16+08:00
+
+
+
 .exchange.page.iphone {
     .logo-img {
         top: 4%;
@@ -9,9 +18,12 @@
             .main-title {
                 margin-top: .2em;
                 p{
-                    &:nth-of-type(2) {
-                        position: relative;
-                    }
+                  &:nth-of-type(1) {
+                      margin-top: 1%;
+                  }
+                  &:nth-of-type(2) {
+                      position: relative;
+                  }
                     span {
                         position: absolute;
                         font-size: .7rem;

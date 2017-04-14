@@ -1,3 +1,12 @@
+// @Author: yingzhou xu
+// @Date:   2017-04-14T11:15:01+08:00
+// @Email:  dyyz1993@qq.com
+// @Filename: index.scss
+// @Last modified by:   yingzhou xu
+// @Last modified time: 2017-04-14T15:17:54+08:00
+
+
+
 @import "PopupTest";
 @import "home";
 @import "rule";
@@ -81,7 +90,7 @@ body{
     color: #fff;
     font-size: 1.1rem;
     line-height: 2;
-    border-radius: .2em;   
+    border-radius: .2em;
     // background: url('../resources/img/popup_btn.png') center no-repeat;
     // background-size: 100% 100%;
     vertical-align: middle;
@@ -95,7 +104,7 @@ body{
 .logo-img {
   position: absolute;
   left: 7%;
-  top: 2%;
+  top: 1%;
   width: 26%;
 }
 
