@@ -3,16 +3,19 @@
 // @Email:  dyyz1993@qq.com
 // @Filename: exchange.scss
 // @Last modified by:   yingzhou xu
-// @Last modified time: 2017-04-14T15:37:55+08:00
+// @Last modified time: 2017-04-14T17:18:43+08:00
 
 
 
 .exchange.page {
     height: 100%;
-    -moz-user-select: none;
-    -khtml-user-select: none;
+    // -moz-user-select: none;
+    // -khtml-user-select: none;
     user-select: none;
+    -webkit-user-select: none;
     .main-container {
+      user-select: none;
+      -webkit-user-select: none;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -26,6 +29,8 @@
             z-index: -1;
         }
         .main-content {
+          user-select: none;
+          -webkit-user-select: none;
             position: absolute;
             top: 11%;
             left: 0;
@@ -57,6 +62,8 @@
             }
         }
         .main-submit {
+          user-select: none;
+          -webkit-user-select: none;
             position: absolute;
             bottom: 2%;
             width: 100%;
@@ -67,23 +74,31 @@
                 display: flex;
                 margin: .5em;
                 font-size: 1.2rem;
+
                 .copy-content {
                     border: 1px #fda22f solid;
                     border-radius: 1em;
                     line-height: 2;
                     width: 67%;
                     height: 2em;
+                    // margin: -2em 0 0;
                     background-color: #fff;
                     span {
                         font-size: .8rem;
                         line-height: 3;
                         color: #4662e1;
-                        -moz-user-select: text;
-                        -khtml-user-select: text;
-                        user-select: text;
+                        // margin: -2em 0 0;
+                        // -moz-user-select: text;
+                        // -khtml-user-select: text;
+                        // -webkit-user-select:element;
+                        -webkit-user-select:all;
+                        user-select: all;
+                        word-break:keep-all;
                     }
                 }
                 .btn-copy {
+                    user-select: none;
+                    -webkit-user-select: none;
                     width: 30%;
                     font-size: .8rem;
                     text-align: center;

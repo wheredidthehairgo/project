@@ -4,7 +4,7 @@
  * @Email:  dyyz1993@qq.com
  * @Filename: index.js
  * @Last modified by:   yingzhou xu
- * @Last modified time: 2017-04-14T15:54:58+08:00
+ * @Last modified time: 2017-04-14T17:28:16+08:00
  */
 
 
@@ -13,7 +13,7 @@
  global.BasePopupClass = require('./libs/BasePopupClass');
  global.ViewAdapt = require('./libs/ViewAdapt');
  global.Config = require('./Config');
- global.Clipboard = require('Clipboard');
+ // global.Clipboard = require('Clipboard');
  global.TipManager = require('./libs/TipManager');
  global.shareApi = require('./libs/ShareApi');
  global.Gun = require('./libs/Gun');
@@ -52,7 +52,7 @@
 
 // 初始化,入口
  function init(userInfo) {
-   audio();
+  //  audio();
    Config.userInfo = userInfo;
    global.shareApi.init();
    initUI();
@@ -171,6 +171,7 @@
      audio.play();
    }, false);
    audio.play();
+
    $('body').one('tap', function (){
      if(audio.paused) { audio.play(); }
    });
@@ -185,6 +186,7 @@
      $('#music').hide();
      $('#music_off').css('animation', 'none');
    });
+
  }
 
- console.log('copy：' + Util.detectBrowserAccessClipboardSupport());
+ // console.log('copy：' + Util.detectBrowserAccessClipboardSupport());

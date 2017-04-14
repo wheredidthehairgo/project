@@ -51,28 +51,28 @@
 	global.BasePopupClass = __webpack_require__(3);
 	global.ViewAdapt = __webpack_require__(4);
 	global.Config = __webpack_require__(5);
-	global.Clipboard = __webpack_require__(6);
-	global.TipManager = __webpack_require__(14);
-	global.shareApi = __webpack_require__(15);
-	global.Gun = __webpack_require__(16);
+	
+	global.TipManager = __webpack_require__(6);
+	global.shareApi = __webpack_require__(7);
+	global.Gun = __webpack_require__(8);
 	global.View = {};
 	global.Popup = {};
 	global.Data = {};
 	
-	var Loading = __webpack_require__(17);
+	var Loading = __webpack_require__(9);
 	
 	global.View.loading = new Loading();
 	
-	var Home = __webpack_require__(18);
-	var Follow = __webpack_require__(19);
-	var Ljq = __webpack_require__(20);
-	var Iqy = __webpack_require__(21);
-	var Ip7 = __webpack_require__(22);
-	var Popups = __webpack_require__(23);
-	var Share = __webpack_require__(24);
-	var PrizeLjq = __webpack_require__(25);
-	var PrizeIqy = __webpack_require__(26);
-	var PrizeIp7 = __webpack_require__(27);
+	var Home = __webpack_require__(10);
+	var Follow = __webpack_require__(11);
+	var Ljq = __webpack_require__(12);
+	var Iqy = __webpack_require__(13);
+	var Ip7 = __webpack_require__(14);
+	var Popups = __webpack_require__(15);
+	var Share = __webpack_require__(16);
+	var PrizeLjq = __webpack_require__(17);
+	var PrizeIqy = __webpack_require__(18);
+	var PrizeIp7 = __webpack_require__(19);
 	
 	var isLoaded = false;
 	
@@ -85,7 +85,6 @@
 	});
 	
 	function init(userInfo) {
-	  audio();
 	  Config.userInfo = userInfo;
 	  global.shareApi.init();
 	  initUI();
@@ -194,6 +193,7 @@
 	    audio.play();
 	  }, false);
 	  audio.play();
+	
 	  $('body').one('tap', function () {
 	    if (audio.paused) {
 	      audio.play();
@@ -211,8 +211,6 @@
 	    $('#music_off').css('animation', 'none');
 	  });
 	}
-	
-	console.log('copy：' + Util.detectBrowserAccessClipboardSupport());
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
@@ -545,681 +543,6 @@
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
-	(function (global, factory) {
-	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(7), __webpack_require__(9), __webpack_require__(10)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof exports !== "undefined") {
-	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
-	    } else {
-	        var mod = {
-	            exports: {}
-	        };
-	        factory(mod, global.clipboardAction, global.tinyEmitter, global.goodListener);
-	        global.clipboard = mod.exports;
-	    }
-	})(undefined, function (module, _clipboardAction, _tinyEmitter, _goodListener) {
-	    'use strict';
-	
-	    var _clipboardAction2 = _interopRequireDefault(_clipboardAction);
-	
-	    var _tinyEmitter2 = _interopRequireDefault(_tinyEmitter);
-	
-	    var _goodListener2 = _interopRequireDefault(_goodListener);
-	
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-	
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-	
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-	
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-	
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-	
-	        return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	    }
-	
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-	        }
-	
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-	
-	    var Clipboard = function (_Emitter) {
-	        _inherits(Clipboard, _Emitter);
-	
-	        function Clipboard(trigger, options) {
-	            _classCallCheck(this, Clipboard);
-	
-	            var _this = _possibleConstructorReturn(this, (Clipboard.__proto__ || Object.getPrototypeOf(Clipboard)).call(this));
-	
-	            _this.resolveOptions(options);
-	            _this.listenClick(trigger);
-	            return _this;
-	        }
-	
-	        _createClass(Clipboard, [{
-	            key: 'resolveOptions',
-	            value: function resolveOptions() {
-	                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	
-	                this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
-	                this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
-	                this.text = typeof options.text === 'function' ? options.text : this.defaultText;
-	            }
-	        }, {
-	            key: 'listenClick',
-	            value: function listenClick(trigger) {
-	                var _this2 = this;
-	
-	                this.listener = (0, _goodListener2.default)(trigger, 'click', function (e) {
-	                    return _this2.onClick(e);
-	                });
-	            }
-	        }, {
-	            key: 'onClick',
-	            value: function onClick(e) {
-	                var trigger = e.delegateTarget || e.currentTarget;
-	
-	                if (this.clipboardAction) {
-	                    this.clipboardAction = null;
-	                }
-	
-	                this.clipboardAction = new _clipboardAction2.default({
-	                    action: this.action(trigger),
-	                    target: this.target(trigger),
-	                    text: this.text(trigger),
-	                    trigger: trigger,
-	                    emitter: this
-	                });
-	            }
-	        }, {
-	            key: 'defaultAction',
-	            value: function defaultAction(trigger) {
-	                return getAttributeValue('action', trigger);
-	            }
-	        }, {
-	            key: 'defaultTarget',
-	            value: function defaultTarget(trigger) {
-	                var selector = getAttributeValue('target', trigger);
-	
-	                if (selector) {
-	                    return document.querySelector(selector);
-	                }
-	            }
-	        }, {
-	            key: 'defaultText',
-	            value: function defaultText(trigger) {
-	                return getAttributeValue('text', trigger);
-	            }
-	        }, {
-	            key: 'destroy',
-	            value: function destroy() {
-	                this.listener.destroy();
-	
-	                if (this.clipboardAction) {
-	                    this.clipboardAction.destroy();
-	                    this.clipboardAction = null;
-	                }
-	            }
-	        }], [{
-	            key: 'isSupported',
-	            value: function isSupported() {
-	                var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['copy', 'cut'];
-	
-	                var actions = typeof action === 'string' ? [action] : action;
-	                var support = !!document.queryCommandSupported;
-	
-	                actions.forEach(function (action) {
-	                    support = support && !!document.queryCommandSupported(action);
-	                });
-	
-	                return support;
-	            }
-	        }]);
-	
-	        return Clipboard;
-	    }(_tinyEmitter2.default);
-	
-	    function getAttributeValue(suffix, element) {
-	        var attribute = 'data-clipboard-' + suffix;
-	
-	        if (!element.hasAttribute(attribute)) {
-	            return;
-	        }
-	
-	        return element.getAttribute(attribute);
-	    }
-	
-	    module.exports = Clipboard;
-	});
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
-	
-	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
-	(function (global, factory) {
-	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(8)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof exports !== "undefined") {
-	        factory(module, require('select'));
-	    } else {
-	        var mod = {
-	            exports: {}
-	        };
-	        factory(mod, global.select);
-	        global.clipboardAction = mod.exports;
-	    }
-	})(undefined, function (module, _select) {
-	    'use strict';
-	
-	    var _select2 = _interopRequireDefault(_select);
-	
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-	
-	    var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-	        return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
-	    } : function (obj) {
-	        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
-	    };
-	
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-	
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-	
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-	
-	    var ClipboardAction = function () {
-	        function ClipboardAction(options) {
-	            _classCallCheck(this, ClipboardAction);
-	
-	            this.resolveOptions(options);
-	            this.initSelection();
-	        }
-	
-	        _createClass(ClipboardAction, [{
-	            key: 'resolveOptions',
-	            value: function resolveOptions() {
-	                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	
-	                this.action = options.action;
-	                this.emitter = options.emitter;
-	                this.target = options.target;
-	                this.text = options.text;
-	                this.trigger = options.trigger;
-	
-	                this.selectedText = '';
-	            }
-	        }, {
-	            key: 'initSelection',
-	            value: function initSelection() {
-	                if (this.text) {
-	                    this.selectFake();
-	                } else if (this.target) {
-	                    this.selectTarget();
-	                }
-	            }
-	        }, {
-	            key: 'selectFake',
-	            value: function selectFake() {
-	                var _this = this;
-	
-	                var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
-	
-	                this.removeFake();
-	
-	                this.fakeHandlerCallback = function () {
-	                    return _this.removeFake();
-	                };
-	                this.fakeHandler = document.body.addEventListener('click', this.fakeHandlerCallback) || true;
-	
-	                this.fakeElem = document.createElement('textarea');
-	
-	                this.fakeElem.style.fontSize = '12pt';
-	
-	                this.fakeElem.style.border = '0';
-	                this.fakeElem.style.padding = '0';
-	                this.fakeElem.style.margin = '0';
-	
-	                this.fakeElem.style.position = 'absolute';
-	                this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
-	
-	                var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-	                this.fakeElem.style.top = yPosition + 'px';
-	
-	                this.fakeElem.setAttribute('readonly', '');
-	                this.fakeElem.value = this.text;
-	
-	                document.body.appendChild(this.fakeElem);
-	
-	                this.selectedText = (0, _select2.default)(this.fakeElem);
-	                this.copyText();
-	            }
-	        }, {
-	            key: 'removeFake',
-	            value: function removeFake() {
-	                if (this.fakeHandler) {
-	                    document.body.removeEventListener('click', this.fakeHandlerCallback);
-	                    this.fakeHandler = null;
-	                    this.fakeHandlerCallback = null;
-	                }
-	
-	                if (this.fakeElem) {
-	                    document.body.removeChild(this.fakeElem);
-	                    this.fakeElem = null;
-	                }
-	            }
-	        }, {
-	            key: 'selectTarget',
-	            value: function selectTarget() {
-	                this.selectedText = (0, _select2.default)(this.target);
-	                this.copyText();
-	            }
-	        }, {
-	            key: 'copyText',
-	            value: function copyText() {
-	                var succeeded = void 0;
-	
-	                try {
-	                    succeeded = document.execCommand(this.action);
-	                } catch (err) {
-	                    succeeded = false;
-	                }
-	
-	                this.handleResult(succeeded);
-	            }
-	        }, {
-	            key: 'handleResult',
-	            value: function handleResult(succeeded) {
-	                this.emitter.emit(succeeded ? 'success' : 'error', {
-	                    action: this.action,
-	                    text: this.selectedText,
-	                    trigger: this.trigger,
-	                    clearSelection: this.clearSelection.bind(this)
-	                });
-	            }
-	        }, {
-	            key: 'clearSelection',
-	            value: function clearSelection() {
-	                if (this.target) {
-	                    this.target.blur();
-	                }
-	
-	                window.getSelection().removeAllRanges();
-	            }
-	        }, {
-	            key: 'destroy',
-	            value: function destroy() {
-	                this.removeFake();
-	            }
-	        }, {
-	            key: 'action',
-	            set: function set() {
-	                var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'copy';
-	
-	                this._action = action;
-	
-	                if (this._action !== 'copy' && this._action !== 'cut') {
-	                    throw new Error('Invalid "action" value, use either "copy" or "cut"');
-	                }
-	            },
-	            get: function get() {
-	                return this._action;
-	            }
-	        }, {
-	            key: 'target',
-	            set: function set(target) {
-	                if (target !== undefined) {
-	                    if (target && (typeof target === 'undefined' ? 'undefined' : _typeof(target)) === 'object' && target.nodeType === 1) {
-	                        if (this.action === 'copy' && target.hasAttribute('disabled')) {
-	                            throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
-	                        }
-	
-	                        if (this.action === 'cut' && (target.hasAttribute('readonly') || target.hasAttribute('disabled'))) {
-	                            throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
-	                        }
-	
-	                        this._target = target;
-	                    } else {
-	                        throw new Error('Invalid "target" value, use a valid Element');
-	                    }
-	                }
-	            },
-	            get: function get() {
-	                return this._target;
-	            }
-	        }]);
-	
-	        return ClipboardAction;
-	    }();
-	
-	    module.exports = ClipboardAction;
-	});
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	function select(element) {
-	    var selectedText;
-	
-	    if (element.nodeName === 'SELECT') {
-	        element.focus();
-	
-	        selectedText = element.value;
-	    } else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
-	        var isReadOnly = element.hasAttribute('readonly');
-	
-	        if (!isReadOnly) {
-	            element.setAttribute('readonly', '');
-	        }
-	
-	        element.select();
-	        element.setSelectionRange(0, element.value.length);
-	
-	        if (!isReadOnly) {
-	            element.removeAttribute('readonly');
-	        }
-	
-	        selectedText = element.value;
-	    } else {
-	        if (element.hasAttribute('contenteditable')) {
-	            element.focus();
-	        }
-	
-	        var selection = window.getSelection();
-	        var range = document.createRange();
-	
-	        range.selectNodeContents(element);
-	        selection.removeAllRanges();
-	        selection.addRange(range);
-	
-	        selectedText = selection.toString();
-	    }
-	
-	    return selectedText;
-	}
-	
-	module.exports = select;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	function E() {}
-	
-	E.prototype = {
-	  on: function on(name, callback, ctx) {
-	    var e = this.e || (this.e = {});
-	
-	    (e[name] || (e[name] = [])).push({
-	      fn: callback,
-	      ctx: ctx
-	    });
-	
-	    return this;
-	  },
-	
-	  once: function once(name, callback, ctx) {
-	    var self = this;
-	    function listener() {
-	      self.off(name, listener);
-	      callback.apply(ctx, arguments);
-	    };
-	
-	    listener._ = callback;
-	    return this.on(name, listener, ctx);
-	  },
-	
-	  emit: function emit(name) {
-	    var data = [].slice.call(arguments, 1);
-	    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
-	    var i = 0;
-	    var len = evtArr.length;
-	
-	    for (i; i < len; i++) {
-	      evtArr[i].fn.apply(evtArr[i].ctx, data);
-	    }
-	
-	    return this;
-	  },
-	
-	  off: function off(name, callback) {
-	    var e = this.e || (this.e = {});
-	    var evts = e[name];
-	    var liveEvents = [];
-	
-	    if (evts && callback) {
-	      for (var i = 0, len = evts.length; i < len; i++) {
-	        if (evts[i].fn !== callback && evts[i].fn._ !== callback) liveEvents.push(evts[i]);
-	      }
-	    }
-	
-	    liveEvents.length ? e[name] = liveEvents : delete e[name];
-	
-	    return this;
-	  }
-	};
-	
-	module.exports = E;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var is = __webpack_require__(11);
-	var delegate = __webpack_require__(12);
-	
-	function listen(target, type, callback) {
-	    if (!target && !type && !callback) {
-	        throw new Error('Missing required arguments');
-	    }
-	
-	    if (!is.string(type)) {
-	        throw new TypeError('Second argument must be a String');
-	    }
-	
-	    if (!is.fn(callback)) {
-	        throw new TypeError('Third argument must be a Function');
-	    }
-	
-	    if (is.node(target)) {
-	        return listenNode(target, type, callback);
-	    } else if (is.nodeList(target)) {
-	        return listenNodeList(target, type, callback);
-	    } else if (is.string(target)) {
-	        return listenSelector(target, type, callback);
-	    } else {
-	        throw new TypeError('First argument must be a String, HTMLElement, HTMLCollection, or NodeList');
-	    }
-	}
-	
-	function listenNode(node, type, callback) {
-	    node.addEventListener(type, callback);
-	
-	    return {
-	        destroy: function destroy() {
-	            node.removeEventListener(type, callback);
-	        }
-	    };
-	}
-	
-	function listenNodeList(nodeList, type, callback) {
-	    Array.prototype.forEach.call(nodeList, function (node) {
-	        node.addEventListener(type, callback);
-	    });
-	
-	    return {
-	        destroy: function destroy() {
-	            Array.prototype.forEach.call(nodeList, function (node) {
-	                node.removeEventListener(type, callback);
-	            });
-	        }
-	    };
-	}
-	
-	function listenSelector(selector, type, callback) {
-	    return delegate(document.body, selector, type, callback);
-	}
-	
-	module.exports = listen;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	exports.node = function (value) {
-	  return value !== undefined && value instanceof HTMLElement && value.nodeType === 1;
-	};
-	
-	exports.nodeList = function (value) {
-	  var type = Object.prototype.toString.call(value);
-	
-	  return value !== undefined && (type === '[object NodeList]' || type === '[object HTMLCollection]') && 'length' in value && (value.length === 0 || exports.node(value[0]));
-	};
-	
-	exports.string = function (value) {
-	  return typeof value === 'string' || value instanceof String;
-	};
-	
-	exports.fn = function (value) {
-	  var type = Object.prototype.toString.call(value);
-	
-	  return type === '[object Function]';
-	};
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var closest = __webpack_require__(13);
-	
-	function delegate(element, selector, type, callback, useCapture) {
-	    var listenerFn = listener.apply(this, arguments);
-	
-	    element.addEventListener(type, listenerFn, useCapture);
-	
-	    return {
-	        destroy: function destroy() {
-	            element.removeEventListener(type, listenerFn, useCapture);
-	        }
-	    };
-	}
-	
-	function listener(element, selector, type, callback) {
-	    return function (e) {
-	        e.delegateTarget = closest(e.target, selector);
-	
-	        if (e.delegateTarget) {
-	            callback.call(element, e);
-	        }
-	    };
-	}
-	
-	module.exports = delegate;
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	var DOCUMENT_NODE_TYPE = 9;
-	
-	if (typeof Element !== 'undefined' && !Element.prototype.matches) {
-	    var proto = Element.prototype;
-	
-	    proto.matches = proto.matchesSelector || proto.mozMatchesSelector || proto.msMatchesSelector || proto.oMatchesSelector || proto.webkitMatchesSelector;
-	}
-	
-	function closest(element, selector) {
-	    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
-	        if (element.matches(selector)) return element;
-	        element = element.parentNode;
-	    }
-	}
-	
-	module.exports = closest;
-
-/***/ }),
-/* 14 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1313,7 +636,7 @@
 	module.exports = TipManager;
 
 /***/ }),
-/* 15 */
+/* 7 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1401,7 +724,7 @@
 	};
 
 /***/ }),
-/* 16 */
+/* 8 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1427,7 +750,7 @@
 	};
 
 /***/ }),
-/* 17 */
+/* 9 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1499,7 +822,7 @@
 	module.exports = Loading;
 
 /***/ }),
-/* 18 */
+/* 10 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -1633,7 +956,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 19 */
+/* 11 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1668,7 +991,7 @@
 	module.exports = Follow;
 
 /***/ }),
-/* 20 */
+/* 12 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1684,35 +1007,35 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Ljq = function (_BaseClass) {
-	    _inherits(Ljq, _BaseClass);
+	  _inherits(Ljq, _BaseClass);
 	
-	    function Ljq(str) {
-	        _classCallCheck(this, Ljq);
+	  function Ljq(str) {
+	    _classCallCheck(this, Ljq);
 	
-	        ViewAdapt.push('.lijianquan', 342 / 523);
-	        return _possibleConstructorReturn(this, (Ljq.__proto__ || Object.getPrototypeOf(Ljq)).call(this, str));
+	    ViewAdapt.push('.lijianquan', 342 / 523);
+	    return _possibleConstructorReturn(this, (Ljq.__proto__ || Object.getPrototypeOf(Ljq)).call(this, str));
+	  }
+	
+	  _createClass(Ljq, [{
+	    key: 'init',
+	    value: function init() {
+	      _get(Ljq.prototype.__proto__ || Object.getPrototypeOf(Ljq.prototype), 'init', this).call(this);
+	      this.$dom.find('#btn-exchange').on('tap', function () {
+	        try {
+	          dataSDK.btnClick('button3', '跳转到立白券兑换处');
+	        } catch (e) {}
+	        window.location.href = 'http://55952265.m.weimob.com/vshop/55952265/Coupon/CouponTemplate?CouponTemplateNo=f7d9176c6a9c413a907af95327104be1';
+	      });
 	    }
+	  }]);
 	
-	    _createClass(Ljq, [{
-	        key: 'init',
-	        value: function init() {
-	            _get(Ljq.prototype.__proto__ || Object.getPrototypeOf(Ljq.prototype), 'init', this).call(this);
-	            this.$dom.find('#btn-exchange').on('tap', function () {
-	                try {
-	                    dataSDK.btnClick('button3', '跳转到立白券兑换处');
-	                } catch (e) {}
-	                window.location.href = 'http://55952265.m.weimob.com/vshop/55952265/Coupon/CouponTemplate?CouponTemplateNo=46513317281e465e8fb928e2dd8427f8';
-	            });
-	        }
-	    }]);
-	
-	    return Ljq;
+	  return Ljq;
 	}(BaseClass);
 	
 	module.exports = Ljq;
 
 /***/ }),
-/* 21 */
+/* 13 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1767,7 +1090,7 @@
 	module.exports = Iqy;
 
 /***/ }),
-/* 22 */
+/* 14 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1805,7 +1128,7 @@
 	module.exports = Ip7;
 
 /***/ }),
-/* 23 */
+/* 15 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1850,7 +1173,7 @@
 	module.exports = Popups;
 
 /***/ }),
-/* 24 */
+/* 16 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -1889,7 +1212,7 @@
 	module.exports = Share;
 
 /***/ }),
-/* 25 */
+/* 17 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -1997,7 +1320,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 26 */
+/* 18 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -2114,7 +1437,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 27 */
+/* 19 */
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
