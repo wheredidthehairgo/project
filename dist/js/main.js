@@ -496,7 +496,7 @@
 	  storageName: 'libai_userInfo_version_322_s11',
 	
 	  userInfo: {
-	    openid: 'test178',
+	    openid: 'test179',
 	    nickname: 'kuku',
 	    sex: '1',
 	    province: '广东',
@@ -1536,8 +1536,9 @@
 	                        _this2.gift = json.data.gift_id;
 	                        _this2.isBegin = true;
 	
+	                        var myvalue = parseInt(Math.random() * 3);
 	                        $.each(_this2.num, function (i, n) {
-	                            _this2.value[i] = parseInt(Math.random() * 3);
+	                            _this2.value[i] = myvalue;
 	                            var value = _this2.value[i];
 	                            Gun.reset(n);
 	                            Gun.starmove(n, value, i, _this2.jugde.bind(_this2));

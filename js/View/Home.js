@@ -41,8 +41,9 @@ class Home extends BaseClass {
                     this.gift = json.data.gift_id;
                     this.isBegin = true;
                     // let myvalue = this.gift;
+                    let myvalue = parseInt(Math.random()*3);
                     $.each(this.num, (i, n) => {
-                        this.value[i] = parseInt(Math.random()*3);
+                        this.value[i] = myvalue;
                         let value = this.value[i];
                         Gun.reset(n);
                         Gun.starmove(n, value, i, this.jugde.bind(this));
