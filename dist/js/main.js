@@ -83,7 +83,7 @@
 	});
 	
 	function init(userInfo) {
-	
+	  audio();
 	  Config.userInfo = userInfo;
 	  global.shareApi.init();
 	  initUI();
@@ -155,11 +155,10 @@
 	function checkout() {
 	  console.log('提交用户信息成功!');
 	  var data = global.data;
-	  Config.user_id = typeof data == "number" ? data : data.user_id;
+	  Config.user_id = typeof data === 'number' ? data : data.user_id;
 	  if (!data.mobile) {
 	    global.View.myHome.show();
 	
-	    audio();
 	    switch (data.gift_id) {
 	      case 1:
 	        global.Popup.prizeIp7.show();break;
@@ -173,7 +172,7 @@
 	    }
 	  } else if (data.mobile) {
 	    global.View.myHome.hide();
-	    audio();
+	
 	    switch (data.gift_id) {
 	      case 1:
 	        global.View.ip7.show();break;
@@ -186,22 +185,26 @@
 	}
 	
 	function audio() {
-	  var audio = document.getElementById("audio");
-	  document.addEventListener("WeixinJSBridgeReady", function () {
+	  var audio = document.getElementById('audio');
+	  document.addEventListener('WeixinJSBridgeReady', function () {
 	    audio.play();
 	  }, false);
-	
 	  audio.play();
+	  $('body').one('tap', function () {
+	    if (audio.paused) {
+	      audio.play();
+	    }
+	  });
 	  $('#music_off').click(function () {
 	    if (audio.paused) {
 	      audio.play();
-	      $("#music").show();
-	      $("#music_off").css("animation", "RotateIn 1.5s linear infinite");
+	      $('#music').show();
+	      $('#music_off').css('animation', 'RotateIn 1.5s linear infinite');
 	      return;
 	    }
 	    audio.pause();
-	    $("#music").hide();
-	    $("#music_off").css("animation", "none");
+	    $('#music').hide();
+	    $('#music_off').css('animation', 'none');
 	  });
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))

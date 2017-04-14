@@ -1,3 +1,13 @@
+/**
+ * @Author: yingzhou xu
+ * @Date:   2017-04-14T11:15:01+08:00
+ * @Email:  dyyz1993@qq.com
+ * @Filename: index.js
+ * @Last modified by:   yingzhou xu
+ * @Last modified time: 2017-04-14T11:33:04+08:00
+ */
+
+
  global.Util = require('./libs/Util');
  global.BaseClass = require('./libs/BaseClass');
  global.BasePopupClass = require('./libs/BasePopupClass');
@@ -6,7 +16,7 @@
  global.Clipboard = require('Clipboard');
  global.TipManager = require('./libs/TipManager');
  global.shareApi = require('./libs/ShareApi');
- global.Gun=require('./libs/Gun');
+ global.Gun = require('./libs/Gun');
  global.View = {};
  global.Popup = {};
  global.Data = {};
@@ -41,7 +51,7 @@
 
 // 初始化,入口
  function init(userInfo) {
-
+   audio();
    Config.userInfo = userInfo;
    global.shareApi.init();
    initUI();
@@ -50,12 +60,12 @@
      dataSDK.pushUserInfo(userInfo);
    } catch (e) {}
 
-   global.View.loading.preload(() => {     
-       isLoaded = true;
+   global.View.loading.preload(() => {
+     isLoaded = true;
         // 暂时放在这里
         // initData();
-       complete();
-     }
+     complete();
+   }
    );
  }
 
@@ -64,18 +74,18 @@
    console.log('initUI');
    $('.page, .popup, #main-bg').height($(window).innerHeight());
    global.View.myPage = new (global.BaseClass)('.page');
-   global.View.follow =new Follow('.follow');
+   global.View.follow = new Follow('.follow');
    global.View.myHome = new Home('.home');
-   global.View.ljq=new Ljq('.lijianquan');
-   global.View.iqy=new Iqy('.iqiyi');
-   global.View.ip7=new Ip7('.iphone');
+   global.View.ljq = new Ljq('.lijianquan');
+   global.View.iqy = new Iqy('.iqiyi');
+   global.View.ip7 = new Ip7('.iphone');
    global.Popup.popup = new (global.BasePopupClass)('.panel');
    global.Popup.rule = new Popups('.rule');
-   global.Popup.share= new Share('.share');
-   global.Popup.tips= new Popups('.tips');
-   global.Popup.prizeIp7=new PrizeIp7('.prize-ip7');
-   global.Popup.prizeIqy=new PrizeIqy('.prize-iqy');
-   global.Popup.prizeLjq=new PrizeLjq('.prize-ljq');
+   global.Popup.share = new Share('.share');
+   global.Popup.tips = new Popups('.tips');
+   global.Popup.prizeIp7 = new PrizeIp7('.prize-ip7');
+   global.Popup.prizeIqy = new PrizeIqy('.prize-iqy');
+   global.Popup.prizeLjq = new PrizeLjq('.prize-ljq');
  }
 
 
@@ -91,81 +101,78 @@
  function main() {
   //  $('.main').show();
    global.View.loading.hide();
-   if(Config.userInfo.subscribe === 0){    //如果用户尚未关注公众号
-      global.View.myHome.hide();
-      global.View.follow.show();
-      return ;
-  }
+   if(Config.userInfo.subscribe === 0){    // 如果用户尚未关注公众号
+     global.View.myHome.hide();
+     global.View.follow.show();
+     return ;
+   }
    checkout(data);
-   
-  }
 
-function initUserInfo(userInfo){
-  console.log(Config.server + 'add/');
-    $.post(Config.server + 'add/', {
-        openid: userInfo.openid,
-        nickname: userInfo.nickname,
-        headimg: userInfo.headimgurl,
-        sex: userInfo.sex,
-        province: userInfo.province,
-        city: userInfo.city,
-        country: userInfo.country
-    }, (json)=>{
-        global.data = json.data;
-      isInitNet = true;
+ }
+
+ function initUserInfo(userInfo){
+   console.log(Config.server + 'add/');
+   $.post(Config.server + 'add/', {
+     openid: userInfo.openid,
+     nickname: userInfo.nickname,
+     headimg: userInfo.headimgurl,
+     sex: userInfo.sex,
+     province: userInfo.province,
+     city: userInfo.city,
+     country: userInfo.country,
+   }, (json) => {
+     global.data = json.data;
+     isInitNet = true;
         // initData();
-       complete();
-      
-    });//$.post 结束
-}
+     complete();
 
-function checkout (){
-console.log('提交用户信息成功!');
-        let data=global.data ;
-        Config.user_id = (typeof(data) == "number")?data:data.user_id;
-        if(!data.mobile){
-            global.View.myHome.show(); 
-            
-            audio();
-            switch(data.gift_id){
-              case 1: global.Popup.prizeIp7.show(); break;
-              case 2: global.Popup.prizeIqy.show(); break;
-              case 3: global.View.myHome.hide();global.View.ljq.show(); break;
-            }
-            if(data.chance) {
-              Config.chance=data.chance;
-            }  
-        }else if(data.mobile){
-          global.View.myHome.hide();
-          audio();
-          switch(data.gift_id){
-              case 1: global.View.ip7.show(); break;
-              case 2: Config.ticket_id=data.ticket; global.View.iqy.show(); break;
-              case 3: global.View.ljq.show(); break;
-            }
-        }
-}
+   });// $.post 结束
+ }
 
-function audio(){
-    var audio = document.getElementById("audio");
-     document.addEventListener("WeixinJSBridgeReady", function () {  
-            audio.play();  
-    }, false); 
-    // WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
-    //             // 在这里拿到 e.err_msg, 这里面就包含了所有的网络类型
-    //             // alert(e.err_msg);
-    //             document.getElementById('#music').play();
-    //         });
-    audio.play();
-		$('#music_off').click(function() {
-			if(audio.paused) {
-				audio.play();
-				$("#music").show();
-				$("#music_off").css("animation", "RotateIn 1.5s linear infinite")
-				return;
-			}
-			audio.pause();
-			$("#music").hide()
-			$("#music_off").css("animation", "none")
-    })
-}
+ function checkout(){
+   console.log('提交用户信息成功!');
+   const data = global.data ;
+   Config.user_id = (typeof(data) === 'number') ? data : data.user_id;
+   if(!data.mobile){
+     global.View.myHome.show();
+
+     switch(data.gift_id){
+     case 1: global.Popup.prizeIp7.show(); break;
+     case 2: global.Popup.prizeIqy.show(); break;
+     case 3: global.View.myHome.hide();global.View.ljq.show(); break;
+     }
+     if(data.chance) {
+       Config.chance = data.chance;
+     }
+   }else if(data.mobile){
+     global.View.myHome.hide();
+
+     switch(data.gift_id){
+     case 1: global.View.ip7.show(); break;
+     case 2: Config.ticket_id = data.ticket; global.View.iqy.show(); break;
+     case 3: global.View.ljq.show(); break;
+     }
+   }
+ }
+
+ function audio(){
+   const audio = document.getElementById('audio');
+    document.addEventListener('WeixinJSBridgeReady', function (){
+     audio.play();
+   }, false);
+   audio.play();
+   $('body').one('tap', function (){
+     if(audio.paused) { audio.play(); }
+   });
+   $('#music_off').click(function () {
+     if(audio.paused) {
+       audio.play();
+       $('#music').show();
+       $('#music_off').css('animation', 'RotateIn 1.5s linear infinite');
+       return;
+     }
+     audio.pause();
+     $('#music').hide();
+     $('#music_off').css('animation', 'none');
+   });
+ }
