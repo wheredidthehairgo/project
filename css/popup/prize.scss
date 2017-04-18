@@ -8,28 +8,16 @@
 
 
 .panel.prize{
-  .title, .title-2, .title-3 {
-    font-weight: bold;
-    color: #84250e;
-  }
-
-  .title{
-    margin-top: 5%;
-  }
-  .title-2{
-    margin-bottom: -1%;
-    font-size: 1.5rem;
-    padding:0 .5em;
-    line-height: 1.5;
-    // width: 80%;
-    // display: block;
-  }
-  .title-3 {
-    margin-top: .8em;
-  }
-  .title-4 {
-    margin-bottom: .2em;
-    line-height: 1;
+  .wrap-title{
+    margin-top: 10%;
+    font-size: 1.2rem;
+    p {
+      font-family: "RuixianSunHeiHeavy";
+      &:last-of-type {
+            margin-top: 2%;
+            color: #7ea03c;
+      }
+    }
   }
   .prize-pic{
     position: relative;
@@ -89,9 +77,9 @@
     input {
       box-sizing: border-box;
       width: 100%;
-      border: 1px #fda22f solid;
+      border: 1px #7ea03c solid;
       border-radius: 1em;
-      padding: 0 1em;
+      padding: 0 4%;
       line-height: 2em;
       outline: none;
     }

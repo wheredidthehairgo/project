@@ -8,15 +8,9 @@
 
 
 .exchange.page.iphone {
-    .logo-img {
-        top: 4%;
-    }
     .main-container{
-        top: 44%;
-        transform: translate(-50%,-50%);
         .main-content {
             .main-title {
-                margin-top: .2em;
                 p{
                   &:nth-of-type(1) {
                       margin-top: 1%;
@@ -26,15 +20,15 @@
                   }
                     span {
                         position: absolute;
-                        font-size: .7rem;
                         bottom: 0.2rem;
+                        transform-origin: left bottom;
+                        transform: scale(0.5);
+                        font-family: Arial,"黑体";
+
                     }
                 }
             }
-            >img {width: 19%;}
+            >img {width: 26%;}
         }
-    }
-    .side-container {
-        bottom: 9%
     }
 }

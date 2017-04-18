@@ -25,6 +25,9 @@
       height: 100%;
       z-index: -1;
     }
+    .laohuji-pic {
+      margin-left: 1.2%;
+    }
     .main-rule {
       position: absolute;
       left: 50%;
@@ -34,20 +37,12 @@
       color: #fff;
       font-size: .9rem;
     }
-    .laohuji-border {
-      position:absolute;
-      top: 45%;
-      left: 50%;
-      transform: translatex(-51%);
-      width: 248px;
-      height: 140px;
-    }
     .laohuji-container {
       position: absolute;
-      left: 50%;
+      left: 50.4%;
       transform: translateX(-51%);
-      top: 42.5%;
-      width: 70%;
+      top: 41.5%;
+      width: 80%;
       padding: 6.5% 4%;
       justify-content: space-around;
       background:url('../resources/img/main_border.png') top center no-repeat;
@@ -75,7 +70,7 @@
     }
     .main-btn {
       position: absolute;
-      bottom: 3%;
+      bottom: 5%;
       display: flex;
       justify-content:space-around;
       width: 100%;
@@ -84,7 +79,7 @@
       }
     }
     .play-btn {
-      width: 43%;
+      width: 50%;
     }
 
     .rule-btn, .share-btn {
@@ -102,11 +97,11 @@
     }
 
     .rule-btn {
-      margin-left: 10%;
+      margin-left: 4.5%;
     }
 
     .share-btn {
-      margin-right: 10%;
+      margin-right: 6%;
     }
   }
   .side-container {
@@ -150,10 +145,10 @@
     }
   }
   .main-container {
-    top: 4%;
+    top: 2.5%;
   }
   .side-container {
-    bottom: 2%;
+    bottom: 1%;
   }
   // .count{
   //   box-sizing: border-box;
